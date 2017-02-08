@@ -17,8 +17,7 @@
 ################################################################################
 
 PKG_NAME="dtc"
-PKG_VERSION="beef80b"
-PKG_REV="1"
+PKG_VERSION="1.4.2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://git.kernel.org/cgit/utils/dtc/dtc.git"
@@ -33,6 +32,11 @@ PKG_AUTORECONF="no"
 PKG_MAKE_OPTS_TARGET="dtc"
 
 makeinstall_target() {
+  mkdir -p $INSTALL/usr/bin
+    cp -P $ROOT/$PKG_BUILD/dtc $INSTALL/usr/bin
+}
+
+makeinstall_host() {
   mkdir -p $INSTALL/usr/bin
     cp -P $ROOT/$PKG_BUILD/dtc $INSTALL/usr/bin
 }

@@ -106,10 +106,7 @@ rm -rf $STAMPS_INSTALL
 mkdir -p $INSTALL
 
 # create baselayout
-mkdir -p $INSTALL/bin
 mkdir -p $INSTALL/etc
-mkdir -p $INSTALL/lib
-mkdir -p $INSTALL/sbin
 mkdir -p $INSTALL/dev
 mkdir -p $INSTALL/proc
 mkdir -p $INSTALL/run
@@ -120,10 +117,14 @@ mkdir -p $INSTALL/var
 mkdir -p $INSTALL/flash
 mkdir -p $INSTALL/storage
 ln -sf /var/media $INSTALL/media
+ln -sf /usr/lib $INSTALL/lib
+ln -sf /usr/bin $INSTALL/bin
+ln -sf /usr/sbin $INSTALL/sbin
 
 if [ "$TARGET_ARCH" = "x86_64" -o "$TARGET_ARCH" = "powerpc64" ]; then
-  ln -s /lib $INSTALL/lib64
-  ln -s lib $INSTALL/usr/lib64
+  ln -s /usr/lib $INSTALL/lib64
+  mkdir -p $INSTALL/usr
+  ln -s /usr/lib $INSTALL/usr/lib64
 fi
 
 echo "$TARGET_VERSION" > $INSTALL/etc/release
@@ -188,7 +189,7 @@ $SCRIPTS/install network
 [ "$REMOTE_SUPPORT" = "yes" ] && $SCRIPTS/install remote
 
 # Virtual image creation support
-[ "$PROJECT" = Virtual ] && $SCRIPTS/install virtual
+[ "$PROJECT" = "Generic" ] && $SCRIPTS/install virtual
 
 # Installer support
 [ "$INSTALLER_SUPPORT" = "yes" ] && $SCRIPTS/install installer
@@ -225,17 +226,18 @@ if [ -n "$DEVICE" -a -d "$PROJECT_DIR/$PROJECT/devices/$DEVICE/filesystem" ]; th
 fi
 
 # run depmod
-MODVER=$(basename $(ls -d $INSTALL/lib/modules/*))
-find $INSTALL/lib/modules/$MODVER/ -name *.ko | \
-  sed -e "s,$INSTALL/lib/modules/$MODVER/,," > $INSTALL/lib/modules/$MODVER/modules.order
-$ROOT/$TOOLCHAIN/bin/depmod -b $INSTALL $MODVER 2> /dev/null
+MODVER=$(basename $(ls -d $INSTALL/usr/lib/modules/*))
+find $INSTALL/usr/lib/modules/$MODVER/ -name *.ko | \
+  sed -e "s,$INSTALL/usr/lib/modules/$MODVER/,," > $INSTALL/usr/lib/modules/$MODVER/modules.order
+$ROOT/$TOOLCHAIN/bin/depmod -b $INSTALL/usr $MODVER 2> /dev/null
 
 # strip kernel modules
 if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm"  ]; then
   export PATH=$ROOT/$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$PATH
   STRIP=aarch64-elf-strip
 fi
-for MOD in `find $INSTALL/lib/modules/ -type f -name *.ko`; do
+
+for MOD in `find $INSTALL/usr/lib/modules/ -type f -name *.ko`; do
   $STRIP --strip-debug $MOD
 done
 
@@ -276,16 +278,9 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
   rm -rf $TARGET_IMG/$IMAGE_NAME.img.gz
   if [ -n "$BOOTLOADER" ]; then
 
-    BOOTLOADER_DIR=""
-    if [ -z "$BOOTLOADER_DIR" -a -d $PROJECT_DIR/$PROJECT/packages ]; then
-      BOOTLOADER_DIR=`find $PROJECT_DIR/$PROJECT/packages -type d -name $BOOTLOADER 2>/dev/null`
-    fi
+    BOOTLOADER_DIR="$(get_pkg_directory "$BOOTLOADER")"
 
-    if [ -z "$BOOTLOADER_DIR" -o ! -d "$BOOTLOADER_DIR" ]; then
-      BOOTLOADER_DIR=`find $PACKAGES -type d -name $BOOTLOADER 2>/dev/null`
-    fi
-
-    if [ -d "$BOOTLOADER_DIR"/files ]; then
+    if [ -d $BOOTLOADER_DIR/files ]; then
       cp -R $BOOTLOADER_DIR/files/* $RELEASE_DIR
     fi
 
@@ -293,7 +288,7 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
       . $PROJECT_DIR/$PROJECT/devices/$DEVICE/bootloader/release
     elif [ -f $PROJECT_DIR/$PROJECT/bootloader/release ]; then
       . $PROJECT_DIR/$PROJECT/bootloader/release
-    elif [ -f "$BOOTLOADER_DIR"/release ]; then
+    elif [ -f $BOOTLOADER_DIR/release ]; then
       . $BOOTLOADER_DIR/release
     fi
   fi
@@ -483,8 +478,8 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
     # create System dir
     mkdir -p $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System
 
-    BOOTLOADER_DIR=`find $PACKAGES -type d -name $BOOTLOADER 2>/dev/null`
-    if [ -d "$BOOTLOADER_DIR"/files/3rdparty/bootloader/ ]; then
+    BOOTLOADER_DIR="$(get_pkg_directory "$BOOTLOADER")"
+    if [ -d $BOOTLOADER_DIR/files/3rdparty/bootloader/ ]; then
       cp -PR $BOOTLOADER_DIR/files/3rdparty/bootloader/* $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System
     fi
 

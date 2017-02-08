@@ -17,8 +17,7 @@
 ################################################################################
 
 PKG_NAME="mysql"
-PKG_VERSION="5.7.15"
-PKG_REV="1"
+PKG_VERSION="5.7.17"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="http://www.mysql.com"
@@ -58,6 +57,12 @@ PKG_CMAKE_OPTS_HOST="-DCMAKE_BUILD_TYPE=Release \
                      -DLOCAL_BOOST_DIR=$(get_build_dir boost) \
                      -DWITH_UNIT_TESTS=OFF \
                      -DWITH_ZLIB=bundled"
+
+if [ "$DEBUG" = yes -a "$TARGET_ARCH" = aarch64 ]; then
+  pre_configure_target() {
+    strip_lto
+  }
+fi
 
 make_host() {
   make comp_err

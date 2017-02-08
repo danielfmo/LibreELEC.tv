@@ -18,7 +18,6 @@
 
 PKG_NAME="systemd"
 PKG_VERSION="232"
-PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.freedesktop.org/wiki/Software/systemd"
@@ -34,8 +33,8 @@ PKG_AUTORECONF="yes"
 PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            ac_cv_have_decl_IFLA_BOND_AD_INFO=no \
                            ac_cv_have_decl_IFLA_BRPORT_UNICAST_FLOOD=no \
-                           ac_cv_path_MOUNT_PATH="/bin/mount"
-                           ac_cv_path_UMOUNT_PATH="/bin/umount"
+                           ac_cv_path_MOUNT_PATH="/usr/bin/mount"
+                           ac_cv_path_UMOUNT_PATH="/usr/bin/umount"
                            KMOD=/usr/bin/kmod \
                            --disable-nls \
                            --disable-dbus \
@@ -93,7 +92,7 @@ PKG_CONFIGURE_OPTS_TARGET="ac_cv_func_malloc_0_nonnull=yes \
                            --disable-manpages \
                            --disable-hibernate \
                            --disable-ldconfig \
-                           --enable-split-usr \
+                           --disable-split-usr \
                            --disable-tests \
                            --without-python \
                            --with-sysvinit-path= \

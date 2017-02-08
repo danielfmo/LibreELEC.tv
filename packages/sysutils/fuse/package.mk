@@ -18,7 +18,6 @@
 
 PKG_NAME="fuse"
 PKG_VERSION="2.9.7"
-PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/libfuse/libfuse/"
@@ -31,7 +30,8 @@ PKG_LONGDESC="FUSE provides a simple interface for userspace programs to export 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_CONFIGURE_OPTS_TARGET="--enable-lib \
+PKG_CONFIGURE_OPTS_TARGET="MOUNT_FUSE_PATH=/usr/sbin \
+                           --enable-lib \
                            --enable-util \
                            --disable-example \
                            --enable-mtab \

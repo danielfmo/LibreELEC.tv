@@ -18,7 +18,6 @@
 
 PKG_NAME="udevil"
 PKG_VERSION="0.4.4"
-PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/IgnorantGuru/udevil"
@@ -32,9 +31,9 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--disable-systemd \
-                           --with-mount-prog=/bin/mount \
-                           --with-umount-prog=/bin/umount \
-                           --with-losetup-prog=/sbin/losetup \
+                           --with-mount-prog=/usr/bin/mount \
+                           --with-umount-prog=/usr/bin/umount \
+                           --with-losetup-prog=/usr/sbin/losetup \
                            --with-setfacl-prog=/usr/bin/setfacl"
 
 makeinstall_target() {

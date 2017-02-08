@@ -17,8 +17,7 @@
 ################################################################################
 
 PKG_NAME="libXi"
-PKG_VERSION="1.7.6"
-PKG_REV="1"
+PKG_VERSION="1.7.8"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="http://www.x.org/"

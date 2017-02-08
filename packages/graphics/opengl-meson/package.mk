@@ -17,7 +17,6 @@
 ################################################################################
 
 PKG_NAME="opengl-meson"
-PKG_REV="1"
 PKG_ARCH="arm aarch64"
 PKG_LICENSE="nonfree"
 PKG_SITE="http://openlinux.amlogic.com:8000/download/ARM/filesystem/"
@@ -30,9 +29,9 @@ case $MESON_FAMILY in
     ;;
   gxbb)
     if  [ "$TARGET_ARCH" = "arm"  ];then
-      PKG_VERSION="gxbb-r6p1-01rel0-armhf"
+      PKG_VERSION="8-r5p1-01rel0-armhf"
     else
-      PKG_VERSION="gxbb-r6p1-01rel0"
+      PKG_VERSION="gxbb-r5p1-01rel0"
     fi
     ;;
 esac
