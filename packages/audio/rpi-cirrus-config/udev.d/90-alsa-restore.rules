@@ -1,5 +1,5 @@
 ################################################################################
-#      This file is part of LibreELEC - https://LibreELEC.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -16,36 +16,17 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="repository.linuxserver.docker"
-PKG_VERSION="9.0"
-PKG_REV="101"
-PKG_ARCH="any"
-PKG_ADDON_PROJECTS="Generic RPi RPi2 imx6 WeTek_Hub WeTek_Play_2 Odroid_C2"
-PKG_LICENSE="GPL"
-PKG_SITE="https://linuxserver.io"
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain xmlstarlet:host"
-PKG_SECTION=""
-PKG_SHORTDESC="LinuxServer.io docker add-on repository"
-PKG_LONGDESC="LinuxServer.io docker add-on repository"
-PKG_AUTORECONF="no"
+# When a sound device is detected, restore the volume settings
+SUBSYSTEM=="sound", KERNEL=="controlC*", NAME="snd/%k", ACTION=="add", GOTO="alsa_restore_go"
+GOTO="alsa_restore_end"
 
-PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="LinuxServer.io Repository"
-PKG_ADDON_TYPE="xbmc.addon.repository"
+LABEL="alsa_restore_go"
 
+# Separate config-script for RPi-Cirrus card
+DRIVERS=="snd-rpi-cirrus", RUN+="rpi-cirrus-config", GOTO="alsa_restore_end"
 
-make_target() {
-  $SED -e "s|@PKG_VERSION@|$PKG_VERSION|g" \
-       -e "s|@PKG_REV@|$PKG_REV|g" \
-       -i addon.xml
-}
+# Default config-script for all other cards
+RUN+="soundconfig %k"
 
-makeinstall_target() {
-  : # nop
-}
+LABEL="alsa_restore_end"
 
-addon() {
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID
-  cp -R $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID
-}
