@@ -17,11 +17,11 @@
 ################################################################################
 
 PKG_NAME="pycrypto"
-PKG_VERSION="7acba5f"
+PKG_VERSION="2.6.1"
 PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://www.dlitz.net/software/pycrypto/"
-PKG_URL="https://github.com/dlitz/pycrypto/archive/$PKG_VERSION.tar.gz" 
+PKG_URL="http://pypi.python.org/packages/source/p/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
 PKG_SECTION="python/security"
 PKG_SHORTDESC="PyCrypto - The Python Cryptography Toolkit"
