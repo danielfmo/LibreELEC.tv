@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="inputstream.adaptive"
-PKG_VERSION="a347296"
+PKG_VERSION="7175ed1"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
 PKG_URL="https://github.com/liberty-developer/inputstream.adaptive/archive/$PKG_VERSION.tar.gz"
@@ -46,10 +46,10 @@ post_makeinstall_target() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_MODULE_PATH=$SYSROOT_PREFIX/usr/lib/kodi \
         -DCMAKE_PREFIX_PATH=$SYSROOT_PREFIX/usr \
-        $ROOT/$PKG_BUILD/wvdecrypter
+        $PKG_BUILD/wvdecrypter
     make
 
-  cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/wv/libssd_wv.so $INSTALL/usr/lib
+  cp -P $PKG_BUILD/.$TARGET_NAME/wv/libssd_wv.so $INSTALL/usr/lib
  }
 
 addon() {
