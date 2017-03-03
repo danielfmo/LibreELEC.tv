@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="kodi"
-PKG_VERSION="f1ce039"
+PKG_VERSION="e234194"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
-PKG_URL="https://github.com/xbmc/xbmc/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="xbmc-$PKG_VERSION*"
+PKG_URL="https://github.com/FernetMenta/kodi-agile/archive/$PKG_VERSION.tar.gz"
+PKG_SOURCE_DIR="kodi-agile-$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain JsonSchemaBuilder:host TexturePacker:host xmlstarlet:host Python zlib systemd pciutils lzo pcre swig:host libass curl fontconfig fribidi tinyxml libjpeg-turbo freetype libcdio taglib libxml2 libxslt yajl sqlite ffmpeg crossguid giflib libdvdnav libhdhomerun"
 PKG_SECTION="mediacenter"
 PKG_SHORTDESC="kodi: Kodi Mediacenter"
@@ -226,7 +226,6 @@ PKG_CMAKE_OPTS_TARGET="-DNATIVEPREFIX=$TOOLCHAIN \
                        $KODI_OPENMAX \
                        $KODI_VDPAU \
                        $KODI_VAAPI \
-                       $KODI_JOYSTICK \
                        $KODI_CEC \
                        $KODI_XORG \
                        $KODI_SAMBA \
