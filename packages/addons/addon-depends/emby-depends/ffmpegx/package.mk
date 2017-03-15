@@ -96,6 +96,7 @@ configure_target() {
     --extra-libs="$FFMPEG_LIBS" \
     --extra-version="x" \
     --enable-pic \
+    --enable-nonfree \
     \
     `#Advanced options` \
     $FFMPEG_ARM_AO \
