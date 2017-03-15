@@ -1,0 +1,198 @@
+diff --git a/xbmc/addons/Service.cpp b/xbmc/addons/Service.cpp
+index c2aa320..dca70cc 100644
+--- a/xbmc/addons/Service.cpp
++++ b/xbmc/addons/Service.cpp
+@@ -66,7 +66,7 @@ bool CService::Stop()
+   {
+ #ifdef HAS_PYTHON
+   case PYTHON:
+-    ret = CScriptInvocationManager::GetInstance().Stop(Type(ADDON_SERVICE)->LibPath());
++    ret = CScriptInvocationManager::GetInstance().Stop(Type(ADDON_SERVICE)->LibPath(), false, true);
+     break;
+ #endif
+ 
+diff --git a/xbmc/interfaces/generic/ILanguageInvoker.cpp b/xbmc/interfaces/generic/ILanguageInvoker.cpp
+index 7e37cf3..11c0a4d 100644
+--- a/xbmc/interfaces/generic/ILanguageInvoker.cpp
++++ b/xbmc/interfaces/generic/ILanguageInvoker.cpp
+@@ -41,9 +41,9 @@ bool ILanguageInvoker::Execute(const std::string &script, const std::vector<std:
+   return execute(script, arguments);
+ }
+ 
+-bool ILanguageInvoker::Stop(bool abort /* = false */)
++bool ILanguageInvoker::Stop(bool wait /* = false */, bool abort /* = false */)
+ {
+-  return stop(abort);
++  return stop(wait, abort);
+ }
+ 
+ bool ILanguageInvoker::IsActive() const
+diff --git a/xbmc/interfaces/generic/ILanguageInvoker.h b/xbmc/interfaces/generic/ILanguageInvoker.h
+index 9afe499..44635b3 100644
+--- a/xbmc/interfaces/generic/ILanguageInvoker.h
++++ b/xbmc/interfaces/generic/ILanguageInvoker.h
+@@ -44,7 +44,7 @@ public:
+   virtual ~ILanguageInvoker();
+ 
+   virtual bool Execute(const std::string &script, const std::vector<std::string> &arguments = std::vector<std::string>());
+-  virtual bool Stop(bool abort = false);
++  virtual bool Stop(bool wait = false, bool abort = false);
+   virtual bool IsStopping() const;
+ 
+   void SetId(int id) { m_id = id; }
+@@ -59,7 +59,7 @@ protected:
+   friend class CLanguageInvokerThread;
+ 
+   virtual bool execute(const std::string &script, const std::vector<std::string> &arguments) = 0;
+-  virtual bool stop(bool abort) = 0;
++  virtual bool stop(bool wait, bool abort) = 0;
+ 
+   virtual void pulseGlobalEvent();
+   virtual bool onExecutionInitialized();
+diff --git a/xbmc/interfaces/generic/LanguageInvokerThread.cpp b/xbmc/interfaces/generic/LanguageInvokerThread.cpp
+index fcdd063..a7d633c 100644
+--- a/xbmc/interfaces/generic/LanguageInvokerThread.cpp
++++ b/xbmc/interfaces/generic/LanguageInvokerThread.cpp
+@@ -30,7 +30,7 @@ CLanguageInvokerThread::CLanguageInvokerThread(LanguageInvokerPtr invoker, CScri
+ 
+ CLanguageInvokerThread::~CLanguageInvokerThread()
+ {
+-  Stop(true);
++  Stop(true, false);
+ }
+ 
+ InvokerState CLanguageInvokerThread::GetState()
+@@ -53,7 +53,7 @@ bool CLanguageInvokerThread::execute(const std::string &script, const std::vecto
+   return true;
+ }
+ 
+-bool CLanguageInvokerThread::stop(bool wait)
++bool CLanguageInvokerThread::stop(bool wait, bool abort)
+ {
+   if (m_invoker == NULL)
+     return false;
+@@ -65,7 +65,7 @@ bool CLanguageInvokerThread::stop(bool wait)
+   if (m_invoker->GetState() < InvokerStateDone)
+   {
+     // stop the language-specific invoker
+-    result = m_invoker->Stop(wait);
++    result = m_invoker->Stop(wait, abort);
+     // stop the thread
+     CThread::StopThread(wait);
+   }
+diff --git a/xbmc/interfaces/generic/LanguageInvokerThread.h b/xbmc/interfaces/generic/LanguageInvokerThread.h
+index 65a7765..5917933 100644
+--- a/xbmc/interfaces/generic/LanguageInvokerThread.h
++++ b/xbmc/interfaces/generic/LanguageInvokerThread.h
+@@ -37,7 +37,7 @@ public:
+ 
+ protected:
+   virtual bool execute(const std::string &script, const std::vector<std::string> &arguments);
+-  virtual bool stop(bool wait);
++  virtual bool stop(bool wait, bool abort) override;
+ 
+   virtual void OnStartup();
+   virtual void Process();
+diff --git a/xbmc/interfaces/generic/ScriptInvocationManager.cpp b/xbmc/interfaces/generic/ScriptInvocationManager.cpp
+index d18891a..729a82a 100644
+--- a/xbmc/interfaces/generic/ScriptInvocationManager.cpp
++++ b/xbmc/interfaces/generic/ScriptInvocationManager.cpp
+@@ -110,7 +110,7 @@ void CScriptInvocationManager::Uninitialize()
+   for (std::vector<LanguageInvokerThread>::iterator it = tempList.begin(); it != tempList.end(); ++it)
+   {
+     if (!it->done)
+-      it->thread->Stop(true);
++      it->thread->Stop(true, false);
+   }
+   tempList.clear();
+ 
+@@ -292,7 +292,7 @@ int CScriptInvocationManager::ExecuteSync(const std::string &script, LanguageInv
+   return 0;
+ }
+ 
+-bool CScriptInvocationManager::Stop(int scriptId, bool wait /* = false */)
++bool CScriptInvocationManager::Stop(int scriptId, bool wait /* = false */, bool abort /* = false */)
+ {
+   if (scriptId < 0)
+     return false;
+@@ -302,10 +302,10 @@ bool CScriptInvocationManager::Stop(int scriptId, bool wait /* = false */)
+   if (invokerThread == NULL)
+     return false;
+ 
+-  return invokerThread->Stop(wait);
++  return invokerThread->Stop(wait, abort);
+ }
+ 
+-bool CScriptInvocationManager::Stop(const std::string &scriptPath, bool wait /* = false */)
++bool CScriptInvocationManager::Stop(const std::string &scriptPath, bool wait /* = false */, bool abort /* = false */)
+ {
+   if (scriptPath.empty())
+     return false;
+@@ -315,7 +315,7 @@ bool CScriptInvocationManager::Stop(const std::string &scriptPath, bool wait /*
+   if (script == m_scriptPaths.end())
+     return false;
+ 
+-  return Stop(script->second, wait);
++  return Stop(script->second, wait, abort);
+ }
+ 
+ bool CScriptInvocationManager::IsRunning(int scriptId) const
+diff --git a/xbmc/interfaces/generic/ScriptInvocationManager.h b/xbmc/interfaces/generic/ScriptInvocationManager.h
+index 325a038..630a342 100644
+--- a/xbmc/interfaces/generic/ScriptInvocationManager.h
++++ b/xbmc/interfaces/generic/ScriptInvocationManager.h
+@@ -100,8 +100,8 @@ public:
+   * \return -1 if an error occurred, 0 if the script terminated or ETIMEDOUT if the given timeout expired
+   */
+   int ExecuteSync(const std::string &script, LanguageInvokerPtr languageInvoker, const ADDON::AddonPtr &addon = ADDON::AddonPtr(), const std::vector<std::string> &arguments = std::vector<std::string>(), uint32_t timeoutMs = 0, bool waitShutdown = false);
+-  bool Stop(int scriptId, bool wait = false);
+-  bool Stop(const std::string &scriptPath, bool wait = false);
++  bool Stop(int scriptId, bool wait = false, bool abort = false);
++  bool Stop(const std::string &scriptPath, bool wait = false, bool abort = false);
+ 
+   bool IsRunning(int scriptId) const;
+   bool IsRunning(const std::string& scriptPath) const;
+diff --git a/xbmc/interfaces/python/PythonInvoker.cpp b/xbmc/interfaces/python/PythonInvoker.cpp
+index 8c1fdf9..0699ce1 100644
+--- a/xbmc/interfaces/python/PythonInvoker.cpp
++++ b/xbmc/interfaces/python/PythonInvoker.cpp
+@@ -111,7 +111,7 @@ CPythonInvoker::~CPythonInvoker()
+   if (GetState() < InvokerStateDone)
+     CLog::Log(LOGDEBUG, "CPythonInvoker(%d): waiting for python thread \"%s\" to stop",
+       GetId(), (!m_sourceFile.empty() ? m_sourceFile.c_str() : "unknown script"));
+-  Stop(true);
++  Stop(true, true);
+   pulseGlobalEvent();
+ 
+   if (m_argv != NULL)
+@@ -431,7 +431,7 @@ void CPythonInvoker::executeScript(void *fp, const std::string &script, void *mo
+   PyRun_FileExFlags(static_cast<FILE*>(fp), script.c_str(), m_Py_file_input, static_cast<PyObject*>(moduleDict), static_cast<PyObject*>(moduleDict), 1, NULL);
+ }
+ 
+-bool CPythonInvoker::stop(bool abort)
++bool CPythonInvoker::stop(bool wait, bool abort)
+ {
+   CSingleLock lock(m_critical);
+   m_stop = true;
+@@ -447,7 +447,7 @@ bool CPythonInvoker::stop(bool abort)
+     PyThreadState* old = PyThreadState_Swap((PyThreadState*)m_threadState);
+ 
+     //tell xbmc.Monitor to call onAbortRequested()
+-    if (m_addon != NULL)
++    if (m_addon != NULL && abort)
+       onAbortRequested();
+ 
+     PyObject *m;
+diff --git a/xbmc/interfaces/python/PythonInvoker.h b/xbmc/interfaces/python/PythonInvoker.h
+index 11fb396..7973ba4 100644
+--- a/xbmc/interfaces/python/PythonInvoker.h
++++ b/xbmc/interfaces/python/PythonInvoker.h
+@@ -43,7 +43,7 @@ protected:
+   // implementation of ILanguageInvoker
+   virtual bool execute(const std::string &script, const std::vector<std::string> &arguments);
+   virtual void executeScript(void *fp, const std::string &script, void *module, void *moduleDict);
+-  virtual bool stop(bool abort);
++  virtual bool stop(bool wait, bool abort);
+   virtual void onExecutionFailed();
+ 
+   // custom virtual methods
