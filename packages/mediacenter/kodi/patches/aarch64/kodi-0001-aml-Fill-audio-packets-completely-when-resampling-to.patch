@@ -9,13 +9,13 @@ Subject: [PATCH 1/5] [aml] Fill audio packets completely when resampling to
  1 file changed, 4 insertions(+)
 
 diff --git a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEBuffer.cpp b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEBuffer.cpp
-index 3ca667c..304cff8 100644
+index eba8c1a50f..ab94502060 100644
 --- a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEBuffer.cpp
 +++ b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAEBuffer.cpp
-@@ -162,7 +162,11 @@ CActiveAEBufferPoolResample::CActiveAEBufferPoolResample(AEAudioFormat inputForm
+@@ -160,7 +160,11 @@ CActiveAEBufferPoolResample::CActiveAEBufferPoolResample(AEAudioFormat inputForm
      m_inputFormat.m_channelLayout += AE_CH_FC;
    }
-   m_resampler = NULL;
+   m_resampler = nullptr;
 +#ifdef HAS_LIBAMCODEC
 +  m_fillPackets = true;
 +#else
@@ -23,7 +23,7 @@ index 3ca667c..304cff8 100644
 +#endif
    m_drain = false;
    m_empty = true;
-   m_procSample = NULL;
+   m_procSample = nullptr;
 -- 
 1.7.10.4
 
