@@ -41,6 +41,9 @@ load-module module-rescue-streams
 ### Make sure we always have a sink around, even if it is a null sink.
 load-module module-always-sink
 
+load-module module-udev-detect
+load-module module-combine-sink sink_name=combined
+
 ### Automatically suspend sinks/sources that become idle for too long
 load-module module-suspend-on-idle
 
@@ -66,8 +69,4 @@ load-module module-position-event-sounds
 .endif
 
 load-module module-native-protocol-tcp auth-anonymous=1
-#load-module module-switch-on-connect
-
-load-module module-combine-sink sink_name=combined
-load-module module-udev-detect
-set-default-sink combined
+load-module module-switch-on-connect
