@@ -1,0 +1,58 @@
+From e29990c24739fe708d66ffa9e8be3840a7dcbf40 Mon Sep 17 00:00:00 2001
+From: kszaq <kszaquitto@gmail.com>
+Date: Fri, 7 Apr 2017 15:03:01 +0200
+Subject: [PATCH] drivers/amlogic/amports/vvc1: don't consdier PTS valid if
+ offset is smaller than for previous frame
+
+---
+ drivers/amlogic/amports/vvc1.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/amlogic/amports/vvc1.c b/drivers/amlogic/amports/vvc1.c
+index f26a297..31abb6c 100644
+--- a/drivers/amlogic/amports/vvc1.c
++++ b/drivers/amlogic/amports/vvc1.c
+@@ -125,6 +125,7 @@ static u32 next_pts;
+ static u64 next_pts_us64;
+ static u32 next_IP_pts;
+ static u64 next_IP_pts_us64;
++static unsigned int last_offset;
+ 
+ #ifdef DEBUG_PTS
+ static u32 pts_hit, pts_missed, pts_i_hit, pts_i_missed;
+@@ -293,7 +294,6 @@ static irqreturn_t vvc1_isr(int irq, void *dev_id)
+ 		if (pts_by_offset) {
+ 			offset = READ_VREG(VC1_OFFSET_REG);
+ 			if (pts_lookup_offset_us64(PTS_TYPE_VIDEO, offset, &pts, 0, &pts_us64) == 0) {
+-				pts_valid = 1;
+ 				if (keyframe_pts_only)
+ 				{
+ 					//pr_info("PT:%d rpc:%d pts64:%lld\n", picture_type , repeat_count, pts_us64);
+@@ -312,7 +312,14 @@ static irqreturn_t vvc1_isr(int irq, void *dev_id)
+ 						pts_us64 = next_IP_pts_us64;
+ 						next_IP_pts_us64 = 0;
+ 					}
++
++					if (last_offset < offset)
++						pts_valid = 1;
++
++					last_offset = offset;
+ 				}
++				else
++					pts_valid = 1;
+ #ifdef DEBUG_PTS
+ 				pts_hit++;
+ #endif
+@@ -887,6 +894,8 @@ static void vvc1_local_init(void)
+ 	next_IP_pts = 0;
+ 	next_IP_pts_us64 = 0;
+ 
++	last_offset = 0;
++
+ 	saved_resolution = 0;
+ 	frame_width = frame_height = frame_dur = 0;
+ #ifdef DEBUG_PTS
+-- 
+1.8.3.1
+
+
