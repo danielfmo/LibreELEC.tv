@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016 Team LibreELEC
+#      Copyright (C) 2009-2016 Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,27 +16,42 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="inputstream.adaptive"
-PKG_VERSION="f23ba39"
+PKG_NAME="screensaver.shadertoy"
+PKG_VERSION="f576d4b"
+PKG_REV="1"
+PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.kodi.tv"
-PKG_URL="https://github.com/liberty-developer/inputstream.adaptive/archive/$PKG_VERSION.tar.gz"
+PKG_SITE="https://github.com/popcornmix/screensaver.shadertoy"
+PKG_URL="https://github.com/popcornmix/screensaver.shadertoy/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
 PKG_SECTION=""
-PKG_SHORTDESC="inputstream.adaptive"
-PKG_LONGDESC="inputstream.adaptive"
+PKG_SHORTDESC="screensaver.shadertoy"
+PKG_LONGDESC="screensaver.shadertoy"
+PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
+PKG_ADDON_TYPE="xbmc.ui.screensaver"
 
-post_makeinstall_target() {
-  mkdir -p wv && cd wv
-    cmake -DCMAKE_TOOLCHAIN_FILE=$CMAKE_CONF \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DDECRYPTERPATH=special://home/cdm \
-        $ROOT/$PKG_BUILD/wvdecrypter
-    make
+if [ ! "$OPENGL" = "no" ]; then
+# for OpenGL (GLX) support
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGL glew"
+fi
 
-  cp -P $ROOT/$PKG_BUILD/.$TARGET_NAME/wv/libssd_wv.so $INSTALL/usr/lib
+if [ "$OPENGLES_SUPPORT" = yes ]; then
+# for OpenGL-ES support
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET $OPENGLES"
+fi
+
+pre_configure_target() {
+  if [ "$KODIPLAYER_DRIVER" = bcm2835-firmware ]; then
+    BCM2835_INCLUDES="-I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads/ \
+                      -I$SYSROOT_PREFIX/usr/include/interface/vmcs_host/linux"
+    export CFLAGS="$CFLAGS $BCM2835_INCLUDES"
+    export CXXFLAGS="$CXXFLAGS $BCM2835_INCLUDES"
+  elif [ "$KODIPLAYER_DRIVER" = libfslvpuwrap ]; then
+    export CFLAGS="$CFLAGS -DLINUX -DEGL_API_FB"
+    export CXXFLAGS="$CXXFLAGS -DLINUX -DEGL_API_FB"
+  fi
 }
 
 addon() {
@@ -45,7 +60,4 @@ addon() {
 
   ADDONSO=$(xmlstarlet sel -t -v "/addon/extension/@library_linux" $ADDON_BUILD/$PKG_ADDON_ID/addon.xml)
   cp -L $PKG_BUILD/.install_pkg/usr/lib/$MEDIACENTER/addons/$PKG_NAME/$ADDONSO $ADDON_BUILD/$PKG_ADDON_ID/
-
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID/lib/
-  cp -P $PKG_BUILD/.$TARGET_NAME/wv/libssd_wv.so $ADDON_BUILD/$PKG_ADDON_ID/lib
 }
