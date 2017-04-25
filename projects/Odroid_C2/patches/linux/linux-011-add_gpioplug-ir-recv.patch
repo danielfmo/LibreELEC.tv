@@ -1,14 +1,14 @@
-From c598e98c785c6233d142764d630667c352522e20 Mon Sep 17 00:00:00 2001
+From 8b7d2ba8e7f5adc611b6e7e90fb75137729dbd67 Mon Sep 17 00:00:00 2001
 From: "charles.park" <charles.park@hardkernel.com>
 Date: Sun, 10 Apr 2016 12:12:38 +0900
-Subject: [PATCH 1/4] ODROID-C2 : gpio sysfs irq implement.
+Subject: [PATCH 1/5] ODROID-C2 : gpio sysfs irq implement.
 
 Change-Id: I1391eccf4453fb358610b52fcd0beb4cfc3ea62f
 ---
- drivers/amlogic/pinctrl/pinctrl_amlogic.c | 128 ++++++++++++++++++++++++++++--
+ drivers/amlogic/pinctrl/pinctrl_amlogic.c | 126 ++++++++++++++++++++++++++++--
  drivers/gpio/gpiolib.c                    |  54 ++++++++++++-
  include/linux/amlogic/pinctrl_amlogic.h   |   6 ++
- 3 files changed, 180 insertions(+), 8 deletions(-)
+ 3 files changed, 179 insertions(+), 7 deletions(-)
  mode change 100644 => 100755 drivers/amlogic/pinctrl/pinctrl_amlogic.c
  mode change 100644 => 100755 drivers/gpio/gpiolib.c
  mode change 100644 => 100755 include/linux/amlogic/pinctrl_amlogic.h
@@ -16,7 +16,7 @@ Change-Id: I1391eccf4453fb358610b52fcd0beb4cfc3ea62f
 diff --git a/drivers/amlogic/pinctrl/pinctrl_amlogic.c b/drivers/amlogic/pinctrl/pinctrl_amlogic.c
 old mode 100644
 new mode 100755
-index e34231dbafd4..550aef51e239
+index e34231dbafd4..8335afd15a3a
 --- a/drivers/amlogic/pinctrl/pinctrl_amlogic.c
 +++ b/drivers/amlogic/pinctrl/pinctrl_amlogic.c
 @@ -895,6 +895,13 @@ static int meson_gpio_set_pullup_down(struct gpio_chip *chip,
@@ -171,12 +171,10 @@ index e34231dbafd4..550aef51e239
  struct pinctrl_dev *pctl;
  static int meson_gpiolib_register(struct amlogic_pmx  *pc)
  {
-@@ -978,7 +1091,10 @@ static int meson_gpiolib_register(struct amlogic_pmx  *pc)
- 		domain->chip.set = meson_gpio_set;
+@@ -979,6 +1092,9 @@ static int meson_gpiolib_register(struct amlogic_pmx  *pc)
  		domain->chip.set_pullup_down = meson_gpio_set_pullup_down;
  		domain->chip.set_gpio_to_irq = meson_gpio_to_irq;
--		domain->chip.mask_gpio_irq = meson_gpio_mask_irq;
-+		//domain->chip.mask_gpio_irq = meson_gpio_mask_irq;
+ 		domain->chip.mask_gpio_irq = meson_gpio_mask_irq;
 +#if defined(CONFIG_ARCH_MESON64_ODROIDC2)
 +		domain->chip.to_irq = meson_to_irq;
 +#endif
@@ -294,10 +292,10 @@ index 64118a1cae5d..561ca1b472c7
 2.11.0
 
 
-From 82f4157318a5752aee0930d52f62afd5f1236673 Mon Sep 17 00:00:00 2001
+From 345b73f1093c95f80337e5e203c55c05aff126b8 Mon Sep 17 00:00:00 2001
 From: Joy Cho <joy.cho@hardkernel.com>
 Date: Thu, 12 May 2016 10:49:41 +0900
-Subject: [PATCH 2/4] ODROID-C2: Apply meson_fix_irqbank to find an available
+Subject: [PATCH 2/5] ODROID-C2: Apply meson_fix_irqbank to find an available
  gpioirq bank
 
 Change-Id: I76a47610feda467007aa880a4dee428d8fd94383
@@ -307,7 +305,7 @@ Change-Id: I76a47610feda467007aa880a4dee428d8fd94383
  2 files changed, 22 insertions(+)
 
 diff --git a/drivers/amlogic/pinctrl/pinctrl_amlogic.c b/drivers/amlogic/pinctrl/pinctrl_amlogic.c
-index 550aef51e239..162996b233ce 100755
+index 8335afd15a3a..acea12dee894 100755
 --- a/drivers/amlogic/pinctrl/pinctrl_amlogic.c
 +++ b/drivers/amlogic/pinctrl/pinctrl_amlogic.c
 @@ -1008,6 +1008,27 @@ static int meson_to_irq(struct gpio_chip *chip,
@@ -354,10 +352,10 @@ index 561ca1b472c7..7f340d1af123 100755
 2.11.0
 
 
-From edba11289fffcd68594dfca0ed1a297bcd3caa00 Mon Sep 17 00:00:00 2001
+From 39bd7b214393420aa97c4b05a319ef5c2253a330 Mon Sep 17 00:00:00 2001
 From: Joy Cho <joy.cho@hardkernel.com>
 Date: Thu, 12 May 2016 10:43:39 +0900
-Subject: [PATCH 3/4] media/rc: Add new IR receiver to specify gpio number for
+Subject: [PATCH 3/5] media/rc: Add new IR receiver to specify gpio number for
  IR sensor
 
 This driver helps to register the device of GPIO based IR receiver, "gpio-ir-recv"
@@ -534,10 +532,10 @@ index 0142736a59db..6342d5ebf323 100644
 2.11.0
 
 
-From 2582210e25ec1331943cba3539a1ae16ad1adbc7 Mon Sep 17 00:00:00 2001
+From 5744e5375067f5088f69785a9c42b07f7ca5d5e3 Mon Sep 17 00:00:00 2001
 From: Joy Cho <joy.cho@hardkernel.com>
 Date: Thu, 12 May 2016 10:58:17 +0900
-Subject: [PATCH 4/4] ODROID-C2: Adjust request irq routine based on meson gpio
+Subject: [PATCH 4/5] ODROID-C2: Adjust request irq routine based on meson gpio
  irq
 
 Change-Id: Ia6583a2cd7d881c8459e17d3edd76ae2dad927e4
@@ -620,6 +618,42 @@ index 3e4c632d3b85..321195445235 100644
  	rc_unregister_device(gpio_dev->rcdev);
  	gpio_free(gpio_dev->gpio_nr);
  	kfree(gpio_dev);
+-- 
+2.11.0
+
+
+From a4a5322a6e8160624c433c1f958e5c88d75bcb5d Mon Sep 17 00:00:00 2001
+From: "charles.park" <charles.park@hardkernel.com>
+Date: Tue, 12 Apr 2016 11:36:57 +0900
+Subject: [PATCH 5/5] ODROID-C2 : modified for gpio sysfs irq.
+
+Change-Id: If7218c92a33908321303e36443f5243ad48dc76f
+---
+ arch/arm64/boot/dts/amlogic/mesongxbb.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+ mode change 100644 => 100755 arch/arm64/boot/dts/amlogic/mesongxbb.dtsi
+
+diff --git a/arch/arm64/boot/dts/amlogic/mesongxbb.dtsi b/arch/arm64/boot/dts/amlogic/mesongxbb.dtsi
+old mode 100644
+new mode 100755
+index 1ea64ff88917..ad847fc4c69d
+--- a/arch/arm64/boot/dts/amlogic/mesongxbb.dtsi
++++ b/arch/arm64/boot/dts/amlogic/mesongxbb.dtsi
+@@ -181,6 +181,14 @@
+ 		#address-cells = <2>;
+ 		#size-cells = <2>;
+ 		reg = <0x0 0xc1109880 0x0 0x10>;
++		interrupts = <	0 64 1	 /* gpio irq 0 = 64 + 32 = 96 */
++				0 65 1
++				0 66 1
++				0 67 1
++				0 68 1
++				0 69 1
++				0 70 1
++				0 71 1>; /* gpio irq bank 7 = 71 + 32 = 103 */
+ 		ranges;
+ 		gpio: banks@c11080b0 {
+ 			reg = <0x0 0xc88344b0 0x0 0x28>,
 -- 
 2.11.0
 
