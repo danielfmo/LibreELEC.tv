@@ -40,15 +40,22 @@ make_target() {
   make untar
 
   # copy config file
-  if [ "$PROJECT" = Generic ] || [ "$PROJECT" = Virtual ]; then
-    if [ -f $PKG_DIR/config/generic.config ]; then
-      cp $PKG_DIR/config/generic.config v4l/.config
-    fi
-  else
-    if [ -f $PKG_DIR/config/usb.config ]; then
-      cp $PKG_DIR/config/usb.config v4l/.config
-    fi
-  fi
+  case "$LINUX" in
+    amlogic-*)
+      cp $PKG_DIR/config/amlogic.config v4l/.config
+      ;;
+    *)
+      if [ "$PROJECT" = Generic ] || [ "$PROJECT" = Virtual ]; then
+        if [ -f $PKG_DIR/config/generic.config ]; then
+          cp $PKG_DIR/config/generic.config v4l/.config
+        fi
+      else
+        if [ -f $PKG_DIR/config/usb.config ]; then
+          cp $PKG_DIR/config/usb.config v4l/.config
+        fi
+      fi
+      ;;
+  esac
 
   # add menuconfig to edit .config
   make VER=$KERNEL_VER SRCDIR=$(kernel_path)
