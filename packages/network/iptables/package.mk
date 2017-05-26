@@ -31,3 +31,15 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_TARGET="--with-kernel=$(kernel_path)"
+
+
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/config
+  cp -PR $PKG_DIR/config/* $INSTALL/usr/config
+}
+
+post_install() {
+  enable_service iptables.service
+  enable_service ip6tables.service
+}
+

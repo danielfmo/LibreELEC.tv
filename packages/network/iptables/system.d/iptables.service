@@ -1,0 +1,15 @@
+[Unit]
+Description=IPTABLES Packet Filtering
+ConditionPathExists=/storage/.config/iptables/rules.v4
+Before=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/iptables-restore /storage/.config/iptables/rules.v4
+ExecReload=/usr/sbin/iptables-restore /storage/.config/iptables/rules.v4
+ExecStop=/usr/sbin/iptables-flush
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
