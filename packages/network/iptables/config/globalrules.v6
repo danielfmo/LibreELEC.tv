@@ -1,0 +1,29 @@
+*mangle
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+COMMIT
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT DROP [0:0]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+# Allow private subnets 
+# Old style interface names e.g. eth0, eth1 ...
+-A INPUT -i eth+ -s fc00::/7 -m state --state NEW -j ACCEPT
+# Predictable network interface device names for Ethernet e.g. ens9f0, enp1s0f1
+-A INPUT -i en+ -s fc00::/7 -m state --state NEW -j ACCEPT
+# Predictable network interface device names for Wifi + old style names e.g. wlan0, wlp1s0
+-A INPUT -i wl+ -s fc00::/7 -m state --state NEW -j ACCEPT
+-A OUTPUT -m state --state NEW -j ACCEPT
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+COMMIT

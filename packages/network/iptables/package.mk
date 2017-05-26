@@ -31,3 +31,21 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="yes"
 
 PKG_CONFIGURE_OPTS_TARGET="--with-kernel=$(kernel_path)"
+
+
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/config/iptables/
+    cp -PR $PKG_DIR/config/README $INSTALL/usr/config/iptables/
+
+  mkdir -p $INSTALL/etc/iptables/
+    cp -PR $PKG_DIR/config/globalrules.v4 $INSTALL/etc/iptables/
+    cp -PR $PKG_DIR/config/globalrules.v6 $INSTALL/etc/iptables/
+
+  mkdir -p $INSTALL/usr/lib/libreelec
+    cp $PKG_DIR/scripts/iptables_helper $INSTALL/usr/lib/libreelec
+}
+
+post_install() {
+  enable_service iptables.service
+}
+
