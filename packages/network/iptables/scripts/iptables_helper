@@ -1,0 +1,67 @@
+#!/bin/sh - 
+#===============================================================================
+# LICENCE: GNU GPL version 3
+#
+# iptables_helper is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This project is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#===============================================================================
+
+IPTABLES4="/usr/sbin/iptables"
+IPTABLES6="/usr/sbin/ip6tables"
+GLOBAL_RULES="/etc/iptables/globalrules.v"
+LOCAL_RULES="/storage/.config/iptables/localrules.v"
+
+restore() {
+  "$IPTABLES4-restore" "${GLOBAL_RULES}4"
+  if [ -e "${LOCAL_RULES}4" ];then
+    "$IPTABLES4-restore" "${LOCAL_RULES}4"
+  fi
+
+  "$IPTABLES6-restore" "${GLOBAL_RULES}6"
+  if [ -e "${LOCAL_RULES}6" ];then
+    "$IPTABLES6-restore" "${LOCAL_RULES}6"
+  fi
+}
+
+flush() {
+  $IPTABLES4 -F
+  $IPTABLES4 -X
+  $IPTABLES4 -t nat -F
+  $IPTABLES4 -t nat -X
+  $IPTABLES4 -t mangle -F
+  $IPTABLES4 -t mangle -X
+  $IPTABLES4 -P INPUT ACCEPT
+  $IPTABLES4 -P FORWARD ACCEPT
+  $IPTABLES4 -P OUTPUT ACCEPT
+
+  $IPTABLES6 -F
+  $IPTABLES6 -X
+  $IPTABLES6 -t nat -F
+  $IPTABLES6 -t nat -X
+  $IPTABLES6 -t mangle -F
+  $IPTABLES6 -t mangle -X
+  $IPTABLES6 -P INPUT ACCEPT
+  $IPTABLES6 -P FORWARD ACCEPT
+  $IPTABLES6 -P OUTPUT ACCEPT
+}
+
+if [ "$1" = "restore" ];then
+  restore
+elif [ "$1" = "flush" ];then
+  flush
+else
+  exit 1
+fi
+
+exit 0
