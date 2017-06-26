@@ -31,6 +31,12 @@ PKG_LONGDESC="DVB drivers that replace the version shipped with the kernel"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
+if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET gcc-linaro-aarch64-elf:host"
+  export PATH=$ROOT/$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$PATH
+  TARGET_PREFIX=aarch64-elf-
+fi
+
 pre_make_target() {
   export KERNEL_VER=$(get_module_dir)
   export LDFLAGS=""
@@ -40,15 +46,22 @@ make_target() {
   make untar
 
   # copy config file
-  if [ "$PROJECT" = Generic ] || [ "$PROJECT" = Virtual ]; then
-    if [ -f $PKG_DIR/config/generic.config ]; then
-      cp $PKG_DIR/config/generic.config v4l/.config
-    fi
-  else
-    if [ -f $PKG_DIR/config/usb.config ]; then
-      cp $PKG_DIR/config/usb.config v4l/.config
-    fi
-  fi
+  case "$LINUX" in
+    amlogic-*)
+      cp $PKG_DIR/config/amlogic.config v4l/.config
+      ;;
+    *)
+      if [ "$PROJECT" = Generic ] || [ "$PROJECT" = Virtual ]; then
+        if [ -f $PKG_DIR/config/generic.config ]; then
+          cp $PKG_DIR/config/generic.config v4l/.config
+        fi
+      else
+        if [ -f $PKG_DIR/config/usb.config ]; then
+          cp $PKG_DIR/config/usb.config v4l/.config
+        fi
+      fi
+      ;;
+  esac
 
   # add menuconfig to edit .config
   make VER=$KERNEL_VER SRCDIR=$(kernel_path)
