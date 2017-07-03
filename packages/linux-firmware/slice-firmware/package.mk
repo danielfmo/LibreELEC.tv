@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016 Team LibreELEC
+#      Copyright (C) 2016-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,23 +16,29 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="p7zip"
-PKG_VERSION="16.02"
-PKG_ARCH="any"
+PKG_NAME="slice-firmware"
+PKG_VERSION="0f463cc"
+PKG_ARCH="arm"
 PKG_LICENSE="GPL"
-PKG_SITE="http://p7zip.sourceforge.net/"
-PKG_URL="http://downloads.sourceforge.net/project/p7zip/p7zip/${PKG_VERSION}/p7zip_${PKG_VERSION}_src_all.tar.bz2"
-PKG_SOURCE_DIR="${PKG_NAME}_${PKG_VERSION}"
-PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="tools"
-PKG_SHORTDESC="p7zip is a port of 7za.exe for POSIX systems like Unix"
-PKG_LONGDESC="p7zip is a port of 7za.exe for POSIX systems like Unix"
+PKG_SITE="https://github.com/FiveNinjas/slice-firmware"
+PKG_URL="https://github.com/libreelec/slice-firmware/archive/$PKG_VERSION.tar.gz"
+PKG_DEPENDS_TARGET="toolchain dtc:host"
+PKG_SECTION="linux-firmware"
+PKG_SHORTDESC="BCM270x firmware related stuff for Slice"
+PKG_LONGDESC="BCM270x firmware related stuff for Slice"
+
+PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  make TARGET_CXX=$CXX TARGET_CC=$CC 7z 7za
+  if [ "$DEVICE" = "Slice3" ]; then
+    dtc -O dtb -I dts -o dt-blob.bin slice3-dt-blob.dts
+  elif [ "$DEVICE" = "Slice" ]; then
+    dtc -O dtb -I dts -o dt-blob.bin slice-dt-blob.dts
+  fi
 }
 
 makeinstall_target() {
-  : # nop
+  mkdir -p $INSTALL/usr/share/bootloader/
+    cp -a dt-blob.bin $INSTALL/usr/share/bootloader/
 }
