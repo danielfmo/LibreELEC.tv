@@ -29,9 +29,11 @@ PKG_SHORTDESC="The Device Tree Compiler"
 PKG_LONGDESC="The Device Tree Compiler"
 PKG_AUTORECONF="no"
 
-PKG_MAKE_OPTS_TARGET="dtc"
+PKG_MAKE_OPTS_TARGET="dtc fdtput fdtget"
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/bin
-    cp -P $PKG_BUILD/dtc $INSTALL/usr/bin
+  mkdir -p $INSTALL/usr/bin/
+    cp -P $PKG_BUILD/dtc $INSTALL/usr/bin/
+    cp -P $PKG_BUILD/fdtput $INSTALL/usr/bin/
+    cp -P $PKG_BUILD/fdtget $INSTALL/usr/bin/
 }

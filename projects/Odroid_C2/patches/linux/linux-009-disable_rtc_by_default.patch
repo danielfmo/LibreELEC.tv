@@ -1,0 +1,13 @@
+diff --git a/arch/arm64/boot/dts/meson64_odroidc2.dts b/arch/arm64/boot/dts/meson64_odroidc2.dts
+index 92c72aadc822..629684dc28cb 100644
+--- a/arch/arm64/boot/dts/meson64_odroidc2.dts
++++ b/arch/arm64/boot/dts/meson64_odroidc2.dts
+@@ -830,7 +830,7 @@
+ 
+     /* Hardkernel I2C RTC */
+     pcf8563: pcf8563@51    {
+-        status = "okay";
++        status = "disabled";
+         compatible = "nxp,pcf8563";
+         reg = <0x51>;
+         #clock-cells = <0>;
