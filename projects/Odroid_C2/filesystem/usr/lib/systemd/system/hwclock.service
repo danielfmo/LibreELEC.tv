@@ -2,7 +2,7 @@
 Description=hwclock
 [Service]
 Type=oneshot
-ExecStartPre=/usr/lib/libreelec/odroid-rtc
+ExecStartPre=/usr/lib/libreelec/odroid-rtc enable
 ExecStart=/sbin/hwclock --hctosys --utc
 ExecStop=/sbin/hwclock --systohc --utc
 [Install]
