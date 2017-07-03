@@ -1,0 +1,28 @@
+#!/bin/sh
+
+GET=$(/usr/bin/fdtget -t s "/flash/meson64_odroidc2.dtb" "/i2c@c1108500/pcf8563@51" "status")
+PUTOPT='-t s /flash/meson64_odroidc2.dtb /i2c@c1108500/pcf8563@51 status '
+
+remount() {
+    if [ -f "/flash/meson64_odroidc2.dtb" ]; then
+        mount -o remount,"$1" /flash
+    else
+	exit 1
+    fi
+}
+
+toggle_rtc() {
+  if ! [ "$GET" = $1 ];then
+      remount "rw"
+      /usr/bin/fdtput $PUTOPT "$1"
+      remount "ro"
+  fi
+}
+
+if [ "$1" = "disable" ];then
+    toggle_rtc "disabled"
+elif [ "$1" = "enable" ];then
+    toggle_rtc "okay"
+fi
+
+exit 0
