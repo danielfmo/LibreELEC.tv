@@ -38,11 +38,7 @@ configure_target() {
 }
 
 make_target() {
-<<<<<<< HEAD
-  export CARGO_HOME="$ROOT/$TOOLCHAIN/.cargo"
-=======
   export CARGO_HOME="$TOOLCHAIN/.cargo"
->>>>>>> a3ccf93bd1f8d9a81d0812f321a3032d09df7359
   export RUSTUP_HOME="$CARGO_HOME"
   export PATH="$CARGO_HOME/bin:$PATH"
   rm -rf "$CARGO_HOME"
