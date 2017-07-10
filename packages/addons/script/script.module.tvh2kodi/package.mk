@@ -17,7 +17,7 @@
 ################################################################################
 
 PKG_NAME="script.module.tvh2kodi"
-PKG_VERSION="fbf877d"
+PKG_VERSION="c4c3139"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
