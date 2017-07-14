@@ -1,18 +1,18 @@
-From faebee708dc7c24d177fa6b8874b3f1374a08e25 Mon Sep 17 00:00:00 2001
-From: MilhouseVH <milhouseVH.github@nmacleod.com>
-Date: Wed, 5 Jul 2017 15:58:57 +0100
-Subject: [PATCH] use a wrapper to setup systemd services
+From a18b49d91fd739ce97882270295c03500e4b0639 Mon Sep 17 00:00:00 2001
+From: Radostan Riedel <raybuntu@googlemail.com>
+Date: Fri, 14 Jul 2017 14:35:21 +0200
+Subject: [PATCH 1/1] [PATCH] use a wrapper to setup systemd services
 
 ---
- xbmc/addons/Addon.cpp | 35 +++++++++++++++++++++++++++++++++++
- xbmc/addons/Addon.h   |  2 ++
+ xbmc/addons/Addon.cpp | 36 ++++++++++++++++++++++++++++++++++++
+ xbmc/addons/Addon.h   |  1 +
  2 files changed, 37 insertions(+)
 
 diff --git a/xbmc/addons/Addon.cpp b/xbmc/addons/Addon.cpp
-index 639ee5c..7f205a7 100644
+index 45f42ad2e3..58730d535a 100644
 --- a/xbmc/addons/Addon.cpp
 +++ b/xbmc/addons/Addon.cpp
-@@ -396,18 +396,36 @@ AddonVersion CAddon::GetDependencyVersion(const std::string &dependencyID) const
+@@ -397,13 +397,32 @@ AddonVersion CAddon::GetDependencyVersion(const std::string &dependencyID) const
    return AddonVersion("0.0.0");
  }
  
@@ -23,40 +23,36 @@ index 639ee5c..7f205a7 100644
 +  system(cmd);
 +}
 +
- void OnEnabled(const std::string& id)
+ void OnEnabled(const AddonPtr& addon)
  {
-   // If the addon is a special, call enabled handler
-   AddonPtr addon;
-   if (CAddonMgr::GetInstance().GetAddon(id, addon, ADDON_PVRDLL))
-     return addon->OnEnabled();
-+
++  AddonPtr localAddon;
+   addon->OnEnabled();
 +  // OE: systemctl enable & start on addon enable
-+  if (CAddonMgr::GetInstance().GetAddon(id, addon, ADDON_SERVICE))
++  if (CAddonMgr::GetInstance().GetAddon(addon->ID().c_str(), localAddon, ADDON_SERVICE))
 +    CallOEWrapper(addon->ID(), false);
 +  // OE
  }
  
- void OnDisabled(const std::string& id)
+ void OnDisabled(const AddonPtr& addon)
  {
- 
-   AddonPtr addon;
 +
++  AddonPtr localAddon;
 +  // OE: systemctl stop & disable on addon disable
-+  if (CAddonMgr::GetInstance().GetAddon(id, addon, ADDON_SERVICE, false))
++  if (CAddonMgr::GetInstance().GetAddon(addon->ID().c_str(), localAddon, ADDON_SERVICE, false))
 +    CallOEWrapper(addon->ID(), true);
 +  // OE
 +
-   if (CAddonMgr::GetInstance().GetAddon(id, addon, ADDON_PVRDLL, false))
-     return addon->OnDisabled();
+   addon->OnDisabled();
  }
-@@ -443,11 +461,28 @@ void OnPostInstall(const AddonPtr& addon, bool update, bool modal)
+ 
+@@ -438,11 +457,28 @@ void OnPostInstall(const AddonPtr& addon, bool update, bool modal)
    }
    // OE
  
 +  AddonPtr localAddon;
 +
 +  // OE: systemctl stop & disable / enable & start on addon upgrade
-+  if (CAddonMgr::GetInstance().GetAddon(addon->ID(), localAddon, ADDON_SERVICE))
++  if (CAddonMgr::GetInstance().GetAddon(addon->ID().c_str(), localAddon, ADDON_SERVICE))
 +  {
 +    CallOEWrapper(addon->ID(), true);
 +    CallOEWrapper(addon->ID(), false);
@@ -71,7 +67,7 @@ index 639ee5c..7f205a7 100644
 +  AddonPtr localAddon;
 +
 +  // OE: systemctl stop & disable on addon uninstall
-+  if (CAddonMgr::GetInstance().GetAddon(addon->ID(), localAddon, ADDON_SERVICE))
++  if (CAddonMgr::GetInstance().GetAddon(addon->ID().c_str(), localAddon, ADDON_SERVICE))
 +    CallOEWrapper(addon->ID(), true);
 +  // OE
 +
@@ -79,18 +75,17 @@ index 639ee5c..7f205a7 100644
  }
  
 diff --git a/xbmc/addons/Addon.h b/xbmc/addons/Addon.h
-index 35203a2..8e4b95e 100644
+index 95f3f23437..d77e3d4d4d 100644
 --- a/xbmc/addons/Addon.h
 +++ b/xbmc/addons/Addon.h
-@@ -84,6 +84,8 @@ public:
+@@ -77,6 +77,7 @@ public:
    const InfoMap& ExtraInfo() const override { return m_addonInfo.ExtraInfo(); }
    const ADDONDEPS& GetDeps() const override { return m_addonInfo.GetDeps(); }
  
 +  void CallOEWrapper(const std::string& ID, bool disable);
-+
    std::string FanArt() const override
    {
      auto it = m_addonInfo.Art().find("fanart");
 -- 
-2.7.4
+2.11.0
 
