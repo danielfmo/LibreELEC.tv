@@ -1,0 +1,2902 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-2d2d4c150f7000385741c6b992b302689ecd172246c6428904e0813be9bceca6.css" media="all" rel="stylesheet" />
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-0522ae8d3b3bdc841d2f91f90efd5f1fd9040d910905674cd134ced43a6dfea6.css" media="all" rel="stylesheet" />
+  
+  
+  <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/site-cfab053e93f0e27f4c63d4ff6b7957bd25f711667fe678e747f8a4d88c47b38d.css" media="all" rel="stylesheet" />
+  
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Fix 3d mode switching for Wetek HUB on Libreelec by Memphiz · Pull Request #12316 · xbmc/xbmc · GitHub</title>
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    
+    <meta content="https://avatars5.githubusercontent.com/u/701326?v=4&amp;s=400" property="og:image" /><meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="Fix 3d mode switching for Wetek HUB on Libreelec by Memphiz · Pull Request #12316 · xbmc/xbmc" property="og:title" /><meta content="https://github.com/xbmc/xbmc/pull/12316" property="og:url" /><meta content="This might also fix 3d mode switching for other amlogic boxes. Basically it should for all that don&#39;t have ppmgr3d which at least my wetek hub has not under libreelec.
+I have no idea where the orig..." property="og:description" />
+
+  <link rel="assets" href="https://assets-cdn.github.com/">
+  
+  <meta name="pjax-timeout" content="1000">
+  
+  <meta name="request-id" content="BD30:508F:7A6A68:CF9D20:59688A92" data-pjax-transient>
+  
+
+  <meta name="selected-link" value="repo_pulls" data-pjax-transient>
+
+  <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+<meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-analytics" content="UA-3769691-2">
+
+<meta content="collector.githubapp.com" name="octolytics-host" /><meta content="github" name="octolytics-app-id" /><meta content="https://collector.githubapp.com/github-external/browser_event" name="octolytics-event-url" /><meta content="BD30:508F:7A6A68:CF9D20:59688A92" name="octolytics-dimension-request_id" /><meta content="iad" name="octolytics-dimension-region_edge" /><meta content="iad" name="octolytics-dimension-region_render" />
+<meta content="/&lt;user-name&gt;/&lt;repo-name&gt;/pull_requests/show" data-pjax-transient="true" name="analytics-location" />
+
+
+
+
+  <meta class="js-ga-set" name="dimension1" content="Logged Out">
+
+
+  
+
+      <meta name="hostname" content="github.com">
+  <meta name="user-login" content="">
+
+      <meta name="expected-hostname" content="github.com">
+    <meta name="js-proxy-site-detection-payload" content="MjBmNzk0ZmIzMWY2ZTIyZWQwNjcyZjY2NWYxMWQwNzZjMDAwMWZjMzRlMGZhODE1ZWYzN2FkZDc1Y2Y2MTUxN3x7InJlbW90ZV9hZGRyZXNzIjoiNDYuODYuMTA4LjI2IiwicmVxdWVzdF9pZCI6IkJEMzA6NTA4Rjo3QTZBNjg6Q0Y5RDIwOjU5Njg4QTkyIiwidGltZXN0YW1wIjoxNTAwMDIzNDQzLCJob3N0IjoiZ2l0aHViLmNvbSJ9">
+
+
+  <meta name="html-safe-nonce" content="143006564369293f7818647f414284040fcb60ce">
+
+  <meta http-equiv="x-pjax-version" content="175e789258843bb35d9544367c73edfe">
+  
+
+      <style type="text/css" media="screen">
+    span.labelstyle-009800, .linked-labelstyle-009800 {  background-color: #009800 !important;  color: #fff !important;}.labelstyle-009800.selected {  background-color: #009800 !important;  color: #fff !important;}.label-select-menu .labelstyle-009800.selected {  background:rgba(0, 152, 0, 0.12) !important;  color: #009900 !important;}
+
+span.labelstyle-006b75, .linked-labelstyle-006b75 {  background-color: #006b75 !important;  color: #fff !important;}.labelstyle-006b75.selected {  background-color: #006b75 !important;  color: #fff !important;}.label-select-menu .labelstyle-006b75.selected {  background:rgba(0, 107, 117, 0.12) !important;  color: #008b99 !important;}
+
+span.labelstyle-5319e7, .linked-labelstyle-5319e7 {  background-color: #5319e7 !important;  color: #fff !important;}.labelstyle-5319e7.selected {  background-color: #5319e7 !important;  color: #fff !important;}.label-select-menu .labelstyle-5319e7.selected {  background:rgba(83, 25, 231, 0.12) !important;  color: #361099 !important;}
+
+span.labelstyle-0b02e1, .linked-labelstyle-0b02e1 {  background-color: #0b02e1 !important;  color: #fff !important;}.labelstyle-0b02e1.selected {  background-color: #0b02e1 !important;  color: #fff !important;}.label-select-menu .labelstyle-0b02e1.selected {  background:rgba(11, 2, 225, 0.30720418300653585) !important;  color: #040066 !important;}
+
+span.labelstyle-ccdb05, .linked-labelstyle-ccdb05 {  background-color: #ccdb05 !important;  color: #2f3301 !important;}.labelstyle-ccdb05.selected {  background-color: #ccdb05 !important;  color: #2f3301 !important;}.label-select-menu .labelstyle-ccdb05.selected {  background:rgba(204, 219, 5, 0.12) !important;  color: #8e9803 !important;}
+
+span.labelstyle-bfd4f2, .linked-labelstyle-bfd4f2 {  background-color: #bfd4f2 !important;  color: #282c33 !important;}.labelstyle-bfd4f2.selected {  background-color: #bfd4f2 !important;  color: #282c33 !important;}.label-select-menu .labelstyle-bfd4f2.selected {  background:rgba(191, 212, 242, 0.12) !important;  color: #788699 !important;}
+
+span.labelstyle-e0218a, .linked-labelstyle-e0218a {  background-color: #e0218a !important;  color: #fff !important;}.labelstyle-e0218a.selected {  background-color: #e0218a !important;  color: #fff !important;}.label-select-menu .labelstyle-e0218a.selected {  background:rgba(224, 33, 138, 0.12) !important;  color: #99165e !important;}
+
+span.labelstyle-e11d21, .linked-labelstyle-e11d21 {  background-color: #e11d21 !important;  color: #fff !important;}.labelstyle-e11d21.selected {  background-color: #e11d21 !important;  color: #fff !important;}.label-select-menu .labelstyle-e11d21.selected {  background:rgba(225, 29, 33, 0.12) !important;  color: #991316 !important;}
+
+span.labelstyle-d4c5f9, .linked-labelstyle-d4c5f9 {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.labelstyle-d4c5f9.selected {  background-color: #d4c5f9 !important;  color: #2b2833 !important;}.label-select-menu .labelstyle-d4c5f9.selected {  background:rgba(212, 197, 249, 0.12) !important;  color: #827999 !important;}
+
+span.labelstyle-eb6420, .linked-labelstyle-eb6420 {  background-color: #eb6420 !important;  color: #fff !important;}.labelstyle-eb6420.selected {  background-color: #eb6420 !important;  color: #fff !important;}.label-select-menu .labelstyle-eb6420.selected {  background:rgba(235, 100, 32, 0.12) !important;  color: #994114 !important;}
+
+span.labelstyle-fbca04, .linked-labelstyle-fbca04 {  background-color: #fbca04 !important;  color: #332900 !important;}.labelstyle-fbca04.selected {  background-color: #fbca04 !important;  color: #332900 !important;}.label-select-menu .labelstyle-fbca04.selected {  background:rgba(251, 202, 4, 0.12) !important;  color: #997b02 !important;}
+
+span.labelstyle-FF5600, .linked-labelstyle-FF5600 {  background-color: #FF5600 !important;  color: #fff !important;}.labelstyle-FF5600.selected {  background-color: #FF5600 !important;  color: #fff !important;}.label-select-menu .labelstyle-FF5600.selected {  background:rgba(255, 86, 0, 0.12) !important;  color: #993300 !important;}
+  </style>
+  <link href="https://github.com/xbmc/xbmc/commits/fix_aml_3d.atom" rel="alternate" title="Recent Commits to xbmc:fix_aml_3d" type="application/atom+xml">
+
+  <meta name="description" content="xbmc - Kodi Main Repository - By using this code you agree with our policy and will follow the GPLv2 license as included">
+  <meta name="go-import" content="github.com/xbmc/xbmc git https://github.com/xbmc/xbmc.git">
+
+  <meta content="199122" name="octolytics-dimension-user_id" /><meta content="xbmc" name="octolytics-dimension-user_login" /><meta content="1217614" name="octolytics-dimension-repository_id" /><meta content="xbmc/xbmc" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="1217614" name="octolytics-dimension-repository_network_root_id" /><meta content="xbmc/xbmc" name="octolytics-dimension-repository_network_root_nwo" /><meta content="false" name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" />
+
+
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+
+  </head>
+
+  <body class="logged-out env-production">
+    
+
+
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="#start-of-content" tabindex="1" class="px-2 py-4 show-on-focus js-skip-to-content">Skip to content</a>
+    <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
+
+    
+    
+    
+
+
+
+          <header class="site-header js-details-container Details" role="banner">
+  <div class="site-nav-container">
+    <a class="header-logo-invertocat" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    </a>
+
+    <button class="btn-link float-right site-header-toggle js-details-target" type="button" aria-label="Toggle navigation" aria-expanded="false">
+      <svg aria-hidden="true" class="octicon octicon-three-bars" height="24" version="1.1" viewBox="0 0 12 16" width="18"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"/></svg>
+    </button>
+
+    <div class="site-header-menu">
+      <nav class="site-header-nav">
+        <a href="/features" class="js-selected-navigation-item nav-item" data-ga-click="Header, click, Nav menu - item:features" data-selected-links="/features /features/code-review /features/project-management /features/integrations /features">
+          Features
+</a>        <a href="/business" class="js-selected-navigation-item nav-item" data-ga-click="Header, click, Nav menu - item:business" data-selected-links="/business /business/security /business/customers /business">
+          Business
+</a>        <a href="/explore" class="js-selected-navigation-item nav-item" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /stars /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore">
+          Explore
+</a>            <a href="/marketplace" class="js-selected-navigation-item nav-item" data-ga-click="Header, click, Nav menu - item:marketplace" data-selected-links=" /marketplace">
+              Marketplace
+</a>        <a href="/pricing" class="js-selected-navigation-item nav-item" data-ga-click="Header, click, Nav menu - item:pricing" data-selected-links="/pricing /pricing/developer /pricing/team /pricing/business-hosted /pricing/business-enterprise /pricing">
+          Pricing
+</a>      </nav>
+
+      <div class="site-header-actions">
+          <div class="header-search scoped-search site-scoped-search js-site-search" role="search">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/search" class="js-site-search-form" data-scoped-search-url="/xbmc/xbmc/search" data-unscoped-search-url="/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+    <label class="form-control header-search-wrapper js-chromeless-input-container">
+        <a href="/xbmc/xbmc/pull/12316" class="header-search-scope no-underline">This repository</a>
+      <input type="text"
+        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"
+        data-hotkey="s"
+        name="q"
+        value=""
+        placeholder="Search"
+        aria-label="Search this repository"
+        data-unscoped-placeholder="Search GitHub"
+        data-scoped-placeholder="Search"
+        autocapitalize="off">
+        <input type="hidden" class="js-site-search-type-field" name="type" >
+    </label>
+</form></div>
+
+
+          <a class="text-bold site-header-link" href="/login?return_to=%2Fxbmc%2Fxbmc%2Fpull%2F12316" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+            <span class="text-gray">or</span>
+            <a class="text-bold site-header-link" href="/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+    <div id="js-flash-container">
+</div>
+
+
+
+  <div role="main">
+        <div itemscope itemtype="http://schema.org/SoftwareSourceCode">
+    <div id="js-repo-pjax-container" data-pjax-container>
+      
+
+<!-- base sha1: &quot;66233da32bdce3b3693ea1ef44779384c474f572&quot; -->
+<!-- head sha1: &quot;c15a9028b129e99fe772749efd76ec43de67b5ec&quot; -->
+
+
+
+  
+
+
+    <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav">
+      <div class="container repohead-details-container">
+
+        <ul class="pagehead-actions">
+  <li>
+      <a href="/login?return_to=%2Fxbmc%2Fxbmc"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+    Watch
+  </a>
+  <a class="social-count" href="/xbmc/xbmc/watchers"
+     aria-label="624 users are watching this repository">
+    624
+  </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Fxbmc%2Fxbmc"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <svg aria-hidden="true" class="octicon octicon-star" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74z"/></svg>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="/xbmc/xbmc/stargazers"
+      aria-label="6121 users starred this repository">
+      6,121
+    </a>
+
+  </li>
+
+  <li>
+      <a href="/login?return_to=%2Fxbmc%2Fxbmc"
+        class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <svg aria-hidden="true" class="octicon octicon-repo-forked" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+        Fork
+      </a>
+
+    <a href="/xbmc/xbmc/network" class="social-count"
+       aria-label="4216 users forked this repository">
+      4,216
+    </a>
+  </li>
+</ul>
+
+        <h1 class="public ">
+  <svg aria-hidden="true" class="octicon octicon-repo" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+  <span class="author" itemprop="author"><a href="/xbmc" class="url fn" rel="author">xbmc</a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong itemprop="name"><a href="/xbmc/xbmc" data-pjax="#js-repo-pjax-container">xbmc</a></strong>
+
+</h1>
+
+      </div>
+      <div class="container">
+        
+<nav class="reponav js-repo-nav js-sidenav-container-pjax"
+     itemscope
+     itemtype="http://schema.org/BreadcrumbList"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container">
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/xbmc/xbmc" class="js-selected-navigation-item reponav-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /xbmc/xbmc" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-code" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
+      <span itemprop="name">Code</span>
+      <meta itemprop="position" content="1">
+</a>  </span>
+
+
+  <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
+    <a href="/xbmc/xbmc/pulls" class="js-selected-navigation-item selected reponav-item" data-hotkey="g p" data-selected-links="repo_pulls /xbmc/xbmc/pulls" itemprop="url">
+      <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+      <span itemprop="name">Pull requests</span>
+      <span class="Counter">160</span>
+      <meta itemprop="position" content="3">
+</a>  </span>
+
+    <a href="/xbmc/xbmc/projects" class="js-selected-navigation-item reponav-item" data-selected-links="repo_projects new_repo_project repo_project /xbmc/xbmc/projects">
+      <svg aria-hidden="true" class="octicon octicon-project" height="16" version="1.1" viewBox="0 0 15 16" width="15"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      Projects
+      <span class="Counter" >0</span>
+</a>
+
+
+    <div class="reponav-dropdown js-menu-container">
+      <button type="button" class="btn-link reponav-item reponav-dropdown js-menu-target " data-no-toggle aria-expanded="false" aria-haspopup="true">
+        Insights
+        <svg aria-hidden="true" class="octicon octicon-triangle-down v-align-middle text-gray" height="11" version="1.1" viewBox="0 0 12 16" width="8"><path fill-rule="evenodd" d="M0 5l6 6 6-6z"/></svg>
+      </button>
+      <div class="dropdown-menu-content js-menu-content">
+        <div class="dropdown-menu dropdown-menu-sw">
+          <a class="dropdown-item" href="/xbmc/xbmc/pulse" data-skip-pjax>
+            <svg aria-hidden="true" class="octicon octicon-pulse" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M11.5 8L8.8 5.4 6.6 8.5 5.5 1.6 2.38 8H0v2h3.6l.9-1.8.9 5.4L9 8.5l1.6 1.5H14V8z"/></svg>
+            Pulse
+          </a>
+          <a class="dropdown-item" href="/xbmc/xbmc/graphs" data-skip-pjax>
+            <svg aria-hidden="true" class="octicon octicon-graph" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+            Graphs
+          </a>
+        </div>
+      </div>
+    </div>
+</nav>
+
+      </div>
+    </div>
+
+<div class="container new-discussion-timeline experiment-repo-nav">
+  <div class="repository-content">
+
+    
+  <div class="issues-listing" data-pjax>
+    
+      <div class="signup-prompt-bg rounded-1">
+      <div class="signup-prompt p-4 text-center mb-4 rounded-1">
+        <div class="position-relative">
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/site/dismiss_signup_prompt" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="GsLs48+Rj+eKOyqtBCmFpLdGx4+9ssnjghpsbFYAi3an1rsXVDaLSRobEy6s0A20IBgVMC2ksQBVSV/bzrosYQ==" /></div>
+            <button type="submit" class="position-absolute top-0 right-0 btn-link link-gray" data-ga-click="(Logged out) Sign up prompt, clicked Dismiss, text:dismiss">
+              Dismiss
+            </button>
+</form>
+          <h3 class="pt-2">Join GitHub today</h3>
+          <p class="col-6 mx-auto">GitHub is home to over 20 million developers working together to host and review code, manage projects, and build software together.</p>
+          <p class="pb-2">
+            <a class="btn btn-blue" href="/join?source=prompt-pr-show" data-ga-click="(Logged out) Sign up prompt, clicked Sign up, text:sign-up">Sign up</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div class="clearfix js-issues-results">
+    
+  <div
+    id="partial-discussion-header"
+    class="gh-header js-details-container Details js-socket-channel js-updatable-content pull request"
+    data-channel="pull_request:126167827"
+    data-url="/xbmc/xbmc/pull/12316/show_partial?partial=pull_requests%2Ftitle">
+
+  <div class="gh-header-show gh-header-no-access">
+      <div class="gh-header-actions">
+
+      </div>
+
+    <h1 class="gh-header-title">
+      <span class="js-issue-title">
+        Fix 3d mode switching for Wetek HUB on Libreelec
+      </span>
+      <span class="gh-header-number">#12316</span>
+    </h1>
+  </div>
+
+
+  <div class="TableObject gh-header-meta">
+    <div class="TableObject-item">
+        <div class="State State--green">
+          <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+          Open
+        </div>
+    </div>
+    <div class="TableObject-item TableObject-item--primary">
+          <a href="/Memphiz" class="author pull-header-username css-truncate css-truncate-target expandable">
+    Memphiz
+  </a>
+   wants to merge 2 commits into
+
+
+
+  <span class="commit-ref css-truncate user-select-contain expandable base-ref" title="xbmc/xbmc:master"><span class="css-truncate-target user">xbmc</span>:<span class="css-truncate-target">master</span></span>
+
+  <div class="commit-ref-dropdown">
+    <div class="select-menu js-menu-container js-select-menu commitish-suggester js-load-contents" data-contents-url="/xbmc/xbmc/pull/12316/show_partial?partial=pull_requests%2Fdescription_branches_dropdown">
+      <button class="btn btn-sm select-menu-button js-menu-target branch" type="button" aria-label="Choose a base branch" aria-haspopup="true" aria-expanded="false">
+        <i>base:</i>
+        <span class="js-select-button css-truncate css-truncate-target" title="base: master">master</span>
+      </button>
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container">
+        <div class="select-menu-modal">
+          <div class="js-select-menu-deferred-content"></div>
+          <div class="select-menu-loading-overlay anim-pulse">
+            <svg aria-hidden="true" class="octicon octicon-octoface" height="32" version="1.1" viewBox="0 0 16 16" width="32"><path fill-rule="evenodd" d="M14.7 5.34c.13-.32.55-1.59-.13-3.31 0 0-1.05-.33-3.44 1.3-1-.28-2.07-.32-3.13-.32s-2.13.04-3.13.32c-2.39-1.64-3.44-1.3-3.44-1.3-.68 1.72-.26 2.99-.13 3.31C.49 6.21 0 7.33 0 8.69 0 13.84 3.33 15 7.98 15S16 13.84 16 8.69c0-1.36-.49-2.48-1.3-3.35zM8 14.02c-3.3 0-5.98-.15-5.98-3.35 0-.76.38-1.48 1.02-2.07 1.07-.98 2.9-.46 4.96-.46 2.07 0 3.88-.52 4.96.46.65.59 1.02 1.3 1.02 2.07 0 3.19-2.68 3.35-5.98 3.35zM5.49 9.01c-.66 0-1.2.8-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.54-1.78-1.2-1.78zm5.02 0c-.66 0-1.2.79-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.53-1.78-1.2-1.78z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+from
+
+<span class="commit-ref css-truncate user-select-contain expandable head-ref" title="Memphiz/xbmc:fix_aml_3d"><span class="css-truncate-target user">Memphiz</span>:<span class="css-truncate-target">fix_aml_3d</span></span>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+      
+<div class="tabnav tabnav-pr">
+    <div class="tabnav-extra float-right">
+      <span class="diffstat" id="diffstat">
+        <span class="text-green">
+          +102
+        </span>
+        <span class="text-red">
+          −12
+        </span>
+        <span class="tooltipped tooltipped-s" aria-label="114 lines changed">
+          <span class="block-diff-added"></span><span class="block-diff-added"></span><span class="block-diff-added"></span><span class="block-diff-added"></span><span class="block-diff-neutral"></span>
+        </span>
+      </span>
+    </div>
+
+  <nav class="tabnav-tabs">
+    <a href="/xbmc/xbmc/pull/12316" class="tabnav-tab selected js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-comment-discussion" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M15 1H6c-.55 0-1 .45-1 1v2H1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h1v3l3-3h4c.55 0 1-.45 1-1V9h1l3 3V9h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1zM9 11H4.5L3 12.5V11H1V5h4v3c0 .55.45 1 1 1h3v2zm6-3h-2v1.5L11.5 8H6V2h9v6z"/></svg>
+      Conversation
+
+      <span id="conversation_tab_counter" class="Counter">
+        23
+      </span>
+    </a>
+
+    <a href="/xbmc/xbmc/pull/12316/commits" class="tabnav-tab  js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z"/></svg>
+      Commits
+
+      <span id="commits_tab_counter" class="Counter">
+        2
+      </span>
+    </a>
+
+      <link rel="pjax-prefetch" href="/xbmc/xbmc/pull/12316/files">
+    <a href="/xbmc/xbmc/pull/12316/files" class="tabnav-tab  js-pjax-history-navigate">
+      <svg aria-hidden="true" class="octicon octicon-diff" height="16" version="1.1" viewBox="0 0 13 16" width="13"><path fill-rule="evenodd" d="M6 7h2v1H6v2H5V8H3V7h2V5h1v2zm-3 6h5v-1H3v1zM7.5 2L11 5.5V15c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h6.5zM10 6L7 3H1v12h9V6zM8.5 0H3v1h5l4 4v8h1V4.5L8.5 0z"/></svg>
+      Files changed
+
+        <span id="files_tab_counter" class="Counter">
+            5
+        </span>
+    </a>
+  </nav>
+</div>
+
+
+
+    <h2 class="sr-only">Conversation</h2>
+    <div id="discussion_bucket" class="clearfix pull-request-tab-content is-visible">
+      <div class="discussion-sidebar">
+  <div id="partial-discussion-sidebar"
+  class="js-socket-channel js-updatable-content"
+  data-channel="pull_request:126167827"
+  data-url="/xbmc/xbmc/issues/12316/show_partial?partial=issues%2Fsidebar">
+
+    <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item position-relative">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/pull/12316/review-requests?pr_global_id=MDExOlB1bGxSZXF1ZXN0MTI2MTY3ODI3" class="js-issue-sidebar-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="Fv4d5wAhdEMySHDFuNmUGPOqRVq6523ycCu98tLTSbsiBZcogeGdxyGD/gzZbIzM3wIlO69i5Vq+hr2kDgThNg==" /></div>
+    
+
+  <div class="discussion-sidebar-heading text-bold">
+    Reviewers
+  </div>
+
+    <span class="css-truncate">
+      <p>
+        <img alt="@peak3d" class="avatar" height="20" src="https://avatars0.githubusercontent.com/u/22704999?v=4&amp;s=40" width="20" />
+        <a class="assignee tooltipped tooltipped-ne" href="/xbmc/xbmc/pull/12316/files/06c5193f0c3a4526a9c45e9e3973d8a24d370878" >
+          <span class="css-truncate-target">
+            peak3d
+          </span>
+        </a>
+
+
+        <a href="/xbmc/xbmc/pull/12316/files/06c5193f0c3a4526a9c45e9e3973d8a24d370878">
+            <span class="reviewers-status-icon tooltipped tooltipped-nw float-right d-block text-center" aria-label="peak3d approved these changes">
+            <svg aria-hidden="true" class="octicon octicon-check text-green" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+            </span>
+        </a>
+          <span class="reviewers-status-icon tooltipped tooltipped-nw float-right d-block text-center mr-2" aria-label="peak3d is a code owner">
+            
+          </span>
+      </p>
+      <p>
+          <img alt="@popcornmix" class="avatar" height="20" src="https://avatars7.githubusercontent.com/u/1053730?v=4&amp;s=40" width="20" />
+          <span class="css-truncate-target text-bold v-align-middle text-gray"> popcornmix </span>
+
+        <span class="reviewers-status-icon tooltipped tooltipped-nw float-right d-block text-center" aria-label="Awaiting requested review from popcornmix">
+          <svg aria-hidden="true" class="octicon octicon-primitive-dot bg-pending" height="16" version="1.1" viewBox="0 0 8 16" width="8"><path fill-rule="evenodd" d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/></svg>
+        </span>
+          <span class="reviewers-status-icon tooltipped tooltipped-nw float-right d-block text-center mr-2" aria-label="popcornmix is a code owner">
+            
+          </span>
+      </p>
+
+
+</span>
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-assignee js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/issues/12316?partial=issues%2Fsidebar%2Fshow%2Fassignees" class="js-issue-sidebar-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="l0bknKxC5tZdTcC1GSM3g8Rj4/7PgR+EBVxsTnGJ2LI2ms6uZQekixbWYovUo7sdslRJ7ubPexzr2fslOkpeFQ==" /></div>
+    
+
+  <div class="discussion-sidebar-heading text-bold">
+    Assignees
+  </div>
+
+    <span class="css-truncate">
+    No one assigned
+</span>
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-labels js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/issues/12316?partial=issues%2Fsidebar%2Fshow%2Flabels" class="js-issue-sidebar-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="FJaV3YXTgY23I4fbeEvP00XHuLwMwx0WiNB+OITfQ0S1Sr/vTJbD0Py4JeW1y0NNM/ASrCWNeY5mVelTzxzF4w==" /></div>
+      
+
+  <div class="discussion-sidebar-heading text-bold">
+    Labels
+  </div>
+
+    <div class="labels css-truncate">
+      <a href="/xbmc/xbmc/labels/Backport-Done" class="label css-truncate-target linked-labelstyle-5319e7" title="Backport-Done">Backport-Done</a>
+  <a href="/xbmc/xbmc/labels/Feature" class="label css-truncate-target linked-labelstyle-0b02e1" title="Feature">Feature</a>
+  <a href="/xbmc/xbmc/labels/Fix" class="label css-truncate-target linked-labelstyle-0b02e1" title="Fix">Fix</a>
+  <a href="/xbmc/xbmc/labels/Improvement" class="label css-truncate-target linked-labelstyle-0b02e1" title="Improvement">Improvement</a>
+  <a href="/xbmc/xbmc/labels/Linux" class="label css-truncate-target linked-labelstyle-006b75" title="Linux">Linux</a>
+  <a href="/xbmc/xbmc/labels/Rendering%20Video" class="label css-truncate-target linked-labelstyle-009800" title="Rendering Video">Rendering Video</a>
+  <a href="/xbmc/xbmc/labels/v18%20Leia" class="label css-truncate-target linked-labelstyle-fbca04" title="v18 Leia">v18 Leia</a>
+  <a href="/xbmc/xbmc/labels/WIP" class="label css-truncate-target linked-labelstyle-FF5600" title="WIP">WIP</a>
+
+</div>
+
+</form></div>
+
+    <div class="discussion-sidebar-item js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/projects/issues/12316" class="js-issue-sidebar-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="ToCaQMNoQPWUd4chBE6oWM57WgwnlXwXxfhVyXIwZ7YO3ZW7sYWNIPDYLeNSdvaqX3ynAX7iq/eLGirkuTstsg==" /></div>
+    
+
+  <div class="discussion-sidebar-heading text-bold">
+    Projects
+  </div>
+
+    <span class="css-truncate">
+    None yet
+</span>
+
+</form></div>
+
+  <div class="discussion-sidebar-item sidebar-milestone js-discussion-sidebar-item">
+  <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/issues/12316/set_milestone?partial=issues%2Fsidebar%2Fshow%2Fmilestone" class="js-issue-sidebar-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="VDgm6QVRkSpTchWTiVxKPYtDS9EyyRaG+VDqF62pp8VfpvJbNUB50svDRlzNdqgFAa5HqMjVjnzQOzc10EtXEA==" /></div>
+    
+
+  <div class="discussion-sidebar-heading text-bold">
+    Milestone
+  </div>
+
+      No milestone
+
+</form></div>
+
+  
+  <div id="partial-users-participants" class="discussion-sidebar-item">
+  <div class="participation">
+
+    <div class="discussion-sidebar-heading text-bold">
+      6 participants
+    </div>
+    <div class="participation-avatars">
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="Memphiz" href="/Memphiz"><img alt="@Memphiz" class="avatar" height="26" src="https://avatars4.githubusercontent.com/u/701326?v=4&amp;s=52" width="26" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="koying" href="/koying"><img alt="@koying" class="avatar" height="26" src="https://avatars4.githubusercontent.com/u/164740?v=4&amp;s=52" width="26" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="stefansaraev" href="/stefansaraev"><img alt="@stefansaraev" class="avatar" height="26" src="https://avatars5.githubusercontent.com/u/758738?v=3&amp;s=52" width="26" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="peak3d" href="/peak3d"><img alt="@peak3d" class="avatar" height="26" src="https://avatars5.githubusercontent.com/u/22704999?v=4&amp;s=52" width="26" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="kszaq" href="/kszaq"><img alt="@kszaq" class="avatar" height="26" src="https://avatars2.githubusercontent.com/u/737984?v=4&amp;s=52" width="26" /> </a>
+        <a class="participant-avatar tooltipped tooltipped-n" aria-label="MartijnKaijser" href="/MartijnKaijser"><img alt="@MartijnKaijser" class="avatar" height="26" src="https://avatars7.githubusercontent.com/u/907436?v=4&amp;s=52" width="26" /> </a>
+    </div>
+  </div>
+</div>
+
+
+  
+
+</div>
+
+
+</div>
+
+<div class="discussion-timeline pull-discussion-timeline js-pull-discussion-timeline js-quote-selection-container js-review-state-classes  ">
+  <div class="js-discussion js-socket-channel" data-channel="marked-as-read:pull-request:126167827">
+    
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issue-236683590"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="f6ec388e51ec381ed1902c72078e82f8">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issue-236683590" class="timestamp"><relative-time datetime="2017-06-17T20:51:45Z">Jun 17, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>This might also fix 3d mode switching for other amlogic boxes. Basically it should for all that don't have ppmgr3d which at least my wetek hub has not under libreelec.</p>
+<p>I have no idea where the original ppmgr3d code is currently working. Maybe its an android thingy - i have no idea.</p>
+<p>This also fixes 3d to 2d Rendering for my wetek hub which didn't do anything before. (it simply didn't adjust the render rect properly before because it assumed ppmgr3d is there and does its magic i suppose).</p>
+<p>This should be "backward" compatible to the fact that whenever ppmgr3d is available - it is used.</p>
+<p>This also makes the service.odroidc2-3dautoswitch addon obsolete. (which tried to do a similar thing by using hdmitx0 but just feels not so good as implemented in core like for all other solutions).</p>
+<p><a href="https://github.com/lrusak" class="user-mention">@lrusak</a> fyi<br>
+<a href="https://github.com/koying" class="user-mention">@koying</a> maybe some info about the ppmgr3d - is it android?</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+      
+  <div class="discussion-item discussion-item-review_requested">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1127972505">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+      </span>
+      <img alt="@MartijnKaijser" class="avatar" height="16" src="https://avatars5.githubusercontent.com/u/907436?v=4&amp;s=32" width="16" />
+      <a href="/MartijnKaijser" class="author">MartijnKaijser</a>
+      
+      
+       requested review from <a href="/koying"><span class="discussion-item-entity">koying</span></a> and <a href="/peak3d"><span class="discussion-item-entity">peak3d</span></a>
+      
+      <a href="#event-1127972505" class="timestamp"><relative-time class="timestamp" datetime="2017-06-17T21:42:32Z">Jun 17, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/koying">
+      <img alt="@koying" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/164740?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309263007"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="955bcb35f85cfe1c5d550fdc1fba6273">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/koying" class="author">koying</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309263007" class="timestamp"><relative-time datetime="2017-06-18T08:00:41Z">Jun 18, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>I haven't followed Amlcodec at all, so I'll leave it to <a href="https://github.com/peak3d" class="user-mention">@peak3d</a> to approve.</p>
+<p>ppmgr3d is/was used when the 3D extensions were enabled when building the aml kernel. It's not android-specific.<br>
+No clue whether that still exists in recent kernels nor whether the "amhdmitx0" path would work in older kernels.</p>
+<p>OTOH, as, basically, kodi + amlcodec is only used on LE, afaik, and obviously LE builds the kernel the way it wants, it doesn't seem to make sense to me to keep an "old way" that won't be used anywhere ;)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+
+
+      
+  <div class="discussion-item discussion-item-review_request_removed">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1128067897">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+      </span>
+      <img alt="" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/164740?v=4&amp;s=32" width="16" />
+      <a href="/koying" class="author">koying</a>
+      
+      removed their request for review
+      
+      
+      <a href="#event-1128067897" class="timestamp"><relative-time class="timestamp" datetime="2017-06-18T08:01:04Z">Jun 18, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  
+  <div class="timeline-comment-wrapper discussion-item-review mt-0 is-writer">
+    <div id="pullrequestreview-44809716" class="timeline-comment js-comment">
+      <a href="/peak3d"><img alt="@peak3d" class="timeline-comment-avatar" height="44" src="https://avatars6.githubusercontent.com/u/22704999?v=4&amp;s=88" width="44" /></a>
+      <div class="discussion-item">
+        <h3 class="discussion-item-header f5 text-normal">
+            <div class="discussion-item-icon">
+              <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+          </div>
+
+          <div class="discussion-item-copy d-inline-block">
+            <strong>
+              <a href="/peak3d" class="author">peak3d</a>
+            </strong>
+
+              reviewed
+
+
+            <span class="text-gray">
+
+                <a href="#pullrequestreview-44809716" class="timestamp">
+                  <relative-time datetime="2017-06-19T10:45:24Z">Jun 19, 2017</relative-time>
+                </a>
+
+            </span>
+          </div>
+
+          <div class="float-right">
+
+
+            <a class="btn btn-sm btn-outline" href="/xbmc/xbmc/pull/12316/files/93293cf9a1edd70d314fb1c1ecfb9398a850d9ad">
+              View changes
+            </a>
+
+
+          </div>
+        </div>
+      </h3>
+
+
+      <div class="edit-comment-hide">
+          <div class="simple-box review-summary p-0 mt-3 mb-4">
+            <div class="comment-body markdown-body js-comment-body">
+              <p>From principle fully Ok, but I really don't understand why LE does not activate ppmgr3D. I mislike to have code in kodi that is already part of drivers:</p>
+<p><a href="https://github.com/peak3d/linux/blob/c1_qbuf/drivers/amlogic/ppmgr/Kconfig#L18">https://github.com/peak3d/linux/blob/c1_qbuf/drivers/amlogic/ppmgr/Kconfig#L18</a></p>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/stefansaraev">
+      <img alt="@stefansaraev" class="avatar rounded-1" height="44" src="https://avatars6.githubusercontent.com/u/758738?v=3&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309407533"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="f85354bba9061c9be89017ea8e02aa83">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the xbmc repository.">
+      Contributor
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/stefansaraev" class="author">stefansaraev</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309407533" class="timestamp"><relative-time datetime="2017-06-19T11:00:30Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>because <a href="https://github.com/LibreELEC/LibreELEC.tv/pull/1175" class="issue-link js-issue-link" data-url="https://github.com/LibreELEC/LibreELEC.tv/issues/1175" data-id="200793843" data-error-text="Failed to load issue title" data-permission-text="Issue title is private">LibreELEC/LibreELEC.tv#1175</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/peak3d">
+      <img alt="@peak3d" class="avatar rounded-1" height="44" src="https://avatars6.githubusercontent.com/u/22704999?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309410656"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="c9bb9300e042642721f840bb86d3bddf">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the xbmc repository.">
+      Contributor
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/peak3d" class="author">peak3d</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309410656" class="timestamp"><relative-time datetime="2017-06-19T11:16:36Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Do we have an backtrace from driver? There are so many high professionals in LE, I bet it would be easy to one of them to catch the issue in driver and I could help reporting it to AML.<br>
+This should not sound picky, but looking for the root cause feels better (without knowing hor far the investigation have already gone)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+      <div class="discussion-item discussion-item-ref">
+    <h3 class="discussion-item-header f5 text-normal" id="ref-pullrequest-200793843">
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-bookmark" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"/></svg>
+      </span>
+
+      <img alt="" class="avatar" height="16" src="https://avatars3.githubusercontent.com/u/758738?v=3&amp;s=32" width="16" />
+      <a href="/stefansaraev" class="author" truncate="true">stefansaraev</a>
+      
+
+      referenced
+      this pull request
+        in <strong>LibreELEC/LibreELEC.tv</strong>
+      <a class="timestamp" href="#ref-pullrequest-200793843">
+        <relative-time datetime="2017-06-19T11:19:16Z">Jun 19, 2017</relative-time>
+      </a>
+    </h3>
+
+      <span class="State State--small ml-1 State--purple float-right" title="State: merged">
+          <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="14" version="1.1" viewBox="0 0 12 16" width="10"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+        Merged
+      </span>
+
+
+
+    <h4 class="discussion-item-ref-title">
+      <a href="/LibreELEC/LibreELEC.tv/issues/1175" class="title-link">
+        Amlogic: Disable POST_PROCESS_MANAGER_3D_PROCESS in kernel config
+        <span class="issue-num">#1175</span>
+</a>    </h4>
+    
+  </div>
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/koying">
+      <img alt="@koying" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/164740?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309415355"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="de27d08d962e328e48b3e7c801e40333">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/koying" class="author">koying</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309415355" class="timestamp"><relative-time datetime="2017-06-19T11:39:54Z">Jun 19, 2017</relative-time></a>
+
+
+      &#8226;
+      <span class="timestamp timestamp-edited tooltipped tooltipped-n"
+            aria-label="koying edited this comment 25 days ago">
+          edited
+      </span>
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>People, would you mind doing LE talk in LE, please ;)<br>
+What I get is that ppmgr3d is still a thing, but that this <em>Kodi</em> PR introduces a way to do 3D even when it's not enabled, which is pretty good.</p>
+<p>+1 from me.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/users/xbmc/reactions" class="js-pick-reaction" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="Ffbis+o3LrozWWfOB354SyUl70SGqHcXhHld7+esiefI+P0duXru3XWXU1B3PGom45hMHasG8OmWzMd0ypFbDA==" /></div>
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDMwOTQxNTM1NQ==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="stefansaraev reacted with thumbs up emoji">
+            <g-emoji alias="+1" class="emoji mr-1" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png" ios-version="6.0">👍</g-emoji>
+            1
+          </button>
+      </div>
+</form></div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/peak3d">
+      <img alt="@peak3d" class="avatar rounded-1" height="44" src="https://avatars6.githubusercontent.com/u/22704999?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309430281"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="a6d91881ede56161b4736170fb013178">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the xbmc repository.">
+      Contributor
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/peak3d" class="author">peak3d</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309430281" class="timestamp"><relative-time datetime="2017-06-19T12:52:10Z">Jun 19, 2017</relative-time></a>
+
+
+      &#8226;
+      <span class="timestamp timestamp-edited tooltipped tooltipped-n"
+            aria-label="peak3d edited this comment 25 days ago">
+          edited
+      </span>
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/koying" class="user-mention">@koying</a> so for you its Ok to write code around a bug  from driver wich is Open Source?<br>
+I would fully agree for binary blob driver, but AML drivers are usually very nice readable.</p>
+<p>Aren't there maybe some features in ppmgr3d wich we'll use in the future (there are at least some lines of code in the driver source).</p>
+<p>Edit B.t.w you pointed LE in your first post, last chapter as well. If you don't want this name here, we should all follow those golden rules (didn't knew about it so far)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/koying">
+      <img alt="@koying" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/164740?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309434362"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="7724c96e25294f58ad76742ae40575a1">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/koying" class="author">koying</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309434362" class="timestamp"><relative-time datetime="2017-06-19T13:08:49Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>It's not a matter of naming LE (clearly) but a matter of solving (or not) a LE kernel issue, which is somewhat different ;)<br>
+As I said, what I get is that ppmgr3d still exists, and could or could not be enabled, even in LE itself, so it makes sense to support both from a Kodi POV.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309512717"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="2ee2d65134548389b87b2fcab9138a64">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309512717" class="timestamp"><relative-time datetime="2017-06-19T17:38:46Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Ok - i wasn't aware of that "simple" solution to activate the ppmgr_3d in the kernel config. Well i did and tried it out. It looks like its heavily broken. I can't even tell where to start :D.</p>
+<p>But just looking at Kodis implementation for ppmgr_3d_mode here tells me that the kodi code is unintuitive at the least:</p>
+<p><a href="https://github.com/Memphiz/xbmc/blob/93293cf9a1edd70d314fb1c1ecfb9398a850d9ad/xbmc/cores/VideoPlayer/DVDCodecs/Video/AMLCodec.cpp#L2228">https://github.com/Memphiz/xbmc/blob/93293cf9a1edd70d314fb1c1ecfb9398a850d9ad/xbmc/cores/VideoPlayer/DVDCodecs/Video/AMLCodec.cpp#L2228</a></p>
+<ol>
+<li>it switches dozens mode just for 3d to 2d - which should normally only be a different render rect</li>
+<li>When SPLIT_VERTICAL or SPLIT_HORIZONTAL is requested - it DISABLES 3D mode - ohhh yeah that makes sense (whoever coded this should have added a comment imo...)</li>
+<li>When doing RENDER_STEREO_MODE_INTERLACED it finally looks like it does something correct and switches to various 3d modes. BUT - there is no option in Kodi to select stereo mode interlaced - so for me this whole code path for RENDER_STEREO_MODE_INTERLACED is dead code.</li>
+</ol>
+<p>I tried to manually switch to LR mode by doing "echo 257 &gt; ppmgr_3d_mode" which is hex 0x101 and should be 3d_LR (side by side so to say). The only thing that happened is that the picture freezes and the whole box gets unresponsive. After that i have to reboot the box because killall -9 kodi.bin does nothing.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/users/xbmc/reactions" class="js-pick-reaction" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="tU9o1KOg4L5B6xgXDppJe7GSWoISE2/Af7sZH42EQyRoQXd68O0g2QclLIl+2FsWdy/52z+96D5tDoOEoLmRzw==" /></div>
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDMwOTUxMjcxNw==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="LAUGH react"
+                  aria-label="stefansaraev reacted with laugh emoji">
+            <g-emoji alias="smile" class="emoji mr-1" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" ios-version="6.0">😄</g-emoji>
+            1
+          </button>
+      </div>
+</form></div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+
+
+      
+  <div class="discussion-item discussion-item-labeled">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1129696998">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"/></svg>
+      </span>
+      <img alt="" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author">Memphiz</a>
+      
+      added the
+      <span class="label-color" style="background-color: #FF5600;"><a href="/xbmc/xbmc/labels/WIP" style="color: #fff">WIP</a></span>
+      label
+      <a href="#event-1129696998" class="timestamp"><relative-time class="timestamp" datetime="2017-06-19T19:01:39Z">Jun 19, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309536223"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="ec2f95d7444d7834956e5d0ff8d44ac9">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309536223" class="timestamp"><relative-time datetime="2017-06-19T19:05:14Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>added WIP label as i am investigating some strange hdmi handshakes that occure with this patch (even with last commit).</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+      
+  <div class="discussion-item discussion-item-labeled">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1129797119">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"/></svg>
+      </span>
+      <img alt="@Memphiz" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author">Memphiz</a>
+      
+      
+       added <span class="label-color" style="background-color: #5319e7;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/Backport-Needed" style="color: #fff">Backport-Needed</a></span> <span class="label-color" style="background-color: #0b02e1;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/Fix" style="color: #fff">Fix</a></span> <span class="label-color" style="background-color: #006b75;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/Linux" style="color: #fff">Linux</a></span> <span class="label-color" style="background-color: #009800;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/Rendering%20Video" style="color: #fff">Rendering Video</a></span> <span class="label-color" style="background-color: #fbca04;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/v18%20Leia" style="color: #332900">v18 Leia</a></span> and removed <span class="label-color" style="background-color: #FF5600;" title="by Memphiz at 2017-06-19 19:59:41"><a href="/xbmc/xbmc/labels/WIP" style="color: #fff">WIP</a></span>
+      labels
+      <a href="#event-1129797119" class="timestamp"><relative-time class="timestamp" datetime="2017-06-19T19:59:41Z">Jun 19, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309556524"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="37df17b309fc167ce8aeda4a3d2a8b65">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309556524" class="timestamp"><relative-time datetime="2017-06-19T20:00:03Z">Jun 19, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>fixed that - was a stupid typo on my side ...</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+
+
+      
+  <div class="discussion-item discussion-item-labeled">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1130328258">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"/></svg>
+      </span>
+      <img alt="" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author">Memphiz</a>
+      
+      added the
+      <span class="label-color" style="background-color: #FF5600;"><a href="/xbmc/xbmc/labels/WIP" style="color: #fff">WIP</a></span>
+      label
+      <a href="#event-1130328258" class="timestamp"><relative-time class="timestamp" datetime="2017-06-20T05:28:54Z">Jun 20, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309649517"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="ea5c1493ae697e1f2ecff3ba439883ed">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309649517" class="timestamp"><relative-time datetime="2017-06-20T05:34:53Z">Jun 20, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Added wip label again. Oh man - sleeping another night over this might have revealed a missunderstanding.</p>
+<ol>
+<li>this Pr is about adding display mode switching - so my projector or a 3d tv is automatically switched to 3d mode. (So this is more of a hdmi feature i guess)</li>
+<li>Thats why i think that code doesn't even belong into the codec but into aml windowing (where refresh rates and resolutions are switched already)</li>
+<li>Now that i know that ppmgr means Post Processing Manager i think that whole code in the aml codec for ppmgr_3d_mode is meant to only handle image formatting/scaling. Meaning it can generate 3d interlaced image and for all the 3d 2 2d modes it might do some fancy interpolation or so (where i simply stretch the render width for sbs and the render height for top bottom).</li>
+</ol>
+<p>Conclusion:</p>
+<ol>
+<li>am adding a feature here that was not there before</li>
+<li>that feature has to be moved to aml windowing</li>
+<li>ppmgr can stay disabled if someone asks me</li>
+</ol>
+<p><a href="https://github.com/peak3d" class="user-mention">@peak3d</a> could this make sense to you too?</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/kszaq">
+      <img alt="@kszaq" class="avatar rounded-1" height="44" src="https://avatars5.githubusercontent.com/u/737984?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309683154"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="d8008fda83598dca27b2b38ff9e3790f">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the xbmc repository.">
+      Contributor
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/kszaq" class="author">kszaq</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309683154" class="timestamp"><relative-time datetime="2017-06-20T08:32:00Z">Jun 20, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>A small note on kernel-side of things: for me it looks like ppmgr3d is present in 3.14 kernel, disabled by default (in Android kernels), it looks more like a residue from 3.10 code porting.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+      
+  <div class="discussion-item discussion-item-labeled">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1131695640">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"/></svg>
+      </span>
+      <img alt="@Memphiz" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author">Memphiz</a>
+      
+      
+       added <span class="label-color" style="background-color: #0b02e1;" title="by Memphiz at 2017-06-20 19:53:29"><a href="/xbmc/xbmc/labels/Feature" style="color: #fff">Feature</a></span> <span class="label-color" style="background-color: #0b02e1;" title="by Memphiz at 2017-06-20 19:53:29"><a href="/xbmc/xbmc/labels/Improvement" style="color: #fff">Improvement</a></span>
+      labels
+      <a href="#event-1131695640" class="timestamp"><relative-time class="timestamp" datetime="2017-06-20T19:53:29Z">Jun 20, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-309970819"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="a09a1b0de93deed1f1e70d0c057cadf8">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-309970819" class="timestamp"><relative-time datetime="2017-06-21T05:52:59Z">Jun 21, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Updated... i also already have prepared a backport to krypton if this is accepted.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+      <div class="discussion-item discussion-item-ref">
+    <h3 class="discussion-item-header f5 text-normal" id="ref-pullrequest-237423399">
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-bookmark" height="16" version="1.1" viewBox="0 0 10 16" width="10"><path fill-rule="evenodd" d="M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"/></svg>
+      </span>
+
+      <img alt="" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author" truncate="true">Memphiz</a>
+      
+
+      referenced
+      this pull request
+      <a class="timestamp" href="#ref-pullrequest-237423399">
+        <relative-time datetime="2017-06-21T06:01:10Z">Jun 21, 2017</relative-time>
+      </a>
+    </h3>
+
+      <span class="State State--small ml-1 State--green float-right" title="State: open">
+          <svg aria-hidden="true" class="octicon octicon-git-pull-request" height="14" version="1.1" viewBox="0 0 12 16" width="10"><path fill-rule="evenodd" d="M11 11.28V5c-.03-.78-.34-1.47-.94-2.06C9.46 2.35 8.78 2.03 8 2H7V0L4 3l3 3V4h1c.27.02.48.11.69.31.21.2.3.42.31.69v6.28A1.993 1.993 0 0 0 10 15a1.993 1.993 0 0 0 1-3.72zm-1 2.92c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zM4 3c0-1.11-.89-2-2-2a1.993 1.993 0 0 0-1 3.72v6.56A1.993 1.993 0 0 0 2 15a1.993 1.993 0 0 0 1-3.72V4.72c.59-.34 1-.98 1-1.72zm-.8 10c0 .66-.55 1.2-1.2 1.2-.65 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+        Open
+      </span>
+
+
+
+    <h4 class="discussion-item-ref-title">
+      <a href="/xbmc/xbmc/issues/12326" class="title-link">
+        Fix 3d mode switching for Wetek HUB on Libreelec
+        <span class="issue-num">#12326</span>
+</a>    </h4>
+    
+  </div>
+
+
+
+  
+  
+      
+  <div class="discussion-item discussion-item-labeled">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1132259818">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-tag" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7.73 1.73C7.26 1.26 6.62 1 5.96 1H3.5C2.13 1 1 2.13 1 3.5v2.47c0 .66.27 1.3.73 1.77l6.06 6.06c.39.39 1.02.39 1.41 0l4.59-4.59a.996.996 0 0 0 0-1.41L7.73 1.73zM2.38 7.09c-.31-.3-.47-.7-.47-1.13V3.5c0-.88.72-1.59 1.59-1.59h2.47c.42 0 .83.16 1.13.47l6.14 6.13-4.73 4.73-6.13-6.15zM3.01 3h2v2H3V3h.01z"/></svg>
+      </span>
+      <img alt="@Memphiz" class="avatar" height="16" src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" />
+      <a href="/Memphiz" class="author">Memphiz</a>
+      
+      
+       added <span class="label-color" style="background-color: #5319e7;" title="by Memphiz at 2017-06-21 06:02:23"><a href="/xbmc/xbmc/labels/Backport-Done" style="color: #fff">Backport-Done</a></span> and removed <span class="label-color" style="background-color: #5319e7;" title="by Memphiz at 2017-06-21 06:02:23"><a href="/xbmc/xbmc/labels/Backport-Needed" style="color: #fff">Backport-Needed</a></span>
+      labels
+      <a href="#event-1132259818" class="timestamp"><relative-time class="timestamp" datetime="2017-06-21T06:02:23Z">Jun 21, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310830422"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="c1d6f4299ae19b7447348fbfb5044cc3">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310830422" class="timestamp"><relative-time datetime="2017-06-24T10:25:59Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/peak3d" class="user-mention">@peak3d</a> any idea who maintains this or is entitled to approve or deny this?</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/peak3d">
+      <img alt="@peak3d" class="avatar rounded-1" height="44" src="https://avatars6.githubusercontent.com/u/22704999?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310831025"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="13bda9b3e2548e1b4dc2be898c26da55">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label tooltipped tooltipped-multiline tooltipped-s" aria-label="This user has previously committed to the xbmc repository.">
+      Contributor
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/peak3d" class="author">peak3d</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310831025" class="timestamp"><relative-time datetime="2017-06-24T10:39:52Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/memphiz" class="user-mention">@Memphiz</a> should be reviewed / agreed by <a href="https://github.com/koying" class="user-mention">@koying</a>. It feels not correct for me but I have currently no time to evaluate the driver issue. If it's urgent, just press the button, I'll not revert it.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310831793"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="a40264f55fe488a5f781871b85633081">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310831793" class="timestamp"><relative-time datetime="2017-06-24T10:56:24Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/peak3d" class="user-mention">@peak3d</a> did you read my latest comments? What exactly doesn't feel correct? Ppmgr3d was never able to switch 3d modes on the hdmi channel - that was a miss understanding on my side. Thats why i changed the PR for adding the 3d switching into the windowing where it is for other platforms too (rbpi for example). No its not urgent - just wanted to ensure that someone is there to judge this pr ;)</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+  <div class="timeline-comment-wrapper discussion-item-review mt-0 is-approved is-writer">
+    <div id="pullrequestreview-46124147" class="timeline-comment js-comment">
+      <a href="/peak3d"><img alt="@peak3d" class="timeline-comment-avatar" height="44" src="https://avatars6.githubusercontent.com/u/22704999?v=4&amp;s=88" width="44" /></a>
+      <div class="discussion-item">
+        <h3 class="discussion-item-header f5 text-normal">
+            <div class="discussion-item-icon">
+              <svg aria-hidden="true" class="octicon octicon-check" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+          </div>
+
+          <div class="discussion-item-copy d-inline-block">
+            <strong>
+              <a href="/peak3d" class="author">peak3d</a>
+            </strong>
+
+              approved these changes
+
+
+            <span class="text-gray">
+
+                <a href="#pullrequestreview-46124147" class="timestamp">
+                  <relative-time datetime="2017-06-24T11:01:52Z">Jun 24, 2017</relative-time>
+                </a>
+
+            </span>
+          </div>
+
+          <div class="float-right">
+
+
+            <a class="btn btn-sm btn-outline" href="/xbmc/xbmc/pull/12316/files/06c5193f0c3a4526a9c45e9e3973d8a24d370878">
+              View changes
+            </a>
+
+
+          </div>
+        </div>
+      </h3>
+
+
+      <div class="edit-comment-hide">
+          <div class="simple-box review-summary p-0 mt-3 mb-4">
+            <div class="comment-body markdown-body js-comment-body">
+              <p>Looks fine for me!</p>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/koying">
+      <img alt="@koying" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/164740?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310833719"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="0aef963da6ad6683ac0fe2ddb207e13d">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/koying" class="author">koying</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310833719" class="timestamp"><relative-time datetime="2017-06-24T11:41:48Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>I apologize, I've been confused as well.</p>
+<p>Indeed, "amhdmitx0" is the <em>only</em> way to signal 3D on HDMI.<br>
+It's like that in SPMC since ages, I should have checked (<a href="https://github.com/koying/SPMC/blob/spmc-jarvis/xbmc/utils/AMLUtils.cpp#L43">https://github.com/koying/SPMC/blob/spmc-jarvis/xbmc/utils/AMLUtils.cpp#L43</a>)</p>
+<p>ppmgr3d is for frames 3D post-processing, so unrelated.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions has-reactions js-reactions-container "
+
+    >
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/users/xbmc/reactions" class="js-pick-reaction" data-remote="true" data-type="json" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="By0AfifuiOMISKnLbjU0o9ynSvfbo0nFCLjXF3l1D/jaIx/QdKNIhE6GnVUedybOGhrprvYNzjsaDU2MVEjdEw==" /></div>
+      <input type="hidden" name="input[subjectId]" value="MDEyOklzc3VlQ29tbWVudDMxMDgzMzcxOQ==">
+
+      <div class="comment-reactions-options">
+          <button disabled
+                  class="btn-link reaction-summary-item tooltipped tooltipped-se tooltipped-multiline "
+                  name="input[content]"
+                  type="submit"
+                  value="THUMBS_UP react"
+                  aria-label="peak3d reacted with thumbs up emoji">
+            <g-emoji alias="+1" class="emoji mr-1" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png" ios-version="6.0">👍</g-emoji>
+            1
+          </button>
+      </div>
+</form></div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310844466"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="4486bdb8d3ea7b92ec97df57997fd89b">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310844466" class="timestamp"><relative-time datetime="2017-06-24T15:16:38Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Now i feel stupid in re-inventing the wheel here. Damn i should have talked to you about that missing feature on wetek instead of lrusak :( - now i am unsure if i should instead backport the solution you've done in SPMC?!?</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310845009"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="2e5e972dedd0979749d1e9f64ff6abf8">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310845009" class="timestamp"><relative-time datetime="2017-06-24T15:25:18Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/koying" class="user-mention">@koying</a> it looks like that feature vanished from your krypton branch though ...</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/Memphiz">
+      <img alt="@Memphiz" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/701326?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310845198"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="cb8ec21beb7affbff7cd9c25763564df">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/Memphiz" class="author">Memphiz</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310845198" class="timestamp"><relative-time datetime="2017-06-24T15:28:24Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>also you set it from rendering where a SetStereoMode method exists. Who in the team can tell me where exactly the hardware is to be switched to stereo mode ... i somehow feel it has to sit in windowing because we switch resolution and refreshrate there too - but looking ath that renderer code the SetStereoMode call sounds good too - and might also ensure that the mode is switched at the right time during playback start ... this is a bit confusing right now imo.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/koying">
+      <img alt="@koying" class="avatar rounded-1" height="44" src="https://avatars7.githubusercontent.com/u/164740?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-310847948"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="cb343e8b49c774090212dabfbb4e0b3e">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/koying" class="author">koying</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-310847948" class="timestamp"><relative-time datetime="2017-06-24T16:13:09Z">Jun 24, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p>Your solution is as good as mine ;)<br>
+<a href="https://github.com/popcornmix" class="user-mention">@popcornmix</a> is probably the one to ping, as I assume he does something similar for RPI.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+<div class="discussion-item discussion-commits" id="commits-pushed-f44ee99">
+    <h3 class="discussion-item-header f5 text-normal">
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-repo-push" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M4 3H3V2h1v1zM3 5h1V4H3v1zm4 0L4 9h2v7h2V9h2L7 5zm4-5H1C.45 0 0 .45 0 1v12c0 .55.45 1 1 1h4v-1H1v-2h4v-1H2V1h9.02L11 10H9v1h2v2H9v1h2c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z"/></svg>
+      </span>
+      
+  <a href="/Memphiz" class="author">Memphiz</a>
+
+      added some commits
+      <a href="#commits-pushed-f44ee99" class="timestamp">
+        <relative-time datetime="2017-06-20T18:42:05Z">Jun 20, 2017</relative-time>
+      </a>
+    </h3>
+  <div class="discussion-item-body">
+    <table class="timeline-commits">
+        
+<tr class="commit js-details-container Details js-socket-channel js-updatable-content" data-channel="repo:1217614:commit:f44ee991657b6c15c5e0c1a386468e58e182003e"
+    data-url="/_render_node/MDE3OlB1bGxSZXF1ZXN0Q29tbWl0MTI2MTY3ODI3OmY0NGVlOTkxNjU3YjZjMTVjNWUwYzFhMzg2NDY4ZTU4ZTE4MjAwM2U=/commit/pull_condensed">
+  <td class="commit-icon">
+    <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z"/></svg>
+  </td>
+
+  <td class="commit-gravatar no-wrap text-right">
+    
+  <a href="/Memphiz" class="d-inline-block">
+    <img src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" height="16" class="avatar avatar-small" alt="@Memphiz">
+  </a>
+
+  </td>
+
+  <td class="commit-author">
+    <strong>
+  <a href="/Memphiz" class="author">Memphiz</a>
+</strong>
+  </td>
+
+  <td class="commit-message">
+    <code>
+      <a href="/xbmc/xbmc/pull/12316/commits/f44ee991657b6c15c5e0c1a386468e58e182003e" class="message" data-pjax="true" title="[windowing/AML] - added display 3d mode switching via amhdmitx0/config sysfs interface">[windowing/AML] - added display 3d mode switching via amhdmitx0/confi…</a>
+    </code>
+
+      <span class="hidden-text-expander inline">
+        <button type="button" class="ellipsis-expander js-details-target" aria-expanded="false">&hellip;</button>
+      </span>
+      <div class="commit-desc"><pre>…g sysfs interface</pre></div>
+
+  </td>
+
+  <td class="commit-sig-status">
+    
+
+  </td>
+
+  <td class="commit-ci-status">
+  </td>
+
+  <td class="commit-meta">
+    <code><a href="/xbmc/xbmc/pull/12316/commits/f44ee991657b6c15c5e0c1a386468e58e182003e" class="commit-id">f44ee99</a></code>
+  </td>
+</tr>
+
+        
+<tr class="commit js-details-container Details js-socket-channel js-updatable-content" data-channel="repo:1217614:commit:c15a9028b129e99fe772749efd76ec43de67b5ec"
+    data-url="/_render_node/MDE3OlB1bGxSZXF1ZXN0Q29tbWl0MTI2MTY3ODI3OmMxNWE5MDI4YjEyOWU5OWZlNzcyNzQ5ZWZkNzZlYzQzZGU2N2I1ZWM=/commit/pull_condensed">
+  <td class="commit-icon">
+    <svg aria-hidden="true" class="octicon octicon-git-commit" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M10.86 7c-.45-1.72-2-3-3.86-3-1.86 0-3.41 1.28-3.86 3H0v2h3.14c.45 1.72 2 3 3.86 3 1.86 0 3.41-1.28 3.86-3H14V7h-3.14zM7 10.2c-1.22 0-2.2-.98-2.2-2.2 0-1.22.98-2.2 2.2-2.2 1.22 0 2.2.98 2.2 2.2 0 1.22-.98 2.2-2.2 2.2z"/></svg>
+  </td>
+
+  <td class="commit-gravatar no-wrap text-right">
+    
+  <a href="/Memphiz" class="d-inline-block">
+    <img src="https://avatars6.githubusercontent.com/u/701326?v=4&amp;s=32" width="16" height="16" class="avatar avatar-small" alt="@Memphiz">
+  </a>
+
+  </td>
+
+  <td class="commit-author">
+    <strong>
+  <a href="/Memphiz" class="author">Memphiz</a>
+</strong>
+  </td>
+
+  <td class="commit-message">
+    <code>
+      <a href="/xbmc/xbmc/pull/12316/commits/c15a9028b129e99fe772749efd76ec43de67b5ec" class="message" data-pjax="true" title="[AMLCodec]: - added software fallback for rendering 3d to 2d if ppmgr_3d is not available">[AMLCodec]: - added software fallback for rendering 3d to 2d if ppmgr…</a>
+    </code>
+
+      <span class="hidden-text-expander inline">
+        <button type="button" class="ellipsis-expander js-details-target" aria-expanded="false">&hellip;</button>
+      </span>
+      <div class="commit-desc"><pre>…_3d is not available</pre></div>
+
+  </td>
+
+  <td class="commit-sig-status">
+    
+
+  </td>
+
+  <td class="commit-ci-status">
+      
+  <div class="commit-build-statuses">
+      <a class="text-green tooltipped tooltipped-w"
+         aria-label="Success: You&#39;re awesome. Have a cookie
+ "
+         href="http://jenkins.kodi.tv/job/BuildMulti-PR/3410/">
+        <svg aria-hidden="true" class="octicon octicon-check" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"/></svg>
+      </a>
+  </div>
+
+  </td>
+
+  <td class="commit-meta">
+    <code><a href="/xbmc/xbmc/pull/12316/commits/c15a9028b129e99fe772749efd76ec43de67b5ec" class="commit-id">c15a902</a></code>
+  </td>
+</tr>
+
+    </table>
+  </div>
+</div>
+
+
+  
+  <div class="timeline-comment-wrapper js-comment-container">
+
+    
+
+<div class="avatar-parent-child timeline-comment-avatar">
+    <a href="/MartijnKaijser">
+      <img alt="@MartijnKaijser" class="avatar rounded-1" height="44" src="https://avatars4.githubusercontent.com/u/907436?v=4&amp;s=88" width="44" />
+    </a>
+
+</div>
+
+
+
+      
+<div id="issuecomment-313181645"
+     class="comment previewable-edit js-comment js-task-list-container  timeline-comment  "
+     data-body-version="69437f432e5894e1789ae8f256db6b7c">
+
+  
+<div class="timeline-comment-header">
+  <div class="timeline-comment-actions">
+
+
+  </div>
+
+    
+    <span class="timeline-comment-label text-bold tooltipped tooltipped-multiline tooltipped-s" aria-label="This user is the owner of the xbmc repository.">
+      Owner
+    </span>
+
+
+
+  <h3 class="timeline-comment-header-text f5 text-normal">
+
+    <strong>
+        <a href="/MartijnKaijser" class="author">MartijnKaijser</a>
+        
+    </strong>
+
+    commented
+
+    <a href="#issuecomment-313181645" class="timestamp"><relative-time datetime="2017-07-05T18:07:08Z">Jul 5, 2017</relative-time></a>
+
+
+  </h3>
+</div>
+
+
+  <div class="edit-comment-hide">
+    <table class="d-block">
+      <tbody class="d-block">
+        <tr class="d-block">
+          <td class="d-block comment-body markdown-body  js-comment-body">
+              <p><a href="https://github.com/popcornmix" class="user-mention">@popcornmix</a> ping.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+      
+
+<div class="comment-reactions  js-reactions-container "
+
+    >
+</div>
+
+  </div>
+
+</div>
+
+  </div>
+
+  
+  
+
+
+      
+  <div class="discussion-item discussion-item-review_requested">
+    <h3 class="discussion-item-header f5 text-normal" id="event-1155009292">
+
+      <span class="discussion-item-icon">
+        <svg aria-hidden="true" class="octicon octicon-eye" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+      </span>
+      <img alt="" class="avatar" height="16" src="https://avatars5.githubusercontent.com/u/907436?v=4&amp;s=32" width="16" />
+      <a href="/MartijnKaijser" class="author">MartijnKaijser</a>
+      
+      requested a review
+      
+      from <a href="/popcornmix"><span class="discussion-item-entity">popcornmix</span></a>
+      <a href="#event-1155009292" class="timestamp"><relative-time class="timestamp" datetime="2017-07-07T19:09:56Z">Jul 7, 2017</relative-time></a>
+    </h3>
+  </div>
+
+
+
+
+
+
+
+
+<!-- Rendered timeline since 2017-07-07 12:09:56 -->
+<div id="partial-timeline-marker"
+      class="js-timeline-marker js-socket-channel js-updatable-content"
+      data-channel="pull_request:126167827"
+      data-url="/xbmc/xbmc/pull/12316/show_partial?partial=pull_requests%2Ftimeline_marker&amp;since=1499454596"
+      data-last-modified="Fri, 07 Jul 2017 19:09:56 GMT">
+
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form accept-charset="UTF-8" action="/xbmc/xbmc/notifications/mark?ids=234181019" class="d-none js-timeline-marker-form" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="/hPUFs7iwBAwB4Kk8pxQfvkMUpv65/C1RP75/GDpQVkJFNtiXI7Zezoul0x/HbFjpUtSF974tp7P7soGZiPMDg==" /></div>
+</form></div>
+
+
+  </div>
+
+    <div class="discussion-timeline-actions">
+          <div class="flash flash-warn mt-3">
+    <a href="/join?source=comment-repo" class="btn btn-primary" rel="nofollow">Sign up for free</a>
+    <strong>to join this conversation on GitHub</strong>.
+    Already have an account?
+    <a href="/login?return_to=https%3A%2F%2Fgithub.com%2Fxbmc%2Fxbmc%2Fpull%2F12316" rel="nofollow">Sign in to comment</a>
+</div>
+
+
+    </div>
+</div>
+
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+  <div class="modal-backdrop js-touch-events"></div>
+</div>
+
+    </div>
+  </div>
+
+  </div>
+
+      
+<div class="container site-footer-container">
+  <div class="site-footer " role="contentinfo">
+    <ul class="site-footer-links float-right">
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
+      <li><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com" aria-label="Homepage" class="site-footer-mark" title="GitHub">
+      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2017 <span title="0.72666s from unicorn-3417622806-jv1hw">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a href="https://help.github.com" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+    You can't perform that action at this time.
+  </div>
+
+
+    <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/compat-91f98c37fc84eac24836eec2567e9912742094369a04c4eba6e3cd1fa18902d9.js"></script>
+    <script crossorigin="anonymous" src="https://assets-cdn.github.com/assets/frameworks-f84bb87b149685d1e6c6f057ee324f2cd496e677f5a359a8b5db853313bb83e6.js"></script>
+    
+    <script async="async" crossorigin="anonymous" src="https://assets-cdn.github.com/assets/github-4a151b6cf53cb2f986385e758f8b88f44791d321ec1923f40f05769e1419edf4.js"></script>
+    
+    
+    
+    
+  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
+    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"/></svg>
+    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
+    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span>
+  </div>
+  <div class="facebox" id="facebox" style="display:none;">
+  <div class="facebox-popup">
+    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
+    </div>
+    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
+      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"/></svg>
+    </button>
+  </div>
+</div>
+
+
+  </body>
+</html>
+
