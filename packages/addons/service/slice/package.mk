@@ -18,7 +18,7 @@
 
 PKG_NAME="slice"
 PKG_VERSION="0"
-PKG_REV="100"
+PKG_REV="101"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE=""
@@ -31,6 +31,7 @@ PKG_AUTORECONF="no"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_NAME="Slice"
+PKG_ADDON_PROJECTS="RPi"
 PKG_ADDON_TYPE="xbmc.service"
 
 make_target() {

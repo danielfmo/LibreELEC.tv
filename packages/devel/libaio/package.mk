@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of OpenELEC - http://www.openelec.tv
-#      Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
+#      Copyright (C) 2009-2017 Stephan Raue (stephan@openelec.tv)
 #
 #  OpenELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,26 +16,28 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="p8-platform"
-PKG_VERSION="3219004"
+PKG_NAME="libaio"
+PKG_VERSION="0.3.110"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
-PKG_SITE="http://www.kodi.tv"
-PKG_URL="https://github.com/Pulse-Eight/platform/archive/$PKG_VERSION.tar.gz"
-PKG_SOURCE_DIR="platform-$PKG_VERSION*"
+PKG_SITE="http://lse.sourceforge.net/io/aio.html"
+PKG_URL="http://http.debian.net/debian/pool/main/liba/libaio/${PKG_NAME}_${PKG_VERSION}.orig.tar.gz"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="multimedia"
-PKG_SHORTDESC="Platform support library used by libCEC and binary add-ons for Kodi"
-PKG_LONGDESC="Platform support library used by libCEC and binary add-ons for Kodi"
+PKG_SECTION="devel"
+PKG_SHORTDESC="libaio: Kernel Asynchronous I/O (AIO) Support for Linux"
+PKG_LONGDESC="AIO enables even a single application thread to overlap I/O operations with other processing, by providing an interface for submitting one or more I/O requests in one system call (io_submit()) without waiting for completion, and a separate interface (io_getevents()) to reap completed I/O operations associated with a given completion group."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-PKG_CMAKE_OPTS_TARGET="-DCMAKE_INSTALL_LIBDIR:STRING=lib \
-                       -DCMAKE_INSTALL_LIBDIR_NOARCH:STRING=lib \
-                       -DCMAKE_INSTALL_PREFIX_TOOLCHAIN=$SYSROOT_PREFIX/usr \
-                       -DBUILD_SHARED_LIBS=0"
+make_target() {
+  make -C src
+}
 
-post_makeinstall_target() {
-  rm -rf $INSTALL/usr
+makeinstall_target() {
+  mkdir -p $SYSROOT_PREFIX/usr/lib
+    cp -PR src/libaio.a $SYSROOT_PREFIX/usr/lib
+
+  mkdir -p $SYSROOT_PREFIX/usr/include
+    cp -PR src/libaio.h $SYSROOT_PREFIX/usr/include
 }
