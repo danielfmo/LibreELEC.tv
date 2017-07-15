@@ -45,7 +45,7 @@ make_target() {
       make ARM=1
       ;;
     Generic|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make
+      make ARM=1
       ;;
   esac
 }
