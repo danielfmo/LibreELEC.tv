@@ -41,11 +41,11 @@ configure_target() {
 
 make_target() {
   case $PROJECT in
-    RPi|RPi2|imx6|WeTek_Play|WeTek_Core)
+    RPi|RPi2|imx6|WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
       make ARM=1
       ;;
-    Generic|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make ARM=1
+    Generic)
+      make
       ;;
   esac
 }

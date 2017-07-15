@@ -53,11 +53,8 @@ make_target() {
     imx6)
       make -f Makefile.libretro platform=imx6
       ;;
-    WeTek_Play|WeTek_Core)
+    WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
       make -f Makefile.libretro platform=armv7-neon-gles-cortex-a9
-      ;;
-    Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make -f Makefile.libretro platform=aarch64
       ;;
     Generic)
       make -f Makefile.libretro
