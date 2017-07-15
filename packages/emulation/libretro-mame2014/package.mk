@@ -53,11 +53,8 @@ make_target() {
     imx6)
       make platform=armv7-neon-hardfloat-cortex-a9
       ;;
-    WeTek_Play|WeTek_Core)
+    WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
       make platform=armv7-neon-hardfloat-cortex-a9
-      ;;
-    Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make platform=aarch64
       ;;
     Generic)
       make
