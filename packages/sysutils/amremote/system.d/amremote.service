@@ -1,0 +1,9 @@
+[Unit]
+Description=Enable amremote and disable lirc
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/libreelec/meson_remote_ir meson-remote
+
+[Install]
+WantedBy=multi-user.target
