@@ -28,4 +28,4 @@ else
 fi
 
 
-exec /usr/sbin/lircd -o /run/lirc/lircd $LIRCD_OPTIONS "$@" $LIRCD_CONF
+exec /usr/sbin/lircd $LIRCD_OPTIONS "$@" $LIRCD_CONF
