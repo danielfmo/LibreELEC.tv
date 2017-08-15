@@ -20,6 +20,7 @@
 
 PKG_NAME="v4l-utils"
 PKG_VERSION="1.12.3"
+PKG_SHA256="5a47dd6f0e7dfe902d94605c01d385a4a4e87583ff5856d6f181900ea81cf46e"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://linuxtv.org/"
@@ -33,10 +34,15 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--without-jpeg"
-PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr -C utils/keytable"
 
 make_target() {
     make -C utils/keytable CFLAGS="$TARGET_CFLAGS"
+    make -C utils/ir-ctl CFLAGS="$TARGET_CFLAGS"
+}
+
+makeinstall_target() {
+   make install DESTDIR=$INSTALL PREFIX=/usr -C utils/keytable
+   make install DESTDIR=$INSTALL PREFIX=/usr -C utils/ir-ctl
 }
 
 post_makeinstall_target() {
@@ -45,6 +51,10 @@ post_makeinstall_target() {
 
   mkdir -p $INSTALL/usr/config
     cp -PR $PKG_DIR/config/* $INSTALL/usr/config
+
+  rm -rf $INSTALL/usr/lib/udev/rules.d
+    mkdir -p $INSTALL/usr/lib/udev/rules.d
+    cp -PR $PKG_DIR/udev.d/*.rules $INSTALL/usr/lib/udev/rules.d
 
   (
     echo "# table libreelec_multi, type: RC6 NEC"

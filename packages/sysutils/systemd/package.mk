@@ -18,6 +18,7 @@
 
 PKG_NAME="systemd"
 PKG_VERSION="233"
+PKG_SHA256="8b3e99da3d4164b66581830a7f2436c0c8fe697b5fbdc3927bdb960646be0083"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.freedesktop.org/wiki/Software/systemd"
@@ -142,6 +143,11 @@ post_makeinstall_target() {
 
   # remove Network adaper renaming rule, this is confusing
   rm -rf $INSTALL/usr/lib/udev/rules.d/80-net-setup-link.rules
+
+  # remove the uaccess rules as we don't build systemd with ACL (see https://github.com/systemd/systemd/issues/4107)
+  rm -rf $INSTALL/usr/lib/udev/rules.d/70-uaccess.rules
+  rm -rf $INSTALL/usr/lib/udev/rules.d/71-seat.rules
+  rm -rf $INSTALL/usr/lib/udev/rules.d/73-seat-late.rules
 
   # remove debug-shell.service, we install our own
   rm -rf $INSTALL/usr/lib/systemd/system/debug-shell.service
