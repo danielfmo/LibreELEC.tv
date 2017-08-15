@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="pvr.dvblink"
-PKG_VERSION="3572811"
-PKG_SHA256="2c4ead089bf902cb9686776320c5d779de8a82905c0441f4c1edec927cab2989"
+PKG_VERSION="7d9c181"
+PKG_SHA256="8bc6352ddb5485a7f85c5e1f9c5c9ba26e80b3924be9b154952f4d1fad20e59a"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
