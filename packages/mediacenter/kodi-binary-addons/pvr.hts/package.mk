@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="pvr.hts"
-PKG_VERSION="a1de632"
-PKG_SHA256="4f67bbc916c6c7b5578f957191f7db897a9572b2745fe6f0f1c6b8b53f19c837"
+PKG_VERSION="53118d8"
+PKG_SHA256="8aebc431bd9c41658f646c3bc74959a787ddef7cf320b03b8edaa022e98c6584"
 PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
