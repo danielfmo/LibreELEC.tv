@@ -39,19 +39,19 @@ PKG_LIBVAR="BEETLE-PCFX_LIB"
 make_target() {
   case $PROJECT in
     RPi)
-      make platform=armv6-hardfloat
+      make CC=$CC CXX=$CXX platform=armv6-hardfloat
       ;;
     RPi2)
-      make platform=armv7-neon-hardfloat
+      make CC=$CC CXX=$CXX platform=armv7-neon-hardfloat
       ;;
     imx6)
-      make platform=armv7-cortexa9-neon-hardfloat
+      make CC=$CC CXX=$CXX platform=armv7-cortexa9-neon-hardfloat
       ;;
     WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make platform=armv7-cortexa9-neon-hardfloat
+      make CC=$CC CXX=$CXX platform=armv7-cortexa9-neon-hardfloat
       ;;
     Generic)
-      make
+      make CC=$CC CXX=$CXX
       ;;
   esac
 }
