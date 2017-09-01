@@ -6,7 +6,7 @@ diff -Naur a/libsrc/boblightserver/CMakeLists.txt b/libsrc/boblightserver/CMakeL
  	hyperion
  	hyperion-utils
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/bonjour/CMakeLists.txt b/libsrc/bonjour/CMakeLists.txt
 --- a/libsrc/bonjour/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/bonjour/CMakeLists.txt	2016-10-19 14:11:32.945486250 -0700
@@ -15,7 +15,7 @@ diff -Naur a/libsrc/bonjour/CMakeLists.txt b/libsrc/bonjour/CMakeLists.txt
  		hyperion
  		hyperion-utils
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
  
  set(USE_SHARED_AVAHI_LIBS ${DEFAULT_USE_SHARED_AVAHI_LIBS} CACHE BOOL "use avahi libraries from system")
  
@@ -27,7 +27,7 @@ diff -Naur a/libsrc/effectengine/CMakeLists.txt b/libsrc/effectengine/CMakeLists
  	hyperion
  	jsoncpp
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  	${PYTHON_LIBRARIES})
 diff -Naur a/libsrc/grabber/amlogic/CMakeLists.txt b/libsrc/grabber/amlogic/CMakeLists.txt
 --- a/libsrc/grabber/amlogic/CMakeLists.txt	2016-10-19 13:53:03.326320836 -0700
@@ -37,7 +37,7 @@ diff -Naur a/libsrc/grabber/amlogic/CMakeLists.txt b/libsrc/grabber/amlogic/CMak
  target_link_libraries(amlogic-grabber
  	hyperion
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/grabber/dispmanx/CMakeLists.txt b/libsrc/grabber/dispmanx/CMakeLists.txt
 --- a/libsrc/grabber/dispmanx/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/grabber/dispmanx/CMakeLists.txt	2016-10-19 14:11:32.948486280 -0700
@@ -46,7 +46,7 @@ diff -Naur a/libsrc/grabber/dispmanx/CMakeLists.txt b/libsrc/grabber/dispmanx/CM
  target_link_libraries(dispmanx-grabber
  	hyperion
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  	${BCM_LIBRARIES}
  )
 diff -Naur a/libsrc/grabber/framebuffer/CMakeLists.txt b/libsrc/grabber/framebuffer/CMakeLists.txt
@@ -57,7 +57,7 @@ diff -Naur a/libsrc/grabber/framebuffer/CMakeLists.txt b/libsrc/grabber/framebuf
  target_link_libraries(framebuffer-grabber
  	hyperion
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/grabber/osx/CMakeLists.txt b/libsrc/grabber/osx/CMakeLists.txt
 --- a/libsrc/grabber/osx/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/grabber/osx/CMakeLists.txt	2016-10-19 14:11:32.949486290 -0700
@@ -66,7 +66,7 @@ diff -Naur a/libsrc/grabber/osx/CMakeLists.txt b/libsrc/grabber/osx/CMakeLists.t
  target_link_libraries(osx-grabber
  	hyperion
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/grabber/v4l2/CMakeLists.txt b/libsrc/grabber/v4l2/CMakeLists.txt
 --- a/libsrc/grabber/v4l2/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/grabber/v4l2/CMakeLists.txt	2016-10-19 14:11:32.947486270 -0700
@@ -75,7 +75,7 @@ diff -Naur a/libsrc/grabber/v4l2/CMakeLists.txt b/libsrc/grabber/v4l2/CMakeLists
  target_link_libraries(v4l2-grabber
  	hyperion
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
 diff -Naur a/libsrc/grabber/x11/CMakeLists.txt b/libsrc/grabber/x11/CMakeLists.txt
 --- a/libsrc/grabber/x11/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
@@ -85,7 +85,7 @@ diff -Naur a/libsrc/grabber/x11/CMakeLists.txt b/libsrc/grabber/x11/CMakeLists.t
  target_link_libraries(x11-grabber
  	hyperion
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
 diff -Naur a/libsrc/hyperion/CMakeLists.txt b/libsrc/hyperion/CMakeLists.txt
 --- a/libsrc/hyperion/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
@@ -95,7 +95,7 @@ diff -Naur a/libsrc/hyperion/CMakeLists.txt b/libsrc/hyperion/CMakeLists.txt
  	effectengine
  	serialport
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
 diff -Naur a/libsrc/jsonserver/CMakeLists.txt b/libsrc/jsonserver/CMakeLists.txt
 --- a/libsrc/jsonserver/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
@@ -105,7 +105,7 @@ diff -Naur a/libsrc/jsonserver/CMakeLists.txt b/libsrc/jsonserver/CMakeLists.txt
  	hyperion-utils
  	jsoncpp
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/leddevice/CMakeLists.txt b/libsrc/leddevice/CMakeLists.txt
 --- a/libsrc/leddevice/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/leddevice/CMakeLists.txt	2016-10-19 14:11:32.947486270 -0700
@@ -114,7 +114,7 @@ diff -Naur a/libsrc/leddevice/CMakeLists.txt b/libsrc/leddevice/CMakeLists.txt
  	${LIBUSB_1_LIBRARIES} #apt-get install libusb-1.0-0-dev
  	${CMAKE_THREAD_LIBS_INIT}
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
  
  if(ENABLE_TINKERFORGE)
@@ -126,7 +126,7 @@ diff -Naur a/libsrc/protoserver/CMakeLists.txt b/libsrc/protoserver/CMakeLists.t
  	hyperion-utils
  	protobuf
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
 diff -Naur a/libsrc/utils/CMakeLists.txt b/libsrc/utils/CMakeLists.txt
 --- a/libsrc/utils/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
@@ -136,7 +136,7 @@ diff -Naur a/libsrc/utils/CMakeLists.txt b/libsrc/utils/CMakeLists.txt
  target_link_libraries(hyperion-utils
  	jsoncpp
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/libsrc/webconfig/CMakeLists.txt b/libsrc/webconfig/CMakeLists.txt
 --- a/libsrc/webconfig/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/libsrc/webconfig/CMakeLists.txt	2016-10-19 14:11:32.949486290 -0700
@@ -145,7 +145,7 @@ diff -Naur a/libsrc/webconfig/CMakeLists.txt b/libsrc/webconfig/CMakeLists.txt
  	hyperion
  	hyperion-utils
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
  
  
@@ -157,7 +157,7 @@ diff -Naur a/libsrc/xbmcvideochecker/CMakeLists.txt b/libsrc/xbmcvideochecker/CM
  target_link_libraries(xbmcvideochecker
  	hyperion
 -	${QT_LIBRARIES})
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
 diff -Naur a/src/hyperion-remote/CMakeLists.txt b/src/hyperion-remote/CMakeLists.txt
 --- a/src/hyperion-remote/CMakeLists.txt	2016-07-17 23:44:37.000000000 -0700
 +++ b/src/hyperion-remote/CMakeLists.txt	2016-10-19 15:05:59.050877759 -0700
@@ -167,7 +167,7 @@ diff -Naur a/src/hyperion-remote/CMakeLists.txt b/src/hyperion-remote/CMakeLists
  	getoptPlusPlus
 -	${QT_LIBRARIES})
 +	hyperion
-+	${QT_LIBRARIES} pthread pcre16 dl z)
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
  
  if(ENABLE_QT5)
  	qt5_use_modules(${PROJECT_NAME} Widgets Core Network)
@@ -179,7 +179,7 @@ diff -Naur a/src/hyperion-v4l2/CMakeLists.txt b/src/hyperion-v4l2/CMakeLists.txt
  	protoserver
  	pthread
 -	${QT_LIBRARIES}
-+	${QT_LIBRARIES} pthread pcre16 dl z
++	${QT_LIBRARIES} pthread pcre16 dl z libpng.a
  )
  
  if(ENABLE_QT5)
@@ -191,12 +191,12 @@ diff -Naur a/test/CMakeLists.txt b/test/CMakeLists.txt
  add_executable(test_qregexp TestQRegExp.cpp)
  target_link_libraries(test_qregexp
 -		${QT_LIBRARIES})
-+		${QT_LIBRARIES} pthread pcre16 dl z)
++		${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
  
  add_executable(test_qtscreenshot TestQtScreenshot.cpp)
  target_link_libraries(test_qtscreenshot
 -		${QT_LIBRARIES})
-+		${QT_LIBRARIES} pthread pcre16 dl z)
++		${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
  
  if(ENABLE_QT5)
  qt5_use_modules(test_qregexp Widgets)
@@ -205,7 +205,7 @@ diff -Naur a/test/CMakeLists.txt b/test/CMakeLists.txt
  
      add_executable(test_x11performance TestX11Performance.cpp)
 -	target_link_libraries(test_x11performance ${X11_LIBRARIES} ${QT_LIBRARIES})
-+	target_link_libraries(test_x11performance ${X11_LIBRARIES} ${QT_LIBRARIES} pthread pcre16 dl z)
++	target_link_libraries(test_x11performance ${X11_LIBRARIES} ${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
  if(ENABLE_QT5)
  qt5_use_modules(test_x11performance Widgets)
  endif(ENABLE_QT5)
@@ -217,4 +217,4 @@ diff -Naur a/test/dispmanx2png/CMakeLists.txt b/test/dispmanx2png/CMakeLists.txt
  		dispmanx-grabber
  		getoptPlusPlus
 -		${QT_LIBRARIES})
-+		${QT_LIBRARIES} pthread pcre16 dl z)
++		${QT_LIBRARIES} pthread pcre16 dl z libpng.a)
