@@ -19,7 +19,7 @@
 PKG_NAME="adsp.basic"
 PKG_VERSION="a55b431"
 PKG_SHA256="f446ee529030cc61a4b35e45dcba3abe3bc23efcba0682da39d06bc5f112c9e5"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

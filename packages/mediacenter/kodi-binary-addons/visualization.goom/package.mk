@@ -19,7 +19,7 @@
 PKG_NAME="visualization.goom"
 PKG_VERSION="0c93889"
 PKG_SHA256="6c1599c7c6ea7b1d020d56b54bbe078c53e9600f1f3e7cf8b6f1d9e8bea4d4f6"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/visualization.goom"

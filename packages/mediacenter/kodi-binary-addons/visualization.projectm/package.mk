@@ -19,7 +19,7 @@
 PKG_NAME="visualization.projectm"
 PKG_VERSION="a39f73b"
 PKG_SHA256="d4ebf092400a4e8295b5559b68c2dcc99e7f56d6bcc48580126aa706da6c6b8d"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/visualization.projectm"
