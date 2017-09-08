@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="kodi"
-PKG_VERSION="cec980f"
-PKG_SHA256="6cd426ab051bf7ca10e82b6fd977b3c60e8ee1e6f914bdf1996a69dc219c4805"
+PKG_VERSION="ef76936"
+PKG_SHA256="24e38914b76b5624b0f647657a197961c0b9b9e38cb7ebb016d99de3f0a8d2af"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
@@ -135,9 +135,6 @@ fi
 
 if [ "$KODI_SAMBA_SUPPORT" = yes ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET samba"
-  KODI_SAMBA="-DENABLE_SMBCLIENT=ON"
-else
-  KODI_SAMBA="-DENABLE_SMBCLIENT=OFF"
 fi
 
 if [ "$KODI_WEBSERVER_SUPPORT" = yes ]; then
