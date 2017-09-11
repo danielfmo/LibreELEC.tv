@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.ssf"
 PKG_VERSION="7922312"
 PKG_SHA256="49c5e126a8e6511c939554ad008cec6f81941aaacfef1c7b8c121704823917db"
-PKG_REV="3"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.ssf"

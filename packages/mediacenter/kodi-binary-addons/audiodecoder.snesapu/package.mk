@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.snesapu"
 PKG_VERSION="dcecced"
 PKG_SHA256="585a02a2224b205b762b2d9469949a5b3f636dfd521c08aa33159a5b7058a87d"
-PKG_REV="3"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
