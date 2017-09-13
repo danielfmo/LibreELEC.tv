@@ -1,6 +1,6 @@
 --- a/backports/backports.txt
 +++ b/backports/backports.txt
-@@ -25,6 +25,25 @@ add api_version.patch
+@@ -25,6 +25,21 @@ add api_version.patch
  add pr_fmt.patch
  add debug.patch
  add drx39xxj.patch
@@ -18,11 +18,6 @@
 +add linux-251-videobuf-resource.patch
 +add linux-252-amlogic-video-dev.patch
 +add linux-253-wetek-dvb.patch
-+add linux-260-fix-for-kernel-4.11.patch
-+add linux-261-fix-for-kernel-4.11-dibusb-license.patch
-+add linux-263-fix-for-kernel-4.11-tbs5580-support.patch
-+add linux-264-fix-for-kernel-4.11-lirc-fixes.patch
-+add linux-265-fix-for-kernel-4.11-cinergy-s2-dual-support.patch
 +add cxd2880-support.patch
  
  [4.10.255]
