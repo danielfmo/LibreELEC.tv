@@ -222,8 +222,8 @@ find $INSTALL/usr/lib/modules/$MODVER/ -name *.ko | \
 $TOOLCHAIN/bin/depmod -b $INSTALL/usr -a -e -F "$BUILD/linux-$(kernel_version)/System.map" $MODVER
 
 # strip kernel modules
-if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm"  ]; then
-  export PATH=$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$PATH
+if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm" ]; then
+  export PATH=$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin:$PATH
   STRIP=aarch64-elf-strip
 fi
 for MOD in `find $INSTALL/usr/lib/modules/ -type f -name *.ko`; do
@@ -348,9 +348,9 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
       TARGET_IMG="$TARGET_IMG" \
       IMAGE_NAME="$IMAGE_NAME" \
       BOOTLOADER="$BOOTLOADER" \
+      MEDIACENTER="$MEDIACENTER" \
       KERNEL_NAME="$KERNEL_NAME" \
       RELEASE_DIR=$RELEASE_DIR \
-      UUID_SYSTEM="$(uuidgen)" \
       UUID_STORAGE="$(uuidgen)" \
       UBOOT_SYSTEM="$UBOOT_SYSTEM" \
       EXTRA_CMDLINE="$EXTRA_CMDLINE" \

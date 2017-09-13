@@ -49,6 +49,13 @@ else
   FFMPEG_VDPAU="--disable-vdpau"
 fi
 
+if [ "$PROJECT" = "Rockchip" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET rkmpp"
+  FFMPEG_RKMPP="--enable-rkmpp"
+else
+  FFMPEG_RKMPP="--disable-rkmpp"
+fi
+
 if [ "$DEBUG" = "yes" ]; then
   FFMPEG_DEBUG="--enable-debug --disable-stripping"
 else
@@ -68,14 +75,11 @@ case "$TARGET_ARCH" in
     ;;
 esac
 
-case "$TARGET_FPU" in
-  neon*)
-    FFMPEG_FPU="--enable-neon"
-    ;;
-  *)
-    FFMPEG_FPU="--disable-neon"
-    ;;
-esac
+if echo "$TARGET_FPU" | grep -q '^neon' || [[ "$TARGET_ARCH" = "aarch64" ]]; then
+  FFMPEG_FPU="--enable-neon"
+else
+  FFMPEG_FPU="--disable-neon"
+fi
 
 if [ "$DISPLAYSERVER" = "x11" ]; then
   FFMPEG_X11GRAB="--enable-indev=x11grab_xcb"
@@ -156,6 +160,7 @@ configure_target() {
               --disable-crystalhd \
               $FFMPEG_VAAPI \
               $FFMPEG_VDPAU \
+              $FFMPEG_RKMPP \
               --disable-dxva2 \
               --enable-runtime-cpudetect \
               $FFMPEG_TABLES \

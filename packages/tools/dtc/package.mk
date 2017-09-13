@@ -37,3 +37,8 @@ makeinstall_target() {
     cp -P $PKG_BUILD/fdtput $INSTALL/usr/bin/
     cp -P $PKG_BUILD/fdtget $INSTALL/usr/bin/
 }
+
+makeinstall_host() {
+  mkdir -p $TOOLCHAIN/bin
+    cp -P $PKG_BUILD/dtc $TOOLCHAIN/bin
+}
