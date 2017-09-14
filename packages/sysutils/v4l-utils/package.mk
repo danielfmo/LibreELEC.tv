@@ -34,7 +34,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 PKG_CONFIGURE_OPTS_TARGET="--without-jpeg --disable-qv4l2"
-PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr -C utils"
+#PKG_MAKEINSTALL_OPTS_TARGET="PREFIX=/usr -C utils"
 
 pre_configure_target() {
   # v4l-utils fails to build in subdirs
