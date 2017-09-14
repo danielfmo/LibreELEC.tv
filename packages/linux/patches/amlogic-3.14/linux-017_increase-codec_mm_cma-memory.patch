@@ -1,0 +1,39 @@
+diff --git a/arch/arm64/boot/dts/amlogic/gxbb_p200_1G_wetek_hub.dts b/arch/arm64/boot/dts/amlogic/gxbb_p200_1G_wetek_hub.dts
+index 08a9f341a121..d04ea1614c18 100644
+--- a/arch/arm64/boot/dts/amlogic/gxbb_p200_1G_wetek_hub.dts
++++ b/arch/arm64/boot/dts/amlogic/gxbb_p200_1G_wetek_hub.dts
+@@ -95,7 +95,7 @@
+ 		codec_mm_cma:linux,codec_mm_cma {
+ 			compatible = "shared-dma-pool";
+ 			reusable;
+-			size = <0x0 0xc000000>;
++			size = <0x0 0xe000000>;
+ 			alignment = <0x0 0x400000>;
+ 			linux,contiguous-region;
+ 		};
+diff --git a/arch/arm64/boot/dts/amlogic/gxbb_p200_2G_wetek_play_2.dts b/arch/arm64/boot/dts/amlogic/gxbb_p200_2G_wetek_play_2.dts
+index a5c8f824d26a..b5058d616a00 100644
+--- a/arch/arm64/boot/dts/amlogic/gxbb_p200_2G_wetek_play_2.dts
++++ b/arch/arm64/boot/dts/amlogic/gxbb_p200_2G_wetek_play_2.dts
+@@ -95,7 +95,7 @@
+ 		codec_mm_cma:linux,codec_mm_cma {
+ 			compatible = "shared-dma-pool";
+ 			reusable;
+-			size = <0x0 0xc000000>;
++			size = <0x0 0xe000000>;
+ 			alignment = <0x0 0x400000>;
+ 			linux,contiguous-region;
+ 		};
+diff --git a/arch/arm64/boot/dts/meson64_odroidc2.dts b/arch/arm64/boot/dts/meson64_odroidc2.dts
+index 92c72aadc822..a6331effcfd3 100644
+--- a/arch/arm64/boot/dts/meson64_odroidc2.dts
++++ b/arch/arm64/boot/dts/meson64_odroidc2.dts
+@@ -93,7 +93,7 @@
+ 		codec_mm_cma:linux,codec_mm_cma {
+ 			compatible = "shared-dma-pool";
+ 			reusable;
+-			size = <0x0 0xc000000>;
++			size = <0x0 0xe000000>;
+ 			alignment = <0x0 0x400000>;
+ 			linux,contiguous-region;
+ 		};
