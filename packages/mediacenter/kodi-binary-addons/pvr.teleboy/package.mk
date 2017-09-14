@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.teleboy"
-PKG_VERSION="ee4c968"
-PKG_SHA256="b16f3680a4d65bca879ecc0dc0731ec718c69f5ea9de1578b15eb4a0e73ced84"
-PKG_REV="1"
+PKG_VERSION="8a1e224"
+PKG_SHA256="4d3019065989a8617be8024f4636e0fd80cc403b04a585ce9080d98bdd37ac5c"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

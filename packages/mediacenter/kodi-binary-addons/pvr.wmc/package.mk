@@ -19,7 +19,7 @@
 PKG_NAME="pvr.wmc"
 PKG_VERSION="7e2cb4b"
 PKG_SHA256="d935ecf8dcc137953698cb7ea3bc7c8e3674dfaca2c038045fcbec481d9cd35c"
-PKG_REV="5"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

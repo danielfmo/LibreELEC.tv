@@ -19,7 +19,7 @@
 PKG_NAME="visualization.pictureit"
 PKG_VERSION="66f88ff"
 PKG_SHA256="94ea09635e54da380c1490899705b349caeafcd2dad1c6c0f534f4b6c52871ae"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="x86_64"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

@@ -19,7 +19,7 @@
 PKG_NAME="visualization.shadertoy"
 PKG_VERSION="1717f36"
 PKG_SHA256="988015445128036f79f006a0df9c1692838436b4420e418bf84a7113bfc46300"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/visualization.shadertoy"

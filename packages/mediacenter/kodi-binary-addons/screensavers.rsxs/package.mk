@@ -19,7 +19,7 @@
 PKG_NAME="screensavers.rsxs"
 PKG_VERSION="e302833"
 PKG_SHA256="9df6d5d88eb9b7ba7126d05e8d4f67130b65cb7c3a6de5cb97cc7caa17816253"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

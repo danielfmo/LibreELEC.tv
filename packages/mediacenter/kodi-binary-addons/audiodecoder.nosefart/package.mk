@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.nosefart"
 PKG_VERSION="0919ae1"
 PKG_SHA256="d5ca2262538ed33d6dd0adbc9571bc038f1da50133406e8d7b4b1af611961c54"
-PKG_REV="4"
+PKG_REV="5"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
