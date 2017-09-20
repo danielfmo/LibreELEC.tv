@@ -17,12 +17,12 @@
 ################################################################################
 
 PKG_NAME="tuf"
-PKG_VERSION="9e63023"
-PKG_SHA256="a730ce3fb0d78a00363f9456afe6682c9bf308e60f308a5a1f547fd49c9cc2cf"
+PKG_VERSION="0.10.0"
+PKG_SHA256="101b93ce59a5eb9c1f24a404625091b2530713170c80b0c857efd442fd0a7986"
 PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="https://theupdateframework.github.io/"
-PKG_URL="https://github.com/theupdateframework/tuf/archive/$PKG_VERSION.tar.gz"
+PKG_URL="https://github.com/theupdateframework/tuf/archive/v$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain Python distutilscross:host python-securesystemslib python-six python-iso8601"
 PKG_SECTION="python/security"
 PKG_SHORTDESC="The Update Framework"
