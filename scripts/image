@@ -311,6 +311,8 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
 
   # create release tarball
   tar cf $TARGET_IMG/$IMAGE_NAME.tar -C target $IMAGE_NAME
+  TARSHA256=$(sha256sum $TARGET_IMG/$IMAGE_NAME.tar | cut -d ' ' -f 1)
+  echo "{\"sha256\":\"${TARSHA256}\"}" > $TARGET_IMG/$IMAGE_NAME.json
 
   # create image files if requested
   if [[ ( "$1" = "amlpkg" || "$1" = "noobs" || "$1" = "mkimage" ) && -n "$BOOTLOADER" ]]; then
@@ -368,6 +370,7 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
     mkdir -p "$AML_PKG_DIR/system"
     cp $TARGET_IMG/$IMAGE_NAME.system $AML_PKG_DIR/system/SYSTEM
     cp $TARGET_IMG/$IMAGE_NAME.kernel $AML_PKG_DIR/KERNEL
+    cp $TARGET_IMG/$IMAGE_NAME.json $AML_PKG_DIR/TUF.json
 
     # copy update-binary and updater-script
     META_INF_DIR="$AML_PKG_DIR/META-INF/com/google/android"
@@ -475,6 +478,7 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
     # copy system files
     cp $TARGET_IMG/$IMAGE_NAME.system $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System/SYSTEM
     cp $TARGET_IMG/$IMAGE_NAME.kernel $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System/kernel.img
+    cp $TARGET_IMG/$IMAGE_NAME.json $RELEASE_DIR/${DISTRONAME}_${PROJECT}/System/TUF.json
 
     for dtb in $INSTALL/usr/share/bootloader/*.dtb ; do
       if [ -f $dtb ]; then
