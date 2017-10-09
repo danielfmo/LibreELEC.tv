@@ -431,8 +431,7 @@
   }
 
   update_file() {
-    #TODO does not work if $3 does not exist. For instance on older builds
-    if [ -f "$UPDATE_DIR/$2" -a -f "$3" ]; then
+    if [ -f "$UPDATE_DIR/$2" -a \( -f "$3" -o "$4" = "nocheck" \) ]; then
       mount -o remount,rw /flash
 
       StartProgress percent "Updating $1... " "$3" $(stat -t "$UPDATE_DIR/$2" | awk '{print $2}')
@@ -808,7 +807,7 @@
         tar -xf "$UPDATE_TAR" -C $UPDATE_DIR/.tmp 1>/dev/null 2>/tmp/tarresult.txt || TARRESULT="1"
 
       if [ "${TARRESULT}" -eq "0" ]; then
-	echo "{\"sha256\":\"${TARSHA256}\"}" > $UPDATE_DIR/$UPDATE_TUFCONF
+        echo "{\"sha256\":\"${TARSHA256}\"}" > $UPDATE_DIR/$UPDATE_TUFCONF
         mv $UPDATE_DIR/.tmp/*/target/* $UPDATE_DIR &>/dev/null
         sync
         StopProgress "done"
@@ -998,7 +997,7 @@
       update_file "Kernel" "$UPDATE_KERNEL" "/flash/$IMAGE_KERNEL"
     fi
     update_file "System" "$UPDATE_SYSTEM" "/flash/$IMAGE_SYSTEM"
-    update_file "TUF.json" "$UPDATE_TUFCONF" "/flash/$IMAGE_TUFCONF"
+    update_file "TUF.json" "$UPDATE_TUFCONF" "/flash/$IMAGE_TUFCONF" "nocheck"
     update_bootloader
     do_cleanup
     do_reboot
