@@ -23,7 +23,7 @@ PKG_ARCH="any"
 PKG_LICENSE="Apache"
 PKG_SITE="https://github.com/pyca/pynacl"
 PKG_URL="https://github.com/pyca/pynacl/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host libsodium python-six python-cffi"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host python-cffi:host libsodium python-six python-cffi"
 PKG_SECTION="python/security"
 PKG_SHORTDESC="Python binding to the Networking and Cryptography (NaCl) library"
 PKG_LONGDESC="PyNaCl is a Python binding to libsodium, which is a fork of the Networking and Cryptography library."
@@ -32,9 +32,6 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 pre_configure_target() {
-  cd $PKG_BUILD
-  rm -rf .$TARGET_NAME
-
   export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
   export LDSHARED="$CC -shared"
   export SODIUM_INSTALL=system

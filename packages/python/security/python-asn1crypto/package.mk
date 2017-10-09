@@ -33,13 +33,8 @@ PKG_LONGDESC="Fast ASN.1 parser and serializer with definitions for private keys
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_make_target() {
-  strip_lto
-  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
-}
-
 make_target() {
-  python setup.py build --cross-compile
+  :
 }
 
 makeinstall_target() {

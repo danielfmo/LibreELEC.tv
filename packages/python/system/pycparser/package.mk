@@ -31,13 +31,8 @@ PKG_LONGDESC="C parser in Python"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_make_target() {
-  strip_lto
-  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
-}
-
 make_target() {
-  python setup.py build --cross-compile
+  :
 }
 
 makeinstall_target() {
@@ -47,4 +42,12 @@ makeinstall_target() {
 post_makeinstall_target() {
   find $INSTALL/usr/lib -name "*.py" -exec rm -rf "{}" ";"
   rm -rf $INSTALL/usr/lib/python*/site-packages/*/tests
+}
+
+make_host() {
+ :
+}
+
+makeinstall_host() {
+  python setup.py install --prefix=$TOOLCHAIN
 }

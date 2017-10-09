@@ -25,13 +25,34 @@ PKG_ARCH="any"
 PKG_LICENSE="MIT"
 PKG_SITE="http://pypi.python.org/pypi/cffi"
 PKG_URL="https://files.pythonhosted.org/packages/source/${PKG_PYNAME:0:1}/$PKG_PYNAME/$PKG_PYNAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host pycparser"
+PKG_DEPENDS_HOST="pycparser:host libffi:host"
+PKG_DEPENDS_TARGET="toolchain Python distutilscross:host pycparser libffi"
 PKG_SECTION="python/system"
 PKG_SHORTDESC="Foreign Function Interface for Python calling C code."
 PKG_LONGDESC="Foreign Function Interface for Python calling C code."
 
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
+
+pre_build_host() {
+  mkdir -p $PKG_BUILD/.$HOST_NAME
+  cp -a $PKG_BUILD/* $PKG_BUILD/.$HOST_NAME/
+  export PYTHONXCPREFIX="$TOOLCHAIN"
+}
+
+make_host() {
+  cd $PKG_BUILD/.$HOST_NAME/
+  python setup.py build -x
+}
+
+makeinstall_host() {
+  python setup.py install --prefix=$TOOLCHAIN
+}
+
+pre_build_target() {
+  mkdir -p $PKG_BUILD/.$TARGET_NAME
+  cp -a $PKG_BUILD/* $PKG_BUILD/.$TARGET_NAME/
+}
 
 pre_make_target() {
   strip_lto
@@ -40,6 +61,7 @@ pre_make_target() {
 }
 
 make_target() {
+  cd $PKG_BUILD/.$TARGET_NAME/
   python setup.py build --cross-compile
 }
 

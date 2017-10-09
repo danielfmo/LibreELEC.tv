@@ -33,13 +33,8 @@ PKG_LONGDESC="Python 3.4 Enum backported to 3.3, 3.2, 3.1, 2.7, 2.6, 2.5, and 2.
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
-pre_make_target() {
-  strip_lto
-  export PYTHONXCPREFIX="$SYSROOT_PREFIX/usr"
-}
-
 make_target() {
-  python setup.py build --cross-compile
+  :
 }
 
 makeinstall_target() {
@@ -49,4 +44,5 @@ makeinstall_target() {
 post_makeinstall_target() {
   find $INSTALL/usr/lib -name "*.py" -exec rm -rf "{}" ";"
   rm -rf $INSTALL/usr/lib/python*/site-packages/*/tests
+  rm -rf $INSTALL/usr/lib/python*/site-packages/*/doc
 }
