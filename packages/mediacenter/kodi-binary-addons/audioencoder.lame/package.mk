@@ -19,7 +19,7 @@
 PKG_NAME="audioencoder.lame"
 PKG_VERSION="6a250f9"
 PKG_SHA256="6d268b135c59e83cc53d6fc553b40a54fcc19321142d00b5b342ddf39d462934"
-PKG_REV="5"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.dvbviewer"
-PKG_VERSION="8741c8b"
-PKG_SHA256="8a511907b85616ff02f07ba1b983e65f3ffa1ea34f9c6ccfae93bf3138b2df45"
-PKG_REV="5"
+PKG_VERSION="9765663"
+PKG_SHA256="035be1a6cbc1ec4072f94b95466609b3bd3641e0cf07b9d6e7db4cfb6cd20b85"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

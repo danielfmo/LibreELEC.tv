@@ -19,7 +19,7 @@
 PKG_NAME="visualization.waveform"
 PKG_VERSION="8204be7"
 PKG_SHA256="457d861a8ef5a054339effe803b4aae801256282b098db63ae45aa90a9c30c9e"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

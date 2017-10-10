@@ -19,7 +19,7 @@
 PKG_NAME="imagedecoder.raw"
 PKG_VERSION="aa45f0a"
 PKG_SHA256="5883d0f49e0f88e00a13dfcccf622032f0e0df5b9f67e99747d98fd500bbffb8"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/imagedecoder.raw"

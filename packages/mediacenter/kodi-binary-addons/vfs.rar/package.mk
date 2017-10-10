@@ -19,7 +19,7 @@
 PKG_NAME="vfs.rar"
 PKG_VERSION="22292bc"
 PKG_SHA256="4d2df1c6dc31f46dedf828f057ed90ca83f400c6f521c1a05510f82999febcaa"
-PKG_REV="5"
+PKG_REV="6"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

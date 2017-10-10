@@ -19,7 +19,7 @@
 PKG_NAME="game.libretro.fuse"
 PKG_VERSION="c176390"
 PKG_SHA256="408f9fd7392c10f294a1ef7bfa21fdf1654d7b115470d33607f4fd65218cba8f"
-PKG_REV="103"
+PKG_REV="104"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/kodi-game/game.libretro.fuse"

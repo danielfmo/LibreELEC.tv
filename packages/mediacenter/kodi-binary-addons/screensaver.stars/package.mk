@@ -19,7 +19,7 @@
 PKG_NAME="screensaver.stars"
 PKG_VERSION="bb61e49"
 PKG_SHA256="418e5c0dcf010b83b2cdf7ca00ff27b663359d0706ed00ac85fd841a3e943f43"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/screensaver.stars"

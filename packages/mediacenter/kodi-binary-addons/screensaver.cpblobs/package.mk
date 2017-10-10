@@ -19,7 +19,7 @@
 PKG_NAME="screensaver.cpblobs"
 PKG_VERSION="be324f3"
 PKG_SHA256="10669b1dd1b7f5677af468e73ec48270218c3112cc83b95168f2f3b426b38d00"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/screensaver.cpblobs"
