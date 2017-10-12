@@ -52,7 +52,11 @@ make_target() {
       make platform=imx6
       ;;
     WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make platform=armv7-neon-gles-cortex-a9
+      if [ "$TARGET_ARCH" = "aarch64" ]; then
+        make platform=aarch64
+      else
+        make platform=armv7-neon-gles-cortex-a9
+      fi
       ;;
     Generic)
       make WITH_DYNAREC=x86_64

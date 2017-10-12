@@ -41,14 +41,11 @@ configure_target() {
 }
 
 make_target() {
-  case $PROJECT in
-    RPi|RPi2|imx6|WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make ARM=1
-      ;;
-    Generic)
-      make
-      ;;
-  esac
+  if [ "$TARGET_ARCH" = "arm" ]; then
+    make ARM=1
+  else
+    make
+  fi
 }
 
 makeinstall_target() {

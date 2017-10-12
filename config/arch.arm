@@ -56,10 +56,7 @@
 
   TARGET_VARIANT="${TARGET_SUBARCH}${TARGET_CPU_FLAGS}"
   TARGET_GCC_ARCH=${TARGET_SUBARCH/-}
-
-if [ -z "$TARGET_KERNEL_ARCH" ]; then
-  TARGET_KERNEL_ARCH=arm
-fi
+  TARGET_KERNEL_ARCH=${TARGET_KERNEL_ARCH:-arm}
 
 # setup ARCH specific *FLAGS
   TARGET_CFLAGS="-march=$TARGET_VARIANT -mabi=aapcs-linux -Wno-psabi -Wa,-mno-warn-deprecated $TARGET_EXTRA_FLAGS"

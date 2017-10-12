@@ -59,7 +59,11 @@ make_target() {
       make platform=armv7-neon-hardfloat-cortex-a9
       ;;
     WeTek_Play|WeTek_Core|Odroid_C2|WeTek_Hub|WeTek_Play_2)
-      make platform=armv7-neon-hardfloat-cortex-a9
+      if [ "$TARGET_ARCH" = "aarch64" ]; then
+        make platform=aarch64
+      else
+        make platform=armv7-neon-hardfloat-cortex-a9
+      fi
       ;;
     Generic)
       make

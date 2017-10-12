@@ -31,12 +31,7 @@ PKG_SHORTDESC="DVB drivers that replace the version shipped with the kernel"
 PKG_LONGDESC="DVB drivers that replace the version shipped with the kernel"
 PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
-
-if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET gcc-linaro-aarch64-elf:host"
-  export PATH=$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$PATH
-  TARGET_PREFIX=aarch64-elf-
-fi
+PKG_IS_KERNEL_PKG="yes"
 
 pre_make_target() {
   export KERNEL_VER=$(get_module_dir)
