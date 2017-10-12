@@ -1,91 +1,134 @@
-From a18b49d91fd739ce97882270295c03500e4b0639 Mon Sep 17 00:00:00 2001
-From: Radostan Riedel <raybuntu@googlemail.com>
-Date: Fri, 14 Jul 2017 14:35:21 +0200
-Subject: [PATCH 1/1] [PATCH] use a wrapper to setup systemd services
+From eeaab81b11b36160704c1fa6daaabfb30cde8a5a Mon Sep 17 00:00:00 2001
+From: MilhouseVH <milhouseVH.github@nmacleod.com>
+Date: Thu, 12 Oct 2017 02:13:05 +0100
+Subject: [PATCH] kodi: addon service wrapper
 
 ---
- xbmc/addons/Addon.cpp | 36 ++++++++++++++++++++++++++++++++++++
- xbmc/addons/Addon.h   |  1 +
- 2 files changed, 37 insertions(+)
+ xbmc/addons/Addon.cpp        |  4 ++++
+ xbmc/addons/AddonManager.cpp | 38 ++++++++++++++++++++++++++++++++++++++
+ xbmc/addons/AddonManager.h   | 12 +++++++++++-
+ 3 files changed, 53 insertions(+), 1 deletion(-)
 
 diff --git a/xbmc/addons/Addon.cpp b/xbmc/addons/Addon.cpp
-index 45f42ad2e3..58730d535a 100644
+index 36419c4..ec5ae9a 100644
 --- a/xbmc/addons/Addon.cpp
 +++ b/xbmc/addons/Addon.cpp
-@@ -397,13 +397,32 @@ AddonVersion CAddon::GetDependencyVersion(const std::string &dependencyID) const
-   return AddonVersion("0.0.0");
- }
- 
-+void CallOEWrapper(const std::string& ID, bool disable)
-+{
-+  char cmd[255];
-+  snprintf(cmd, sizeof(cmd), "/usr/lib/libreelec/systemd-addon-wrapper %s %d", ID.c_str(), disable);
-+  system(cmd);
-+}
-+
- void OnEnabled(const AddonPtr& addon)
- {
-+  AddonPtr localAddon;
-   addon->OnEnabled();
-+  // OE: systemctl enable & start on addon enable
-+  if (CServiceBroker::GetAddonMgr().GetAddon(addon->ID(), localAddon, ADDON_SERVICE))
-+    CallOEWrapper(addon->ID(), false);
-+  // OE
- }
- 
- void OnDisabled(const AddonPtr& addon)
- {
-+
-+  AddonPtr localAddon;
-+  // OE: systemctl stop & disable on addon disable
-+  if (CServiceBroker::GetAddonMgr().GetAddon(addon->ID(), localAddon, ADDON_SERVICE, false))
-+    CallOEWrapper(addon->ID(), true);
-+  // OE
-+
-   addon->OnDisabled();
- }
- 
-@@ -438,11 +457,28 @@ void OnPostInstall(const AddonPtr& addon, bool update, bool modal)
+@@ -438,11 +438,15 @@ void OnPostInstall(const AddonPtr& addon, bool update, bool modal)
    }
    // OE
  
-+  AddonPtr localAddon;
-+
-+  // OE: systemctl stop & disable / enable & start on addon upgrade
-+  if (CServiceBroker::GetAddonMgr().GetAddon(addon->ID(), localAddon, ADDON_SERVICE))
-+  {
-+    CallOEWrapper(addon->ID(), true);
-+    CallOEWrapper(addon->ID(), false);
-+  }
-+  // OE
++  CServiceBroker::GetAddonMgr().LEAddonHook(addon, CAddonMgr::LE_ADDON_POST_INSTALL);
 +
    addon->OnPostInstall(update, modal);
  }
  
  void OnPreUnInstall(const AddonPtr& addon)
  {
-+  AddonPtr localAddon;
-+
-+  // OE: systemctl stop & disable on addon uninstall
-+  if (CServiceBroker::GetAddonMgr().GetAddon(addon->ID(), localAddon, ADDON_SERVICE))
-+    CallOEWrapper(addon->ID(), true);
-+  // OE
++  CServiceBroker::GetAddonMgr().LEAddonHook(addon, CAddonMgr::LE_ADDON_PRE_UNINSTALL);
 +
    addon->OnPreUnInstall();
  }
  
-diff --git a/xbmc/addons/Addon.h b/xbmc/addons/Addon.h
-index 95f3f23437..d77e3d4d4d 100644
---- a/xbmc/addons/Addon.h
-+++ b/xbmc/addons/Addon.h
-@@ -77,6 +77,7 @@ public:
-   const InfoMap& ExtraInfo() const override { return m_addonInfo.ExtraInfo(); }
-   const ADDONDEPS& GetDeps() const override { return m_addonInfo.GetDeps(); }
+diff --git a/xbmc/addons/AddonManager.cpp b/xbmc/addons/AddonManager.cpp
+index 277fd58..91b38b2 100644
+--- a/xbmc/addons/AddonManager.cpp
++++ b/xbmc/addons/AddonManager.cpp
+@@ -32,6 +32,7 @@
+ #include "utils/StringUtils.h"
+ #include "utils/URIUtils.h"
+ #include "utils/XMLUtils.h"
++#include "system.h"
  
-+  void CallOEWrapper(const std::string& ID, bool disable);
-   std::string FanArt() const override
-   {
-     auto it = m_addonInfo.Art().find("fanart");
+ #include <array>
+ 
+@@ -840,6 +841,8 @@ bool CAddonMgr::DisableAddon(const std::string& id)
+     CEventLog::GetInstance().Add(EventPtr(new CAddonManagementEvent(addon, 24141)));
+   }
+ 
++  LEAddonHook(addon, LE_ADDON_DISABLED);
++
+   m_events.Publish(AddonEvents::Disabled(id));
+   return true;
+ }
+@@ -869,6 +872,8 @@ bool CAddonMgr::EnableSingle(const std::string& id)
+ 
+   CEventLog::GetInstance().Add(EventPtr(new CAddonManagementEvent(addon, 24064)));
+ 
++  LEAddonHook(addon, LE_ADDON_ENABLED);
++
+   CLog::Log(LOGDEBUG, "CAddonMgr: enabled %s", addon->ID().c_str());
+   m_events.Publish(AddonEvents::Enabled(id));
+   return true;
+@@ -945,6 +950,39 @@ bool CAddonMgr::IsSystemAddon(const std::string& id)
+   return std::find(m_systemAddons.begin(), m_systemAddons.end(), id) != m_systemAddons.end();
+ }
+ 
++void CAddonMgr::LEAddonHook(const AddonPtr& addon, const CAddonMgr::LE_ADDON_CONTEXT context)
++{
++  if (addon->Type() == ADDON_SERVICE)
++  {
++    std::string contextStr;
++    char cmd[255];
++
++    switch (context)
++    {
++      case LE_ADDON_ENABLED:
++        contextStr = "enable";
++        break;
++      case LE_ADDON_DISABLED:
++        contextStr = "disable";
++        break;
++      case LE_ADDON_POST_INSTALL:
++        contextStr = "post-install";
++        break;
++      case LE_ADDON_PRE_UNINSTALL:
++        contextStr = "pre-uninstall";
++        break;
++      default:
++        contextStr = StringUtils::Format("unknown(%d)", context);
++        break;
++    }
++
++    snprintf(cmd, sizeof(cmd), "/usr/sbin/service-addon-wrapper %s %s %s",
++      contextStr.c_str(), addon->ID().c_str(), addon->Path().c_str());
++
++    system(cmd);
++  }
++}
++
+ std::string CAddonMgr::GetTranslatedString(const cp_cfg_element_t *root, const char *tag)
+ {
+   if (!root)
+diff --git a/xbmc/addons/AddonManager.h b/xbmc/addons/AddonManager.h
+index f65ef78..4c0641a 100644
+--- a/xbmc/addons/AddonManager.h
++++ b/xbmc/addons/AddonManager.h
+@@ -151,7 +151,7 @@ namespace ADDON
+     bool FindInstallableById(const std::string& addonId, AddonPtr& addon);
+ 
+     void AddToUpdateableAddons(AddonPtr &pAddon);
+-    void RemoveFromUpdateableAddons(AddonPtr &pAddon);    
++    void RemoveFromUpdateableAddons(AddonPtr &pAddon);
+     bool ReloadSettings(const std::string &id);
+ 
+     /*! Get addons with available updates */
+@@ -292,6 +292,16 @@ namespace ADDON
+     static bool Factory(const cp_plugin_info_t* plugin, TYPE type, CAddonBuilder& builder, bool ignoreExtensions = false);
+     static void FillCpluffMetadata(const cp_plugin_info_t* plugin, CAddonBuilder& builder);
+ 
++    typedef enum
++    {
++      LE_ADDON_ENABLED,
++      LE_ADDON_DISABLED,
++      LE_ADDON_POST_INSTALL,
++      LE_ADDON_PRE_UNINSTALL,
++    } LE_ADDON_CONTEXT;
++
++    void LEAddonHook(const AddonPtr& addon, const LE_ADDON_CONTEXT context);
++
+   private:
+     CAddonMgr& operator=(CAddonMgr const&) = delete;
+     /* libcpluff */
 -- 
-2.11.0
+2.7.4
 
