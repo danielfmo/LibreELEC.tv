@@ -131,6 +131,7 @@ reset_pkg_vars() {
   PKG_LICENSE="unknown"
   PKG_AUTORECONF="no"
   PKG_IS_ADDON="no"
+  PKG_PYTHON_VERSION="python2.7"
 }
 
 kernel_path() {
@@ -186,6 +187,11 @@ get_pkg_variable() {
     . config/options $1
     echo "${!2}"
   fi
+}
+
+# return 0 if $2 in space-separated list $1, otherwise return 1
+listcontains() {
+  [[ ${1} =~ (^|[[:space:]])${2}($|[[:space:]]) ]] && return 0 || return 1
 }
 
 install_binary_addon() {
@@ -555,6 +561,7 @@ show_config() {
   config_message="$config_message\n - Remote support:\t\t\t $REMOTE_SUPPORT"
   config_message="$config_message\n - ATV Remote support:\t\t\t $ATVCLIENT_SUPPORT"
   config_message="$config_message\n - CEC Adapter support:\t\t\t $CEC_SUPPORT"
+  config_message="$config_message\n - CEC Framework support:\t\t\t $CEC_FRAMEWORK_SUPPORT"
   config_message="$config_message\n - Kodi Joystick support:\t\t $JOYSTICK_SUPPORT"
 
   # Misc. hardware configuration
@@ -648,6 +655,10 @@ show_config() {
 
   config_message="$config_message\n - Default Skin:\t\t\t $SKIN_DEFAULT"
   config_message="$config_message\n - Include extra fonts:\t\t\t $KODI_EXTRA_FONTS"
+
+  if [ "$(type -t show_distro_config)" = "function" ]; then
+    show_distro_config
+  fi
 
   config_message="$config_message\n"
   config_message="$config_message\n $dashes$dashes$dashes"

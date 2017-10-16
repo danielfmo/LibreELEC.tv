@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016 Team LibreELEC
+#      Copyright (C) 2016-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -23,13 +23,11 @@ PKG_ARCH="any"
 PKG_LICENSE="LGPL"
 PKG_SITE="https://github.com/vpelletier/python-libusb1"
 PKG_URL="https://github.com/vpelletier/$PKG_NAME/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python distutilscross:host"
+PKG_DEPENDS_TARGET="toolchain Python2 distutilscross:host"
 PKG_PRIORITY="optional"
 PKG_SECTION="python"
 PKG_SHORTDESC="Pure-python wrapper for libusb-1.0"
 PKG_LONGDESC="Pure-python wrapper for libusb-1.0"
-
-PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {

@@ -1,5 +1,5 @@
 ###############################################################################
-#      This file is part of LibreELEC - https://LibreELEC.tv
+#      This file is part of LibreELEC - https://libreelec.tv
 #      Copyright (C) 2014 Gordon Hollingworth (gordon@fiveninjas.com)
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
@@ -23,13 +23,11 @@ PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.fiveninjas.com"
 PKG_URL="http://updates.fiveninjas.com/src/$PKG_NAME-$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain zlib libpng"
+PKG_DEPENDS_TARGET="toolchain zlib libpng slice-addon"
 PKG_DEPENDS_HOST="toolchain"
 PKG_SECTION="tools"
 PKG_SHORTDESC="led_tools"
 PKG_LONGDESC="LED tools, these are a set of tools to control the LEDs on Slice"
-
-PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
