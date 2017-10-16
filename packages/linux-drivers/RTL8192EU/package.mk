@@ -32,12 +32,6 @@ PKG_LONGDESC="Realtek RTL8192EU Linux 3.x driver"
 PKG_AUTORECONF="no"
 PKG_IS_KERNEL_PKG="yes"
 
-if [ "$TARGET_KERNEL_ARCH" = "arm64" -a "$TARGET_ARCH" = "arm" ]; then
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET gcc-linaro-aarch64-elf:host"
-  export PATH=$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$PATH
-  TARGET_PREFIX=aarch64-elf-
-fi
-
 pre_make_target() {
   unset LDFLAGS
 }
