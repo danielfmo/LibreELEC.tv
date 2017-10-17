@@ -17,13 +17,13 @@
 ################################################################################
 
 PKG_NAME="hyperion.ng"
-PKG_VERSION="81f5f51"
-PKG_SHA256="24e69896ec74d43b2c176c2f8806936ef640f3ea1d12ccb06e52ea64071112ab"
-PKG_REV="101"
+PKG_VERSION="2905842"
+PKG_SHA256="885073d23b0021462170f6c1a1d85bad23521c3ad1556cdf81cfe0e11bf060ee"
+PKG_REV="102"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/hyperion-project/hyperion.ng"
 PKG_URL="https://github.com/hyperion-project/hyperion.ng/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python libusb qt-everywhere protobuf rpi_ws281x"
+PKG_DEPENDS_TARGET="toolchain Python2 libusb qt-everywhere protobuf rpi_ws281x"
 PKG_SECTION="service"
 PKG_SHORTDESC="Hyperion.NG: an AmbiLight controller"
 PKG_LONGDESC="Hyperion.NG($PKG_VERSION) is an modern opensource AmbiLight implementation."
