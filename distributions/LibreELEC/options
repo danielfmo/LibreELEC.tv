@@ -189,7 +189,7 @@
   DISTRO_SRC="http://sources.libreelec.tv/$LIBREELEC_VERSION"
 
 # Addon Server Url
-  ADDON_SERVER_URL="https://raw.githubusercontent.com/Raybuntu/rb-addons/master/addons/"
+  ADDON_SERVER_URL="http://raybuntu.libreelec.tv/addons/"
 
 # set the addon dirs
   ADDON_PATH="$ADDON_VERSION/${DEVICE:-$PROJECT}/$TARGET_ARCH"
