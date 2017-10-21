@@ -1,21 +1,20 @@
-#!/bin/sh - 
-#===============================================================================
-# LICENCE: GNU GPL version 3
+################################################################################
+#      This file is part of LibreELEC - https://libreelec.tv
+#      Copyright (C) 2017-present Team LibreELEC
 #
-# iptables_helper is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This project is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
+#  LibreELEC is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 2 of the License, or
+#  (at your option) any later version.
 #
-#===============================================================================
+#  LibreELEC is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
+################################################################################
 
 IPTABLES4="/usr/sbin/iptables"
 IPTABLES6="/usr/sbin/ip6tables"
@@ -24,12 +23,12 @@ LOCAL_RULES="/storage/.config/iptables/localrules.v"
 
 restore() {
   "$IPTABLES4-restore" "${GLOBAL_RULES}4"
-  if [ -e "${LOCAL_RULES}4" ];then
+  if [ -e "${LOCAL_RULES}4" ]; then
     "$IPTABLES4-restore" "${LOCAL_RULES}4"
   fi
 
   "$IPTABLES6-restore" "${GLOBAL_RULES}6"
-  if [ -e "${LOCAL_RULES}6" ];then
+  if [ -e "${LOCAL_RULES}6" ]; then
     "$IPTABLES6-restore" "${LOCAL_RULES}6"
   fi
 }
@@ -56,9 +55,9 @@ flush() {
   $IPTABLES6 -P OUTPUT ACCEPT
 }
 
-if [ "$1" = "restore" ];then
+if [ "$1" = "restore" ]; then
   restore
-elif [ "$1" = "flush" ];then
+elif [ "$1" = "flush" ]; then
   flush
 else
   exit 1
