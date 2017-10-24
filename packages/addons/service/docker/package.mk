@@ -102,7 +102,6 @@ configure_target() {
 
 make_target() {
   mkdir -p bin
-  $GOLANG build -v -o bin/docker -a -tags "$DOCKER_BUILDTAGS" -ldflags "$LDFLAGS" ./components/cli/cmd/docker
   PKG_CLI_FLAGS="-X 'github.com/docker/cli/cli.Version=${VERSION}'"
   PKG_CLI_FLAGS="${PKG_CLI_FLAGS} -X 'github.com/docker/cli/cli.GitCommit=${GITCOMMIT}'"
   PKG_CLI_FLAGS="${PKG_CLI_FLAGS} -X 'github.com/docker/cli/cli.BuildTime=${BUILDTIME}'"
