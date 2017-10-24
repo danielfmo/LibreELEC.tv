@@ -91,8 +91,8 @@ configure_target() {
   ln -fs $PKG_CLI_PATH $PKG_BUILD/.gopath_cli/src/github.com/docker/cli
   
   # used for docker version
-  export GITCOMMIT=$PKG_VERSION
-  export VERSION=$PKG_VERSION
+  export GITCOMMIT=${PKG_VERSION}-ce
+  export VERSION=${PKG_VERSION}-ce
   export BUILDTIME="$(date --utc)"
 
   cd $PKG_ENGINE_PATH
@@ -103,6 +103,10 @@ configure_target() {
 make_target() {
   mkdir -p bin
   $GOLANG build -v -o bin/docker -a -tags "$DOCKER_BUILDTAGS" -ldflags "$LDFLAGS" ./components/cli/cmd/docker
+  PKG_CLI_FLAGS="-X 'github.com/docker/cli/cli.Version=${VERSION}'"
+  PKG_CLI_FLAGS="${PKG_CLI_FLAGS} -X 'github.com/docker/cli/cli.GitCommit=${GITCOMMIT}'"
+  PKG_CLI_FLAGS="${PKG_CLI_FLAGS} -X 'github.com/docker/cli/cli.BuildTime=${BUILDTIME}'"
+  $GOLANG build -v -o bin/docker -a -tags "$DOCKER_BUILDTAGS" -ldflags "$LDFLAGS ${PKG_CLI_FLAGS}" ./components/cli/cmd/docker
   $GOLANG build -v -o bin/dockerd -a -tags "$DOCKER_BUILDTAGS" -ldflags "$LDFLAGS" ./components/engine/cmd/dockerd
 }
 
