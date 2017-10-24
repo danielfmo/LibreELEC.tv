@@ -37,8 +37,8 @@ post_makeinstall_target() {
     cp -PR $PKG_DIR/config/README $INSTALL/usr/config/iptables/
 
   mkdir -p $INSTALL/etc/iptables/
-    cp -PR $PKG_DIR/config/globalrules.v4 $INSTALL/etc/iptables/
-    cp -PR $PKG_DIR/config/globalrules.v6 $INSTALL/etc/iptables/
+    cp -PR $PKG_DIR/config/* $INSTALL/etc/iptables/
+    cp -PR $PKG_DIR/config/* $INSTALL/etc/iptables/
 
   mkdir -p $INSTALL/usr/lib/libreelec
     cp $PKG_DIR/scripts/iptables_helper $INSTALL/usr/lib/libreelec
