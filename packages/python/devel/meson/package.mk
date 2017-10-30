@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2017-present Team LibreELEC
+#      Copyright (C) 2016-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,33 +16,28 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="tvheadend"
-PKG_VERSION="1.0"
-PKG_REV="100"
+PKG_NAME="meson"
+PKG_VERSION="0.42.1"
+PKG_SHA256="30bdded6fefc48211d30818d96dd34aae56ee86ce9710476f501bd7695469c4b"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE=""
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="service.multimedia"
-PKG_SHORTDESC="Add-on removed"
-PKG_LONGDESC="Add-on removed"
-PKG_AUTORECONF="no"
+PKG_LICENSE="Apache"
+PKG_SITE="http://mesonbuild.com"
+PKG_URL="https://github.com/mesonbuild/meson/releases/download/$PKG_VERSION/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_HOST="Python3:host pathlib:host"
+PKG_SECTION="toolchain/devel"
+PKG_SHORTDESC="High productivity build system"
+PKG_LONGDESC="High productivity build system"
 
-PKG_ADDON_BROKEN="Tvheadend 4.0 is no longer maintained and has been superseded by Tvheadend 4.2."
-
-PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="Tvheadend Server 4.0"
-PKG_ADDON_TYPE="xbmc.broken"
-
-make_target() {
-  :
+make_host() {
+  python3 setup.py build
 }
 
-makeinstall_target() {
-  :
-}
+makeinstall_host() {
+  python3 setup.py install --prefix=$TOOLCHAIN --skip-build
 
-addon() {
-  :
+  # Avoid using full path to python3 that may exceed 128 byte limit.
+  # Instead use PATH as we know our toolchain is first.
+  for f in meson mesonconf mesontest mesonintrospect wraptool; do
+    sed -i '1 s/^#!.*$/#!\/usr\/bin\/env python3/' $TOOLCHAIN/bin/$f
+  done
 }

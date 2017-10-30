@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2017-present Team LibreELEC
+#      Copyright (C) 2016-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,33 +16,22 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="tvheadend"
-PKG_VERSION="1.0"
-PKG_REV="100"
+PKG_NAME="pathlib"
+PKG_VERSION="1.0.1"
+PKG_SHA256="6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE=""
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="service.multimedia"
-PKG_SHORTDESC="Add-on removed"
-PKG_LONGDESC="Add-on removed"
-PKG_AUTORECONF="no"
+PKG_LICENSE="MIT"
+PKG_SITE="http://pathlib.readthedocs.org"
+PKG_URL="https://pypi.python.org/packages/source/p/$PKG_NAME/$PKG_NAME-$PKG_VERSION.tar.gz"
+PKG_DEPENDS_HOST="Python3:host"
+PKG_SECTION="python/devel"
+PKG_SHORTDESC="This module offers a set of classes featuring all the common operations on paths in an easy, object-oriented way"
+PKG_LONGDESC="This module offers a set of classes featuring all the common operations on paths in an easy, object-oriented way"
 
-PKG_ADDON_BROKEN="Tvheadend 4.0 is no longer maintained and has been superseded by Tvheadend 4.2."
-
-PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="Tvheadend Server 4.0"
-PKG_ADDON_TYPE="xbmc.broken"
-
-make_target() {
+make_host() {
   :
 }
 
-makeinstall_target() {
-  :
-}
-
-addon() {
-  :
+makeinstall_host() {
+  python3 setup.py install --prefix=$TOOLCHAIN
 }
