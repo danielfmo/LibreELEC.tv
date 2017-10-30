@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="audioencoder.vorbis"
-PKG_VERSION="6bd0b65"
-PKG_SHA256="50da259ac021bdff47b10092c885caacfed30e3f5d83eabb7b7c29b587282a00"
-PKG_REV="6"
+PKG_VERSION="65f9538"
+PKG_SHA256="10ddbf8c5360338b3d8082674ae5fafc24094e873ffb396ec59151a8329d2a2c"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
