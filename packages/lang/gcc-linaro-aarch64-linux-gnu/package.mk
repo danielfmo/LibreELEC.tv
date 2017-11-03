@@ -1,6 +1,6 @@
 ################################################################################
 #      This file is part of LibreELEC - https://libreelec.tv
-#      Copyright (C) 2016 Team LibreELEC
+#      Copyright (C) 2017-present Team LibreELEC
 #
 #  LibreELEC is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -25,10 +25,7 @@ PKG_SITE=""
 PKG_URL="https://releases.linaro.org/components/toolchain/binaries/7.1-2017.08/aarch64-linux-gnu/gcc-linaro-${PKG_VERSION}-x86_64_aarch64-linux-gnu.tar.xz"
 PKG_SOURCE_DIR="gcc-linaro-${PKG_VERSION}-x86_64_aarch64-linux-gnu"
 PKG_SECTION="lang"
-PKG_SHORTDESC=""
-PKG_LONGDESC=""
-
-PKG_IS_ADDON="no"
+PKG_SHORTDESC="Linaro Aarch64 GNU Linux Binary Toolchain"
 PKG_AUTORECONF="no"
 
 make_host() {

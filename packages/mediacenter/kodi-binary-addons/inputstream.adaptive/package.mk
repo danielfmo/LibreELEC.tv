@@ -17,10 +17,10 @@
 ################################################################################
 
 PKG_NAME="inputstream.adaptive"
-PKG_VERSION="37d610f"
-PKG_SHA256="0cc7b7bd100e6889267e7c20489f73a65df426e32975fe3626d6af548b8f16fd"
+PKG_VERSION="853144d"
+PKG_SHA256="cadc38ee93894b37603af30eb71f248fcf2df056d3cff9b840de1e895679d6e4"
 PKG_LICENSE="GPL"
-PKG_REV="7"
+PKG_REV="8"
 PKG_SITE="http://www.kodi.tv"
 PKG_URL="https://github.com/peak3d/inputstream.adaptive/archive/$PKG_VERSION.tar.gz"
 PKG_DEPENDS_TARGET="toolchain kodi-platform"
@@ -29,6 +29,10 @@ PKG_SHORTDESC="inputstream.adaptive"
 PKG_LONGDESC="inputstream.adaptive"
 
 PKG_IS_ADDON="yes"
+
+if [ "$TARGET_ARCH" = "x86_64" ] || [ "$TARGET_ARCH" = "arm" ]; then
+  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET nss"
+fi
 
 addon() {
   install_binary_addon $PKG_ADDON_ID
