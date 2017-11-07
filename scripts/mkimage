@@ -180,7 +180,6 @@ EOF
     echo "image: copying files to part1..."
     mcopy $TARGET_IMG/$IMAGE_NAME.kernel "::/$KERNEL_NAME"
     mcopy $TARGET_IMG/$IMAGE_NAME.system ::/SYSTEM
-    mcopy $TARGET_IMG/$IMAGE_NAME.json ::/TUF.json
     mcopy $RELEASE_DIR/target/KERNEL.md5 "::/$KERNEL_NAME.md5"
     mcopy $RELEASE_DIR/target/SYSTEM.md5 ::/SYSTEM.md5
 
@@ -203,7 +202,6 @@ EOF
     echo "image: copying files to part1..."
     mcopy $TARGET_IMG/$IMAGE_NAME.kernel "::/$KERNEL_NAME"
     mcopy $TARGET_IMG/$IMAGE_NAME.system ::/SYSTEM
-    mcopy $TARGET_IMG/$IMAGE_NAME.json ::/TUF.json
     mcopy $RELEASE_DIR/target/KERNEL.md5 "::/$KERNEL_NAME.md5"
     mcopy $RELEASE_DIR/target/SYSTEM.md5 ::/SYSTEM.md5
 
@@ -260,7 +258,6 @@ elif [ "$BOOTLOADER" = "u-boot" ]; then
     echo "image: copying files to part1..."
     mcopy $TARGET_IMG/$IMAGE_NAME.kernel "::/$KERNEL_NAME"
     mcopy $TARGET_IMG/$IMAGE_NAME.system ::/SYSTEM
-    mcopy $TARGET_IMG/$IMAGE_NAME.json ::/TUF.json
     mcopy $RELEASE_DIR/target/KERNEL.md5 "::/$KERNEL_NAME.md5"
     mcopy $RELEASE_DIR/target/SYSTEM.md5 ::/SYSTEM.md5
 
