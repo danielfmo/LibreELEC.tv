@@ -210,6 +210,7 @@ KODI_LIBDVD="$KODI_DVDCSS \
              -DLIBDVDREAD_URL=$ROOT/$SOURCES/libdvdread/libdvdread-$(get_pkg_version libdvdread).tar.gz"
 
 PKG_CMAKE_OPTS_TARGET="-DNATIVEPREFIX=$TOOLCHAIN \
+                       -DENABLE_APP_AUTONAME=OFF \
                        -DWITH_TEXTUREPACKER=$TOOLCHAIN/bin/TexturePacker \
                        -DDEPENDS_PATH=$PKG_BUILD/depends \
                        -DPYTHON_EXECUTABLE=$TOOLCHAIN/bin/$PKG_PYTHON_VERSION \
