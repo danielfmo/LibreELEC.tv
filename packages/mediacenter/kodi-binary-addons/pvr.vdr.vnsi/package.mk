@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.vdr.vnsi"
-PKG_VERSION="92e4c64"
-PKG_SHA256="5083e0763c6724809762c36ac22df08080bde5bfd1ec73dfef2b74ea647210b3"
-PKG_REV="8"
+PKG_VERSION="69ed6ed"
+PKG_SHA256="194931c33a6a60525c67b4bb68075d79c2675e429c5b2332ed311a876ad8e7e8"
+PKG_REV="9"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/FernetMenta/pvr.vdr.vnsi"

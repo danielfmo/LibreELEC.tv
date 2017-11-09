@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.hdhomerun"
-PKG_VERSION="ddfe2cb"
-PKG_SHA256="8f464cc4df525371c7d67426424857fc823170c82a38cb80b2d6f9ca2f70117d"
-PKG_REV="6"
+PKG_VERSION="7721ce6"
+PKG_SHA256="d6c65b0dbc05ff3cd5f764a4dfb417a22cfa39acdb135ca777ecd0bd39a2b68f"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
