@@ -16,32 +16,25 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="slice"
-PKG_VERSION="0"
-PKG_REV="102"
+PKG_NAME="edid-decode"
+PKG_VERSION="f56f329"
+PKG_SHA256="d9347ddf6933c6f90c79230b1898da5686083f0e5ebb7ef67acb011108cfaeae"
 PKG_ARCH="any"
-PKG_LICENSE="GPL"
-PKG_SITE=""
-PKG_URL=""
+PKG_LICENSE="None"
+PKG_SITE="https://cgit.freedesktop.org/xorg/app/edid-decode/"
+PKG_URL="https://cgit.freedesktop.org/xorg/app/edid-decode/snapshot/$PKG_VERSION.tar.xz"
+PKG_SOURCE_DIR="$PKG_VERSION*"
 PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION="service"
-PKG_SHORTDESC="Provides the ability to change the led lights on the Slice box via Kodi actions"
-PKG_LONGDESC="Provides the ability to change the led lights on the Slice box via Kodi actions"
-PKG_AUTORECONF="no"
-
-PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="Slice"
-PKG_ADDON_PROJECTS="Slice Slice3"
-PKG_ADDON_TYPE="xbmc.service"
+PKG_SECTION="debug"
+PKG_SHORTDESC="Decode EDID data in human-readable format"
+PKG_LONGDESC="Decode EDID data in human-readable format"
 
 make_target() {
-  :
+  echo "$CC $CFLAGS -Wall $LDFLAGS -lm -o edid-decode edid-decode.c"
+  $CC $CFLAGS -Wall $LDFLAGS -lm -o edid-decode edid-decode.c
 }
 
 makeinstall_target() {
-  :
-}
-
-addon() {
-  :
+  mkdir -p $INSTALL/usr/bin
+    cp edid-decode $INSTALL/usr/bin
 }
