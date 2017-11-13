@@ -38,8 +38,6 @@ makeinstall_host() {
   mkdir -p $TOOLCHAIN/bin
     cp -P $PKG_BUILD/dtc $TOOLCHAIN/bin
     cp -P $PKG_BUILD/libfdt/libfdt.so $TOOLCHAIN/lib
-    cp -P $PKG_BUILD/fdtput $INSTALL/usr/bin/
-    cp -P $PKG_BUILD/fdtget $INSTALL/usr/bin/
 }
 
 post_makeinstall_host() {
@@ -52,4 +50,6 @@ post_makeinstall_host() {
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
     cp -P $PKG_BUILD/dtc $INSTALL/usr/bin
+    cp -P $PKG_BUILD/fdtput $INSTALL/usr/bin/
+    cp -P $PKG_BUILD/fdtget $INSTALL/usr/bin/
 }
