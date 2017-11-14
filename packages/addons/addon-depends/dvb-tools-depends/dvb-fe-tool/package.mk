@@ -42,6 +42,10 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-nls \
             --without-libiconv-prefix \
             --without-libintl-prefix"
 
+pre_configure_target() {
+  export LDFLAGS="$LDFLAGS -pthread"
+}
+
 post_patch() {
   mkdir -p $PKG_BUILD/build-aux/
     touch $PKG_BUILD/build-aux/config.rpath
