@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="moonlight-common-c"
-PKG_VERSION="957b1de"
-PKG_SHA256="1e31014b233bd7ab5578e03b4dd872117e796a400ebd912f6624d27133b2e415"
+PKG_VERSION="314a593"
+PKG_SHA256="c1d32cb9dd50eebe755e27db69c2f8f9de077c4acb4741c356fb778d51814371"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/moonlight-stream/moonlight-common-c"
