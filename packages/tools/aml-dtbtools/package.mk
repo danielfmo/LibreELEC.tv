@@ -16,31 +16,20 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="repository.linuxserver.docker"
-PKG_VERSION="9.0"
-PKG_REV="102"
+PKG_NAME="aml-dtbtools"
+PKG_VERSION="cce100f"
+PKG_SHA256="8bcaa83fcc9e85c9c04930e7411447d96a97da0809c5ecd9af91c8b554133c41"
 PKG_ARCH="any"
-PKG_ADDON_PROJECTS="any !WeTek_Core !WeTek_Play"
-PKG_LICENSE="GPL"
-PKG_SITE="https://linuxserver.io"
-PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain"
-PKG_SECTION=""
-PKG_SHORTDESC="LinuxServer.io docker add-on repository"
-PKG_LONGDESC="LinuxServer.io docker add-on repository"
-PKG_TOOLCHAIN="manual"
+PKG_LICENSE="free"
+PKG_SITE="https://github.com/Wilhansen/aml-dtbtools"
+PKG_URL="https://github.com/Wilhansen/aml-dtbtools/archive/${PKG_VERSION}.tar.gz"
+PKG_SECTION="tools"
+PKG_SHORTDESC="AML DTB Tools"
+PKG_LONGDESC="AML DTB Tools"
 
-PKG_IS_ADDON="yes"
-PKG_ADDON_NAME="LinuxServer.io Repository"
-PKG_ADDON_TYPE="xbmc.addon.repository"
+PKG_MAKE_OPTS_HOST="dtbTool"
 
-make_target() {
-  $SED -e "s|@PKG_VERSION@|$PKG_VERSION|g" \
-       -e "s|@PKG_REV@|$PKG_REV|g" \
-       -i addon.xml
-}
-
-addon() {
-  mkdir -p $ADDON_BUILD/$PKG_ADDON_ID
-  cp -R $PKG_BUILD/* $ADDON_BUILD/$PKG_ADDON_ID
+makeinstall_host() {
+  mkdir -p $TOOLCHAIN/bin
+    cp dtbTool $TOOLCHAIN/bin
 }
