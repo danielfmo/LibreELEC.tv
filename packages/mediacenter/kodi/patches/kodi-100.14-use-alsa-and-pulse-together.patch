@@ -5,10 +5,10 @@ Date:   Mon Dec 11 23:44:41 2017 -0800
     [linux] allow using alsa and pulse together
 
 diff --git a/xbmc/windowing/X11/WinSystemX11GLContext.cpp b/xbmc/windowing/X11/WinSystemX11GLContext.cpp
-index 72a70d8118..0914d28820 100644
+index 24394d7631..343d4ec3ab 100644
 --- a/xbmc/windowing/X11/WinSystemX11GLContext.cpp
 +++ b/xbmc/windowing/X11/WinSystemX11GLContext.cpp
-@@ -52,24 +52,8 @@ std::unique_ptr<CWinSystemBase> CWinSystemBase::CreateWinSystem()
+@@ -52,31 +52,8 @@ std::unique_ptr<CWinSystemBase> CWinSystemBase::CreateWinSystem()
  
  CWinSystemX11GLContext::CWinSystemX11GLContext()
  {
@@ -17,21 +17,26 @@ index 72a70d8118..0914d28820 100644
 -    envSink = getenv("AE_SINK");
 -  if (StringUtils::EqualsNoCase(envSink, "ALSA"))
 -  {
--    X11::ALSARegister();
+     X11::ALSARegister();
 -  }
 -  else if (StringUtils::EqualsNoCase(envSink, "PULSE"))
 -  {
--    X11::PulseAudioRegister();
+     X11::PulseAudioRegister();
+-  }
+-  else if (StringUtils::EqualsNoCase(envSink, "SNDIO"))
+-  {
+-    X11::SndioRegister();
 -  }
 -  else
 -  {
 -    if (!X11::PulseAudioRegister())
 -    {
--      X11::ALSARegister();
+-      if (!X11::ALSARegister())
+-      {
+-        X11::SndioRegister();
+-      }
 -    }
 -  }
-+  X11::ALSARegister();
-+  X11::PulseAudioRegister();
  }
  
  CWinSystemX11GLContext::~CWinSystemX11GLContext()
@@ -56,10 +61,10 @@ index 4b8199760e..e50a31daf9 100644
  
  CWinSystemAmlogic::~CWinSystemAmlogic()
 diff --git a/xbmc/windowing/gbm/WinSystemGbm.cpp b/xbmc/windowing/gbm/WinSystemGbm.cpp
-index b3daea6569..0cd93b4566 100644
+index 91851c26fb..2b0940ee71 100644
 --- a/xbmc/windowing/gbm/WinSystemGbm.cpp
 +++ b/xbmc/windowing/gbm/WinSystemGbm.cpp
-@@ -33,24 +33,8 @@ CWinSystemGbm::CWinSystemGbm() :
+@@ -36,32 +36,6 @@ CWinSystemGbm::CWinSystemGbm() :
    m_nativeDisplay(nullptr),
    m_nativeWindow(nullptr)
  {
@@ -72,20 +77,26 @@ index b3daea6569..0cd93b4566 100644
 -  }
 -  else if (StringUtils::EqualsNoCase(envSink, "PULSE"))
 -  {
--   GBM::PulseAudioRegister();
+-    GBM::PulseAudioRegister();
+-  }
+-  else if (StringUtils::EqualsNoCase(envSink, "SNDIO"))
+-  {
+-    GBM::SndioRegister();
 -  }
 -  else
 -  {
 -    if (!GBM::PulseAudioRegister())
 -    {
--      GBM::ALSARegister();
+-      if (!GBM::ALSARegister())
+-      {
+-        GBM::SndioRegister();
+-      }
 -    }
 -  }
-+  GBM::ALSARegister();
-+  GBM::PulseAudioRegister();
- 
+-
    m_winEvents.reset(new CWinEventsLinux());
  }
+
 diff --git a/xbmc/windowing/rpi/WinSystemRpi.cpp b/xbmc/windowing/rpi/WinSystemRpi.cpp
 index 3e4c6d2d8a..a00a1c0c18 100644
 --- a/xbmc/windowing/rpi/WinSystemRpi.cpp
