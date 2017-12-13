@@ -19,7 +19,7 @@
 PKG_NAME="pvr.vbox"
 PKG_VERSION="619c32b"
 PKG_SHA256="d9b4a4f1053dad95fc44fbfeaf69b719931a0eb20cd6f3ca4dc911f76d483780"
-PKG_REV="8"
+PKG_REV="9"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

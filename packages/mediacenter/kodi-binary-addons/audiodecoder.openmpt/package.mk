@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.openmpt"
 PKG_VERSION="904d049"
 PKG_SHA256="f19af1bac1b0337f7afd8a08faa539e12d2380fbd3a6428f042a9228808d720e"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

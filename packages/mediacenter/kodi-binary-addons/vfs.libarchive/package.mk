@@ -19,7 +19,7 @@
 PKG_NAME="vfs.libarchive"
 PKG_VERSION="568a2a1"
 PKG_SHA256="781c2d3a26f5a4c4beadd5e3ec732dc0dc451e303f08e8a034bb584025db2358"
-PKG_REV="2"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

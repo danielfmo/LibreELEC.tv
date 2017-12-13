@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.fluidsynth"
 PKG_VERSION="284cab0"
 PKG_SHA256="8489f455ca266e7d3465bd9146c38b3572ea0502ea873ab14a7caf11e57988ab"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.fluidsynth"

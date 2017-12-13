@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.organya"
 PKG_VERSION="0f3d367"
 PKG_SHA256="4e0125900881ab6a438e0e9d14bde5c8ed756ef845c5d5288cc00fedd581d99b"
-PKG_REV="7"
+PKG_REV="8"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.organya"

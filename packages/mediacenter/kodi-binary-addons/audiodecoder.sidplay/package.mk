@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.sidplay"
 PKG_VERSION="28bd921"
 PKG_SHA256="e0f35803697d055f5defbb1a405804149860bc49a451819ade1b00fb2724a5dc"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
