@@ -33,6 +33,10 @@ get_graphicdrivers
 
 PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET dbus"
 
+if [ "$LINUX" = "amlogic-3.14" ]; then
+  PKG_PATCH_DIRS="$LINUX"
+fi
+
 if [ "$TARGET_ARCH" = "x86_64" ] || [ "$TARGET_ARCH" = "arm" ]; then
   PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET nss"
 fi
