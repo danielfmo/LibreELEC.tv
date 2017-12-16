@@ -19,7 +19,7 @@
 PKG_NAME="adsp.biquad.filters"
 PKG_VERSION="a41eb28"
 PKG_SHA256="d02efbd66aae55987467e9b5ee493f83e8dd433f757af8ae979d1b61f413ae04"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

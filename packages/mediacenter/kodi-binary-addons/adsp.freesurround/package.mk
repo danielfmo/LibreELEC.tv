@@ -19,7 +19,7 @@
 PKG_NAME="adsp.freesurround"
 PKG_VERSION="03ec089"
 PKG_SHA256="92596abc603a805806167f9dbaa9d4e760ba6a8efdb347447174a818acb470a4"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

@@ -19,7 +19,7 @@
 PKG_NAME="game.libretro.mgba"
 PKG_VERSION="8a00593"
 PKG_SHA256="d88f184f0b9b8dac0ff3642486570297e9e981d47f07d61c47ec46bda5041d30"
-PKG_REV="104"
+PKG_REV="105"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/kodi-game/game.libretro.mgba"

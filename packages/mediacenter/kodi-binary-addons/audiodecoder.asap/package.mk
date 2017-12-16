@@ -19,7 +19,7 @@
 PKG_NAME="audiodecoder.asap"
 PKG_VERSION="6c13ee6"
 PKG_SHA256="ca59c9aa3975f46f07a704c8960e49a2e031d820e0db96cf78c6ee532908ca72"
-PKG_REV="6"
+PKG_REV="7"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/notspiff/audiodecoder.asap"
