@@ -338,12 +338,12 @@ post_makeinstall_target() {
     xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "service.slice" $ADDON_MANIFEST
   fi
 
-  if [ -d $PROJECT_DIR/$PROJECT/kodi/addons ]; then
+  if [ -d $PROJECT_DIR/$PROJECT/addons ]; then
     mkdir -p $INSTALL/usr/share/kodi/addons
-    for i in `ls $PROJECT_DIR/$PROJECT/kodi/addons | grep zip`
+    for i in `ls $PROJECT_DIR/$PROJECT/addons | grep zip`
     do
-      unzip $PROJECT_DIR/$PROJECT/kodi/addons/$i -d $INSTALL/usr/share/kodi/addons
-      xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "`unzip -p $PROJECT_DIR/$PROJECT/kodi/addons/$i */addon.xml | awk -F= '/addon\ id=/ { print $2 }' | awk -F'"' '{ print $2 }'`" $ADDON_MANIFEST
+      unzip $PROJECT_DIR/$PROJECT/addons/$i -d $INSTALL/usr/share/kodi/addons
+      xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "`unzip -p $PROJECT_DIR/$PROJECT/addons/$i */addon.xml | awk -F= '/addon\ id=/ { print $2 }' | awk -F'"' '{ print $2 }'`" $ADDON_MANIFEST
     done
   fi
 
