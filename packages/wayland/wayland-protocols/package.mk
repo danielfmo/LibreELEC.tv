@@ -16,15 +16,18 @@
 #  along with LibreELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="Adafruit_Python_CharLCD"
-PKG_VERSION="bc75cad"
-PKG_SHA256="eae4b446162feb533a469a9dacf6e750250f925561c9f7983a11d340e1dd98d4"
+PKG_NAME="wayland-protocols"
+PKG_VERSION="1.12"
+PKG_SHA256="3b19e8a9e1e19474756a7069db23b90ca9b8ebb438448c6063b4a7fc89b7c8b2"
 PKG_ARCH="any"
-PKG_LICENSE="MIT"
-PKG_SITE="https://github.com/adafruit/${PKG_NAME}"
-PKG_URL="https://github.com/adafruit/${PKG_NAME}/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain Python2 distutilscross:host"
-PKG_SECTION="python"
-PKG_SHORTDESC="Adafruit Python CharLCD Library"
-PKG_LONGDESC="Python library for accessing Adafruit character LCDs from a Raspberry Pi or BeagleBone Black."
-PKG_TOOLCHAIN="manual"
+PKG_LICENSE="OSS"
+PKG_SITE="https://wayland.freedesktop.org/"
+PKG_URL="https://wayland.freedesktop.org/releases/${PKG_NAME}-${PKG_VERSION}.tar.xz"
+PKG_DEPENDS_TARGET="toolchain"
+PKG_SECTION="wayland"
+PKG_SHORTDESC="Specifications of extended Wayland protocols"
+PKG_LONGDESC="Specifications of extended Wayland protocols"
+
+post_makeinstall_target() {
+  rm -rf $INSTALL
+}
