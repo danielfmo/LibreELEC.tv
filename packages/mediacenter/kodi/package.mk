@@ -17,8 +17,8 @@
 ################################################################################
 
 PKG_NAME="kodi"
-PKG_VERSION="4fab351"
-PKG_SHA256="9aacd64edea01c2ef7c86d547c66ea550b40a085668b8b43ed450b67bc4a5195"
+PKG_VERSION="7b1ff23"
+PKG_SHA256="12106cdf7348754e836098188b9ea278b631695d28a0c85db40dd7e72950bc98"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
