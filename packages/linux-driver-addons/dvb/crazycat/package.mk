@@ -38,8 +38,9 @@ PKG_ADDON_VERSION="${ADDON_VERSION}.${PKG_REV}"
 
 if [ $LINUX = "amlogic-3.14" -o $LINUX = "amlogic-3.10" ]; then
   PKG_PATCH_DIRS="amlogic"
-  PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET wetekdvb"
 fi
+
+listcontains "$ADDITIONAL_DRIVERS" "wetekdvb" && PKG_DEPENDS_TARGET+=" wetekdvb" || true
 
 pre_make_target() {
   export KERNEL_VER=$(get_module_dir)
