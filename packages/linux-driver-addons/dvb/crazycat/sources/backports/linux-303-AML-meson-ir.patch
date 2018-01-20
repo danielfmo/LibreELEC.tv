@@ -1,0 +1,45 @@
+diff -Naur a/drivers/media/rc/meson-ir.c b/drivers/media/rc/meson-ir.c
+--- a/drivers/media/rc/meson-ir.c	2017-07-17 20:00:27.792075838 +0200
++++ b/drivers/media/rc/meson-ir.c	2017-07-17 20:02:20.051247547 +0200
+@@ -20,6 +20,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/spinlock.h>
+ #include <linux/bitfield.h>
++#include <linux/pinctrl/consumer.h>
+ 
+ #include <media/rc-core.h>
+ 
+@@ -113,6 +114,7 @@
+ 	const char *map_name;
+ 	struct meson_ir *ir;
+ 	int irq, ret;
++	struct pinctrl *pinctrl;
+ 
+ 	ir = devm_kzalloc(dev, sizeof(struct meson_ir), GFP_KERNEL);
+ 	if (!ir)
+@@ -125,6 +127,14 @@
+ 		return PTR_ERR(ir->reg);
+ 	}
+ 
++ 	if (of_get_property(node, "pinctrl-names", NULL)) {
++ 		pinctrl = devm_pinctrl_get_select_default(dev);
++ 		if (IS_ERR(pinctrl)) {
++ 			dev_err(dev, "failed to get pinctrl\n");
++ 			ret = PTR_ERR(pinctrl);
++ 		}
++ 	}
++ 
+ 	irq = platform_get_irq(pdev, 0);
+ 	if (irq < 0) {
+ 		dev_err(dev, "no irq resource\n");
+diff -Naur a/drivers/media/rc/Kconfig b/drivers/media/rc/Kconfig
+--- a/drivers/media/rc/Kconfig	2017-07-17 18:29:04.012304983 +0200
++++ b/drivers/media/rc/Kconfig	2017-07-17 18:29:12.780240680 +0200
+@@ -227,7 +227,6 @@
+ config IR_MESON
+ 	tristate "Amlogic Meson IR remote receiver"
+ 	depends on RC_CORE
+-	depends on ARCH_MESON || COMPILE_TEST
+ 	---help---
+ 	   Say Y if you want to use the IR remote receiver available
+ 	   on Amlogic Meson SoCs.

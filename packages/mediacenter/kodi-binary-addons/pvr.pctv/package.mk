@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.pctv"
-PKG_VERSION="6484615"
-PKG_SHA256="a5d475207b504e59190d0659b5477d3a3ec0430c1c0c1c6420d51a500ac27d6d"
-PKG_REV="10"
+PKG_VERSION="c7a13d7"
+PKG_SHA256="20cdbd4e3ff293355d20ea60ef1ae123e04c1fed99bb6939d9127b1982f436f7"
+PKG_REV="12"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"

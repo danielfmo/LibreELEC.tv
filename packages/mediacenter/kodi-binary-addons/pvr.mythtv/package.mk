@@ -17,9 +17,9 @@
 ################################################################################
 
 PKG_NAME="pvr.mythtv"
-PKG_VERSION="8f214cd"
-PKG_SHA256="73d065f4741b0a1cdc95fa0d30f862be6a9568c37815261c54f62921fc240bc4"
-PKG_REV="11"
+PKG_VERSION="3200b09"
+PKG_SHA256="8e9443c386cbc4183e74f100aa7dd968310b8b8739d7a4640d8f69c31d3c20e8"
+PKG_REV="12"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/janbar/pvr.mythtv"
