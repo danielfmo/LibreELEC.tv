@@ -13,41 +13,6 @@ index 41ff3397e8..3edc35e4ac 100644
  
    int ret = avcodec_send_packet(m_pCodecContext, &avpkt);
    if (ret == AVERROR(EAGAIN))
-diff --git a/xbmc/cores/VideoPlayer/DVDFileInfo.cpp b/xbmc/cores/VideoPlayer/DVDFileInfo.cpp
-index 3a00bb310a..6d3fea5b71 100644
---- a/xbmc/cores/VideoPlayer/DVDFileInfo.cpp
-+++ b/xbmc/cores/VideoPlayer/DVDFileInfo.cpp
-@@ -216,8 +216,8 @@ bool CDVDFileInfo::ExtractThumb(const std::string &strPath,
-       if (pDemuxer->SeekTime(nSeekTo, true))
-       {
-         CDVDVideoCodec::VCReturn iDecoderState = CDVDVideoCodec::VC_NONE;
--        VideoPicture picture = {};
--
-+        VideoPicture picture;
-+        picture.Reset();
-         // num streams * 160 frames, should get a valid frame, if not abort.
-         int abort_index = pDemuxer->GetNrOfStreams() * 160;
-         do
-@@ -240,6 +240,7 @@ bool CDVDFileInfo::ExtractThumb(const std::string &strPath,
-           iDecoderState = CDVDVideoCodec::VC_NONE;
-           while (iDecoderState == CDVDVideoCodec::VC_NONE)
-           {
-+            picture.Reset();
-             iDecoderState = pVideoCodec->GetPicture(&picture);
-           }
- 
-diff --git a/xbmc/cores/VideoPlayer/VideoPlayerVideo.cpp b/xbmc/cores/VideoPlayer/VideoPlayerVideo.cpp
-index b547d17cb2..b8a7797ba0 100644
---- a/xbmc/cores/VideoPlayer/VideoPlayerVideo.cpp
-+++ b/xbmc/cores/VideoPlayer/VideoPlayerVideo.cpp
-@@ -317,6 +317,7 @@ void CVideoPlayerVideo::Process()
-   int iDropDirective;
-   bool onlyPrioMsgs = false;
- 
-+  m_picture.Reset();
-   m_videoStats.Start();
-   m_droppingStats.Reset();
-   m_iDroppedFrames = 0;
 diff --git a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/RendererDRMPRIME.cpp b/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/RendererDRMPRIME.cpp
 index cb46cbb9d9..ba5c665bd1 100644
 --- a/xbmc/cores/VideoPlayer/VideoRenderers/HwDecRender/RendererDRMPRIME.cpp
